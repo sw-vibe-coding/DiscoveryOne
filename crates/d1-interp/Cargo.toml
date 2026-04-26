@@ -1,0 +1,8 @@
+[package]
+name = "d1-interp"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+description = "DiscoveryOne reference interpreter. Test oracle that the WASM emitter must match."

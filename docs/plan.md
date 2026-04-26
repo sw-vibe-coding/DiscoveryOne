@@ -321,8 +321,9 @@ d1_minted_module_acceptance
 **Exit (= MVP exit per `docs/prd.md` section 8).**
 
 - All M0-M7 reg-rs cases green.
-- The `discoveryone` web app demo at `localhost:9735` (or
-  whichever port `scripts/run-web.sh` chose) round-trips Power
+- The `discoveryone` web app demo at `localhost:1078` (the
+  default for `scripts/run-web.sh`; override with an arg)
+  round-trips Power
   and dowhile interactively.
 - `docs/status.md` updated.
 - `docs/poc-demo.md` walks through the scenario.

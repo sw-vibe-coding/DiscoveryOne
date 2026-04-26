@@ -1,0 +1,8 @@
+[package]
+name = "d1-check"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+description = "DiscoveryOne facet checker: name resolution, arity, and cross-facet consistency rules R1-R7."

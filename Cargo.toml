@@ -1,0 +1,27 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/d1-source",
+    "crates/d1-geom",
+    "crates/d1-lex",
+    "crates/d1-parse",
+    "crates/d1-check",
+    "crates/d1-ir",
+    "crates/d1-interp",
+    "crates/d1-emit-wasm",
+    "crates/d1-cli",
+]
+
+# Note: ui/web (Yew SPA, wasm32 target) is intentionally excluded
+# from this workspace and built separately via Trunk. See
+# docs/architecture.md section 5 and saga step 002.
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+authors = ["Michael A. Wright"]
+repository = "https://github.com/sw-vibe-coding/DiscoveryOne"
+
+[workspace.dependencies]
+clap = { version = "4.5", features = ["derive"] }

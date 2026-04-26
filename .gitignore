@@ -21,10 +21,11 @@ ui/web/dist/
 ui/web/pkg/
 
 # reg-rs transient state (databases and locks). The .rgt and
-# .out baselines ARE tracked.
+# .out baselines ARE tracked. Cargo.lock is also tracked
+# (binary-crate convention) so this glob is intentionally
+# narrow: only reg-rs *.tdb / *.tdb.lock are ignored.
 **/*.tdb
 **/*.tdb.lock
-**/*.lock
 
 # Generated WASM and intermediate compile outputs.
 work/generated/

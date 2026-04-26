@@ -101,10 +101,10 @@ Once M0 lands, the workflow will be:
 # 1. Build everything (CLI + WASM runtime + Yew web app).
 ./scripts/build-all.sh
 
-# 2. Run the dev server.
-./scripts/run-web.sh 9735
+# 2. Run the dev server (defaults to port 1078).
+./scripts/run-web.sh
 
-# 3. Open http://localhost:9735/
+# 3. Open http://localhost:1078/
 ```
 
 Pick a definition from the dropdown, click through the facet

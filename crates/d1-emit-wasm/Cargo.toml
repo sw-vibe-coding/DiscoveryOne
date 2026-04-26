@@ -1,0 +1,8 @@
+[package]
+name = "d1-emit-wasm"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+description = "DiscoveryOne WASM emitter: stack IR to WAT, assembled to .wasm bytes."

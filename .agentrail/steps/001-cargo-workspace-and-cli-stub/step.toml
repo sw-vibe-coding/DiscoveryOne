@@ -1,6 +1,6 @@
 number = 1
 slug = "cargo-workspace-and-cli-stub"
-status = "pending"
+status = "in-progress"
 description = """
 # Step: cargo-workspace-and-cli-stub
 

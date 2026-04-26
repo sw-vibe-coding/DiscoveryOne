@@ -1,0 +1,8 @@
+[package]
+name = "d1-ir"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+description = "DiscoveryOne stack IR: normalized core form lowered from the AST."
