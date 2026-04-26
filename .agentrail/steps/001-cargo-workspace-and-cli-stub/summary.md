@@ -1,0 +1,1 @@
+Cargo workspace + 8 lib crate skeletons + d1-cli clap stub. cargo build/test/clippy/fmt all green. d1 --help banner stable; d1 --version prints d1 0.1.0. Side fixes: README/plan port 9735->1078; .gitignore narrowed so Cargo.lock is tracked.
