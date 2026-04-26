@@ -1,0 +1,36 @@
+# DiscoveryOne -- .gitignore
+#
+# IMPORTANT: .agentrail/ and .agentrail-archive/ are tracked
+# source-of-record. They MUST NEVER be added to this file.
+# Every saga step's commit must include the .agentrail/ delta;
+# every archive operation must commit both the cleared
+# .agentrail/ and the populated .agentrail-archive/. See
+# CLAUDE.md "Rules for `.agentrail/`" for the full protocol.
+#
+# If you find yourself reaching to ignore .agentrail/, stop and
+# read CLAUDE.md first. Direct deletion of unstaged step files
+# is unrecoverable.
+
+# Rust build output.
+target/
+**/*.rs.bk
+
+# Trunk / wasm-pack output for the web app.
+dist/
+ui/web/dist/
+ui/web/pkg/
+
+# reg-rs transient state (databases and locks). The .rgt and
+# .out baselines ARE tracked.
+**/*.tdb
+**/*.tdb.lock
+**/*.lock
+
+# Generated WASM and intermediate compile outputs.
+work/generated/
+
+# OS / editor cruft.
+.DS_Store
+*.swp
+.idea/
+.vscode/

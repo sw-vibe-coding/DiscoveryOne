@@ -1,0 +1,1046 @@
+
+
+
+
+I want to take Tuplet, my COR24-based experimental language with first-class tuples, user "minting" verbs for most of the language, currently parsed in OCaml and compiled to Forth and derive a new language from that.  This new language builds on the 2D whitespace parsing nature of Tuple where the mint character does not appear until line 3 or later, but extends this into 3D space.  So now the glyphs can be viewed from 6 directions (front, left side, right side, rear, top, and bottom).  Every character (or symbol which may be a word of symbols) resides at a 3D coordinate.  A definition (one minting) can be viewed from the side to see the essence (while hiding details in different Z planes from the user's perspective.
+
+I’ll treat this as a language-design derivation problem: preserve Tuplet’s “minted verbs + spatial syntax” idea, then lift the source model from 2D sheets to a 3D artifact with multiple projections and hidden/detail planes.
+
+Thought for 4s
+Restated direction
+You want a Tuplet-derived language where source code is no longer just a 2D glyph layout. It becomes a 3D source object:
+
+Each glyph/token/word has an (x, y, z) coordinate.
+
+The same definition can be viewed from six orthographic directions:
+
+front
+
+rear
+
+left
+
+right
+
+top
+
+bottom
+
+A “minting” definition may reveal different structure depending on view.
+
+Side views can expose the essence of a definition while hiding detail layers.
+
+Tuplet’s “mint character appears only on line 3 or later” idea generalizes into depth-delayed structure.
+
+A good working name might be:
+
+Prism
+Because the language is not read once; it is projected.
+
+Other names:
+
+Name	Emphasis
+Prism	one object, many views
+Glyphspace	spatial glyph language
+Mintspace	Tuplet heritage
+Voxel	3D source-code cells
+Lattice	coordinates, planes, relations
+Facet	definitions viewed from multiple faces
+Coreform	side view reveals essence
+I’d probably use Prism as the derived language name and keep Tuplet as the 2D ancestor.
+
+Core idea
+A source file is not text. It is a voxel document.
+
+Source = set of positioned symbols
+
+Symbol {
+    id
+    text
+    x
+    y
+    z
+    metadata
+}
+A “program” is parsed by projecting the 3D source object onto one or more 2D planes.
+
+front view  = project along -Z
+rear view   = project along +Z
+left view   = project along +X
+right view  = project along -X
+top view    = project along -Y
+bottom view = project along +Y
+So the same definition has multiple legal readings.
+
+Important design choice
+You probably do not want all six views to be independent programs.
+
+That would be too magical.
+
+Instead:
+
+Recommended rule
+Each definition has one primary view and several auxiliary views.
+
+For example:
+
+View	Meaning
+front	readable declaration / API shape
+side	essence / algorithm summary
+top	type/data-flow relationships
+rear	lowered/internal expansion
+bottom	tests/examples/proofs
+hidden Z planes	implementation details
+This gives the language a clear architecture:
+
+definition = visible surface + concealed implementation layers
+That maps nicely to your goal: the side view shows the “essence” while details live in other depth planes.
+
+Minting in 3D
+Tuplet has a delayed mint character in 2D. Prism could generalize that into a mint depth rule.
+
+In 2D Tuplet:
+
+line 1: visible phrase
+line 2: maybe type/shape
+line 3+: mint appears
+In 3D Prism:
+
+surface plane: visible signature
+inner plane 1: constraints / tuple shape
+inner plane 2+: minting glyph appears
+deeper planes: implementation
+So a definition might be physically structured like this:
+
+z = 0   public phrase / name / tuple shape
+z = 1   types, guards, preconditions
+z = 2   minting verb appears
+z = 3+  implementation
+That is a strong, simple rule.
+
+Example model
+Imagine a Power definition.
+
+Front view:
+
+Power (n : ℤ  e : ℤ) → (p : ℤ)
+Side view:
+
+1 →
+loop e times
+n × →
+Top view:
+
+n ─────┐
+       × repeated e times ── p
+e ─────┘
+Rear view:
+
+: POWER
+  ... generated Forth ...
+;
+Bottom view:
+
+Power(2, 8) → 256
+Power(5, 0) → 1
+Power(3, 3) → 27
+The same definition is a small cube of meaning, not a flat text block.
+
+Parsing architecture
+I would keep your current OCaml parser, but add a stage before it.
+
+Current Tuplet pipeline
+Tuplet text
+  → OCaml parser
+  → AST
+  → Forth
+  → COR24 path
+Prism pipeline
+Prism 3D source
+  → voxel loader
+  → projection engine
+  → view parsers
+  → merged semantic graph
+  → core IR
+  → Forth
+  → COR24
+The key addition is the semantic graph.
+
+Do not immediately flatten six views into text. Instead, collect facts:
+
+symbol A is at (x,y,z)
+symbol A projects near symbol B in front view
+symbol C is hidden behind symbol D
+mint glyph appears at depth z=2
+side projection gives essence form
+rear projection gives lowering hint
+Then build a definition from those facts.
+
+Source representation
+For an MVP, do not invent a full 3D editor first.
+
+Use a plain text carrier format.
+
+Example:
+
+@z 0
+Power (n : ℤ  e : ℤ) → (p : ℤ)
+
+@z 1
+requires e >= 0
+
+@z 2
+        ← mint
+
+@z 3
+p := 1
+loop e times:
+    p := p × n
+Or more explicitly:
+
+glyph "Power" at 0 0 0
+glyph "("     at 6 0 0
+glyph "n"     at 7 0 0
+glyph ":"     at 9 0 0
+glyph "ℤ"     at 11 0 0
+...
+glyph "←"     at 12 2 2
+For human editing, layered text is easier. For machine testing, coordinate form is easier.
+
+I’d support both:
+
+.prism     human layered source
+.prism.json canonical coordinate source
+Minimal MVP semantics
+Do not start with fully general 3D language semantics.
+
+Start with one useful case:
+
+MVP: 3D definitions with projection metadata
+A definition consists of:
+
+front plane: public definition surface
+
+side plane: essence
+
+depth planes: implementation
+
+rear plane: optional generated/lowered code
+
+bottom plane: examples/tests
+
+Then define one compiler rule:
+
+front + implementation → executable definition
+side/top/bottom → checked annotations
+That keeps the language executable while letting the other views become meaningful.
+
+Low-level representation
+In OCaml:
+
+type coord = {
+  x : int;
+  y : int;
+  z : int;
+}
+
+type glyph = {
+  id : int;
+  text : string;
+  coord : coord;
+}
+
+type direction =
+  | Front
+  | Rear
+  | Left
+  | Right
+  | Top
+  | Bottom
+
+type projection_token = {
+  glyph_id : int;
+  text : string;
+  u : int;
+  v : int;
+  depth : int;
+  occluded : bool;
+}
+
+type definition = {
+  name : string;
+  glyphs : glyph list;
+  primary_view : direction;
+}
+Projection is just coordinate transformation.
+
+For example:
+
+let project_front g =
+  { u = g.coord.x; v = g.coord.y; depth = g.coord.z }
+let project_left g =
+  { u = g.coord.z; v = g.coord.y; depth = g.coord.x }
+Then your existing 2D Tuplet parser can parse a projection.
+
+That is the big win:
+
+3D Prism source
+  → projection
+  → existing Tuplet-ish 2D parser
+Occlusion rules
+You need rules for what happens when two glyphs occupy the same projected coordinate.
+
+Options:
+
+Option A: nearest wins
+From a given view, only the nearest glyph is visible.
+
+Pros:
+
+intuitive
+
+matches physical 3D viewing
+
+supports hidden implementation layers
+
+Cons:
+
+hidden glyphs may be hard to discover
+
+accidental occlusion can cause confusing errors
+
+Option B: stack shown as overlay
+Projected collisions become a stack.
+
+Pros:
+
+better for debugging
+
+no accidental data loss
+
+Cons:
+
+less visually elegant
+
+Option C: nearest wins for normal parsing, stack available to tooling
+This is probably best.
+
+compiler view: nearest visible glyph
+editor/debug view: full depth stack
+Language meaning of “essence”
+The side view should probably not be executable code at first.
+
+It should be a compressed semantic annotation.
+
+For example, side view might declare:
+
+identity
+loop
+fold
+map
+guard
+dispatch
+recurse
+emit
+So side view answers:
+
+What kind of definition is this?
+
+Examples:
+
+Side-view essence	Meaning
+map	transforms each element
+fold	accumulates
+guard	validates/preconditions
+dispatch	chooses among verbs
+loop	iteration
+recurse	recursive definition
+literal	constant/function table
+ffi	external primitive
+This gives you a way to compare the side view with the implementation.
+
+If the side view says fold, but the implementation is recursive branching, the compiler can warn.
+
+Strong design principle
+The six views should be consistent, not independent.
+
+A definition is valid only if its projections agree.
+
+Example consistency checks:
+
+front view says result tuple is (p : ℤ)
+implementation must produce p
+
+side view says loop
+implementation must contain loop/fold/repetition
+
+bottom view examples must typecheck and pass
+
+top view dataflow must mention all inputs and outputs
+This turns 3D syntax from a gimmick into a useful correctness tool.
+
+Compilation target
+Since Tuplet currently compiles to Forth, Prism should probably compile to the same intermediate target initially.
+
+Prism
+  → projected Tuplet forms
+  → Tuplet AST
+  → Prism semantic graph
+  → normalized Tuplet/Core IR
+  → Forth
+  → COR24
+Avoid compiling six views independently.
+
+Instead compile one canonical core.
+
+Suggested first demo
+Implement only this:
+
+Power definition as a 3D source cube
+Views:
+
+View	Content
+front	function signature
+left	essence: identity / loop / multiply
+top	dataflow from n,e to p
+rear	generated Forth
+bottom	examples
+depth layers	actual implementation
+Then build a small web UI:
+
+[front] [left] [right] [rear] [top] [bottom]
+Plus a slider:
+
+z-plane: 0 1 2 3 4
+This would make the idea immediately understandable.
+
+Risks
+Risk 1: too much visual cleverness
+A 3D language can become unreadable fast.
+
+Mitigation:
+
+make front view sufficient for normal reading
+
+make side/top/bottom views optional but checkable
+
+use depth for controlled hiding, not arbitrary art
+
+Risk 2: editor burden
+Nobody wants to hand-edit 3D coordinates.
+
+Mitigation:
+
+layered textual format first
+
+Yew/WASM visualizer later
+
+coordinate JSON only as canonical IR
+
+Risk 3: ambiguous projection semantics
+Multiple glyphs can collide in projection.
+
+Mitigation:
+
+deterministic nearest-visible rule
+
+tooling shows hidden stacks
+
+compiler warns on accidental occlusion
+
+Risk 4: six views imply six languages
+Mitigation:
+
+one executable language
+
+other views are annotations, contracts, examples, or lowerings
+
+Best architecture
+I’d structure the implementation as:
+
+prism-source
+  parse layered text into glyph coordinates
+
+prism-geom
+  projection, rotation, visibility, occlusion
+
+prism-view
+  convert projected glyphs into 2D token grids
+
+tuplet-parser
+  existing / adapted parser
+
+prism-sema
+  merge views into semantic graph
+
+prism-core
+  normalized executable IR
+
+prism-forth
+  compile to Forth
+
+prism-ui
+  optional Yew/WASM visualizer
+The key insight
+Tuplet is a 2D language where layout has meaning.
+
+Prism would be a 3D language where projection has meaning.
+
+That gives you a powerful metaphor:
+
+front view: what it is
+side view: what it means
+top view: how data flows
+inside: how it works
+rear view: what it becomes
+bottom view: how we know
+That is a very clean conceptual model.
+
+
+slow down.  You have presented some good ideas, but I have not finished capturing my vision of this language and the 3D tools around it.  I wanted to consider some ideas like aspect oriented programming, pre/post conditions, macro expansion, instrumentation, debugging, etc.  So my initial idea was front view gets the gist of an algorithm across, hiding pre/post conditions, error handling.  The left view shows inputs, type, signature.  The right side shows outputs, type, signature.  The top view shows pre-conditions.  Bottom view shows post-confitions.  Rear view shows macro expansion or "binary" (assembler, Forth, lisp--whatever the  tool transpiles Tuplet3D source into (better name later).  
+
+While I mentioned the 6 sides, we are not limited to 6 views.  We can fold a higer dimension aspect-mapping into a 6-sided projection of n>6 sides.  Similar to PCA in ML we could show the most relevant 6 sides in 3D (and one side in 2D) or a set of projections as multiple side-by-side 2D views of fewer than 6 sides or more than 6 sides.
+
+Imagine plumbing these together in 3D (the minted verb, not the definition) into a 3D (4D counting time) pipeline network whic could be visualized, rotated, zoomed, filtered, highlighted, expanded, etc.
+
+Back to the source view, imagine editing a prelude or dictionary of user-minted forms.  We could view a 3D grid of 3D definitions.  We can group related definitions across 2D planes or slices of the 3D library grid. We could rotate all definitions to show all their inputs (arity, types) at once and sort that view to group by input arrity on one dimiension and types on another.  We could rotate all to the other 6 "standard" views to compare (or observe) pre/post conditions, error handling, implementation details, etc.  
+
+Need a detailed set of use-cases, specifications, and enough initial research that an AI Coding agent could derive docs/{architecture,PRD,design,plan}.md files from your detailed description.
+
+Understood — I’ll treat the current language as still being captured, not finalized. I’ll expand your vision into a structured requirements/use-case/specification packet that a coding agent can turn into docs/{architecture,PRD,design,plan}.md, while preserving open design space instead of prematurely narrowing it.
+
+Thought for a few seconds
+Below is a source packet for an AI coding agent. It is intentionally written as detailed input material, not as final architecture.
+
+Tuplet3D Vision Capture Packet
+1. Working concept
+Tuplet3D is a derived language and tool environment based on Tuplet.
+
+Tuplet currently explores:
+
+COR24-oriented experimental language design.
+
+First-class named tuples.
+
+User-minted verbs.
+
+2D whitespace/spatial parsing.
+
+OCaml parsing.
+
+Compilation/transpilation to Forth.
+
+Tuplet3D extends this idea into a spatial programming environment where source forms, definitions, aspects, pipelines, generated code, debugging views, and semantic projections can all be represented in 3D or higher-dimensional abstract space.
+
+The key distinction:
+
+Tuplet:
+  Meaning emerges from 2D textual/spatial layout.
+
+Tuplet3D:
+  Meaning emerges from 3D/higher-dimensional projected forms,
+  where each view reveals a semantic aspect of the same minted verb.
+2. Core source model
+A Tuplet3D source object is not just a text file.
+
+It is a collection of positioned symbols:
+
+symbol {
+  text: glyph | word | operator | minted verb | annotation
+  coordinate: x, y, z
+  optional_aspect_coordinate: a0, a1, a2, ...
+  metadata
+}
+A definition is a bounded spatial object.
+
+A minted verb is the callable/semantic entity created by a definition.
+
+The definition may be viewed from multiple directions or projected through different aspect mappings.
+
+3. Standard semantic views
+The first standard six views are:
+
+View	Meaning
+Front	Algorithm gist / essential readable story
+Left	Inputs, arity, parameter names, input types
+Right	Outputs, result names, output types
+Top	Preconditions
+Bottom	Postconditions
+Rear	Expansion / generated form / transpiled output
+This is better than treating views as arbitrary faces. Each face has a job.
+
+Example
+For a Power minted verb:
+
+View	Example content
+Front	“start with 1; multiply by n, e times”
+Left	n : ℤ, e : ℤ
+Right	p : ℤ
+Top	e ≥ 0
+Bottom	p = n^e
+Rear	Forth, assembler, Lisp, or macro-expanded Tuplet
+4. Not limited to six views
+Tuplet3D should not assume only six semantic aspects.
+
+The six physical faces are only a projection device.
+
+There may be many aspects:
+
+inputs
+outputs
+types
+preconditions
+postconditions
+invariants
+error handling
+macro expansion
+instrumentation
+debug hooks
+tests
+examples
+contracts
+cost model
+memory behavior
+stack effects
+dataflow
+control flow
+generated Forth
+generated COR24 assembler
+generated Lisp
+documentation
+visual explanation
+These can be mapped into six currently visible faces.
+
+This is analogous to choosing a projection of higher-dimensional data.
+
+The UI should eventually support:
+
+many semantic aspects
+  → select/relevance-rank/project
+  → show as six 3D faces
+  → or show as multiple 2D panels
+5. Aspect-oriented programming connection
+Tuplet3D has a natural relationship to aspect-oriented programming.
+
+A definition’s core algorithm may be visible in the front view, while other aspects are spatially attached but visually separable:
+
+front:
+  algorithm gist
+
+top:
+  preconditions
+
+bottom:
+  postconditions
+
+hidden/side/internal layers:
+  error handling
+  tracing
+  logging
+  assertions
+  resource cleanup
+  debugging hooks
+  instrumentation
+This means Tuplet3D can explore aspect weaving visually.
+
+Possible aspect categories:
+
+Aspect	Purpose
+pre	Preconditions before invocation
+post	Postconditions after invocation
+around	Wrap call or control flow
+on-error	Error handling
+trace	Logging / execution trace
+debug	Breakpoints / watchpoints
+profile	Timing / counters
+macro	Compile-time rewriting
+emit	Target-code generation
+test	Examples and assertions
+A compiler or tool could “weave” aspects into the executable representation.
+
+6. Macro expansion and rear view
+The rear view should represent what the tool derives from the source.
+
+Possible rear-view targets:
+
+macro-expanded Tuplet3D
+flattened Tuplet
+Forth
+COR24 assembler
+Lisp
+p-code
+bytecode
+visual IR
+The rear view should probably be tool-selectable.
+
+Example:
+
+rear target = Forth
+rear target = COR24 asm
+rear target = macro-expanded source
+rear target = normalized core IR
+So “rear view” means:
+
+what this definition becomes after transformation
+not one fixed target language.
+
+7. Source library / dictionary view
+Tuplet3D should support editing a prelude or dictionary of user-minted forms.
+
+A dictionary is a spatial collection of definitions.
+
+Rather than listing definitions alphabetically, the tool can arrange them in a 3D grid.
+
+Definitions may be grouped by:
+
+arity
+input type
+output type
+stack effect
+tuple shape
+domain
+category
+implementation strategy
+precondition complexity
+postcondition style
+error behavior
+macro expansion target
+pipeline role
+Example library operations:
+
+rotate all definitions to left view
+  → compare inputs
+
+rotate all definitions to right view
+  → compare outputs
+
+rotate all definitions to top view
+  → compare preconditions
+
+rotate all definitions to bottom view
+  → compare postconditions
+
+rotate all definitions to rear view
+  → inspect generated Forth/assembler
+
+sort definitions by arity on X axis
+sort definitions by input type on Y axis
+sort definitions by output type on Z axis
+filter to numeric verbs only
+highlight verbs that can compose with selected output type
+This is a major use-case.
+
+8. Pipeline/network view
+Tuplet3D is not only about definition source.
+
+Minted verbs can be connected into a spatial pipeline network.
+
+The network is 3D plus time:
+
+3D space:
+  nodes = minted verbs
+  edges = tuple/data/control flow
+
+4D with time:
+  execution, animation, debugging, traces
+Pipeline visualization should support:
+
+rotate
+zoom
+pan
+filter
+highlight
+expand
+collapse
+step through execution
+show tuple values moving through edges
+show precondition checks
+show postcondition checks
+show macro-expanded or lowered nodes
+show instrumentation overlays
+show errors and failed contracts
+This makes Tuplet3D both a language and a visual execution/debugging environment.
+
+9. Important use-cases
+Use-case A: Author a single minted verb
+User creates a definition with:
+
+front algorithm gist
+
+left input signature
+
+right output signature
+
+top preconditions
+
+bottom postconditions
+
+rear generated target view
+
+Goal:
+
+Create a small spatial definition that can compile to Forth/COR24.
+Use-case B: Hide complexity while preserving correctness
+The front view should stay readable.
+
+Details such as error handling, contracts, tracing, and expansion should not clutter the main algorithm view.
+
+Goal:
+
+Make small algorithms explainable without deleting engineering detail.
+Use-case C: Inspect generated code
+User rotates to rear view or selects rear target:
+
+macro expansion
+Forth
+COR24 assembler
+Lisp
+IR
+Goal:
+
+Understand what the tool generated and debug transformation errors.
+Use-case D: Compare a library of minted verbs
+User loads a dictionary/prelude and rotates all definitions to compare one aspect.
+
+Examples:
+
+show all input signatures
+show all output signatures
+show all preconditions
+show all postconditions
+show all generated Forth forms
+Goal:
+
+Organize and understand the language dictionary visually.
+Use-case E: Sort and group definitions spatially
+User sorts definitions by:
+
+arity
+input type
+output type
+tuple shape
+effect category
+domain
+implementation kind
+Goal:
+
+Discover related verbs and candidate compositions.
+Use-case F: Compose verbs into a pipeline
+User drags minted verbs into a 3D network.
+
+Connections are type/tuple-aware.
+
+Goal:
+
+Build programs from spatially composed minted verbs.
+Use-case G: Debug pipeline execution
+User runs the pipeline and sees:
+
+which node fired
+which tuple moved
+which precondition passed/failed
+which postcondition passed/failed
+which generated code executed
+where instrumentation was inserted
+Goal:
+
+Make execution observable and explainable.
+Use-case H: Aspect weaving
+User enables/disables aspects:
+
+trace
+profile
+assert
+debug
+error recovery
+logging
+Goal:
+
+See how aspects modify execution without polluting the front algorithm view.
+Use-case I: Educational explanation
+A teacher or video creator rotates a definition:
+
+front: algorithm story
+left: inputs
+right: outputs
+top: assumptions
+bottom: guarantees
+rear: machine form
+Goal:
+
+Explain programming language concepts visually.
+10. Initial research analogs
+The coding agent should research or compare against these ideas:
+
+Area	Relevant analogy
+Aspect-oriented programming	cross-cutting concerns, weaving
+Design by contract	preconditions, postconditions, invariants
+Literate programming	explanatory source views
+Visual programming	node graphs, dataflow editors
+Smalltalk browsers	class/method/system browsing
+Forth dictionaries	minted words and ordered vocabularies
+APL/J/K	dense symbolic expression
+Projectional editing	source as structured object, not plain text
+Hypertext systems	multiple linked views of the same object
+CAD / 3D modeling	rotate, slice, hide, expose internal structure
+PCA / dimensionality reduction	map many semantic dimensions into selected views
+Debug visualizers	traces, watchpoints, value flow
+Macro systems	source-to-source expansion
+Compiler IR viewers	AST, lowered IR, assembly views
+Dataflow languages	pipelines, nodes, edges
+Functional composition	typed function composition
+Stack languages	stack effects, Forth lowering
+11. Suggested docs the agent should produce
+The coding agent should generate:
+
+docs/architecture.md
+docs/PRD.md
+docs/design.md
+docs/plan.md
+architecture.md
+Should cover:
+
+Tuplet3D conceptual model.
+
+Source object model.
+
+Coordinates and projections.
+
+Definition object.
+
+Aspect model.
+
+Dictionary/prelude model.
+
+Pipeline/network model.
+
+Compiler/transpiler pipeline.
+
+UI architecture.
+
+Relationship to existing Tuplet OCaml parser and Forth backend.
+
+PRD.md
+Should cover:
+
+Product goals.
+
+User personas.
+
+Use-cases.
+
+Non-goals.
+
+MVP scope.
+
+Future scope.
+
+UX principles.
+
+Success criteria.
+
+Risks.
+
+design.md
+Should cover:
+
+Data structures.
+
+File formats.
+
+Projection rules.
+
+Standard semantic views.
+
+Aspect mapping model.
+
+Library grid model.
+
+Pipeline graph model.
+
+Compiler pipeline.
+
+Debug/instrumentation model.
+
+Example definitions.
+
+plan.md
+Should cover:
+
+Milestones.
+
+MVP implementation phases.
+
+Test strategy.
+
+Demo strategy.
+
+Risks and mitigations.
+
+Suggested first prototype.
+
+12. Recommended MVP
+The first prototype should avoid a full 3D editor.
+
+Build:
+
+Tuplet3D textual layered source
+  → coordinate model
+  → six projections
+  → visual renderer
+  → simple parser hooks
+  → Forth output placeholder or real backend reuse
+MVP features:
+
+Load one definition.
+
+Show six standard views.
+
+Rotate between views.
+
+Show hidden/detail layers.
+
+Parse left/right/top/bottom/front/rear as separate aspect planes.
+
+Generate a normalized internal object.
+
+Emit a placeholder Forth form.
+
+Display dictionary grid with several example verbs.
+
+Allow sorting by input arity and output type.
+
+Show a tiny pipeline of 3 minted verbs.
+
+13. First demo definitions
+Use small definitions:
+
+Identity
+Add
+Power
+Clamp
+Abs
+Map
+Fold
+Filter
+Each should have:
+
+front gist
+left inputs
+right outputs
+top preconditions
+bottom postconditions
+rear generated Forth-ish output
+14. Key design principle
+Tuplet3D should not be “3D syntax for its own sake.”
+
+The core value is:
+
+separate semantic aspects spatially,
+then let the user rotate, project, sort, compose, inspect, and debug them.
+The language should make programs more explainable, not merely more decorative.
+
+
+
+
+

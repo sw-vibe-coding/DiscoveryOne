@@ -1,0 +1,11 @@
+number = 4
+slug = "reg-rs-smoke-baseline"
+status = "pending"
+description = """
+# Step: reg-rs-smoke-baseline
+
+Capture the first reg-rs baseline (`d1_smoke_c..."""
+role = "production"
+context_files = []
+created_at = "2026-04-26T13:54:03"
+commits = []
