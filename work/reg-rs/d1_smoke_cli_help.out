@@ -1,0 +1,19 @@
+DiscoveryOne language driver. Test-harness CLI; see docs/design.md.
+
+Usage: d1 <COMMAND>
+
+Commands:
+  lex             Dump the token stream for FILE (one token per line)
+  parse           Dump the AST for FILE as a deterministic s-expression
+  face            Project FILE onto FACE; print the 2D token grid
+  check           Run the facet checker over FILE
+  lower           Print the stack IR for FILE
+  emit-wasm       Emit FILE as a .wasm module
+  run             Execute FILE via the WASM runtime (wasmtime)
+  interp          Execute FILE via the reference interpreter
+  normalize       Round-trip FILE between layered text and JSON
+  facet-snapshot  Render FACE of FILE as deterministic ASCII (for reg-rs)
+
+Options:
+  -h, --help     Print help
+  -V, --version  Print version

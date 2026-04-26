@@ -1,6 +1,6 @@
 number = 4
 slug = "reg-rs-smoke-baseline"
-status = "pending"
+status = "in-progress"
 description = """
 # Step: reg-rs-smoke-baseline
 

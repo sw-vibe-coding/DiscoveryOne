@@ -4,11 +4,11 @@ Snapshot of where the project is. Updated as milestones close.
 
 ## Today (2026-04-26)
 
-- **Phase:** pre-M0 (specification only).
-- **Code:** none. The repo holds documentation, COPYRIGHT,
-  LICENSE, the `discovery-one-badge.png` image, and the inherited
-  `CLAUDE.md` agentrail protocol.
-- **Last meaningful commit:** `22effc1 1st`.
+- **Phase:** M0 scaffold complete.
+- **Code:** Cargo workspace, placeholder library crates, `d1`
+  CLI stub, Yew web shell, build/run scripts, and first reg-rs
+  smoke baseline are in place.
+- **Last meaningful commit:** M0 scaffold closeout.
 
 ## Done
 
@@ -37,26 +37,27 @@ Snapshot of where the project is. Updated as milestones close.
   cases per milestone.
 - `README.md` -- project intro, badge, quickstart placeholders,
   links.
+- **M0 -- `discoveryone-scaffold`** -- Cargo workspace,
+  `d1-source`, `d1-geom`, `d1-lex`, `d1-parse`, `d1-check`,
+  `d1-ir`, `d1-interp`, `d1-emit-wasm`, `d1-cli`, Yew
+  `ui/web`, helper scripts, `.gitignore` policy, and
+  `d1_smoke_cli_help` reg-rs baseline.
 
 ## In flight
 
-Nothing. M0 (`discoveryone-scaffold`) has not started. The next
-session that picks up the project should:
+Nothing. M0 (`discoveryone-scaffold`) is complete. The next
+session that picks up feature work should:
 
 1. Read this file.
-2. Read `docs/plan.md` section 2 (M0 work list).
-3. Run `agentrail init --name discoveryone-scaffold` (per
+2. Read `docs/plan.md` section 3 (M1 work list).
+3. Run `agentrail init --name discoveryone-lex` (per
    `CLAUDE.md`).
-4. Begin the M0 work.
+4. Begin the M1 lexer work.
 
 ## Up next
 
-**M0 -- `discoveryone-scaffold`.** Workspace, empty crates,
-Yew skeleton, scripts, one reg-rs smoke baseline. See
-`docs/plan.md` section 2.
-
-After M0 closes, M1 (`discoveryone-lex`) begins. The first
-substantive feature is the Rust port of Tuplet's lexer.
+**M1 -- `discoveryone-lex`.** The first substantive feature is
+the Rust port of Tuplet's lexer. See `docs/plan.md` section 3.
 
 ## Open questions parked
 

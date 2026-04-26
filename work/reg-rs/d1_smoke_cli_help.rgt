@@ -1,0 +1,4 @@
+command = "scripts/run-fixture.sh --help"
+timeout = 60
+exit_code = 0
+desc = "d1 smoke: --help banner is stable"
