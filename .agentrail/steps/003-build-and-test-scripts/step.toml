@@ -1,6 +1,6 @@
 number = 3
 slug = "build-and-test-scripts"
-status = "pending"
+status = "in-progress"
 description = """
 # Step: build-and-test-scripts
 
