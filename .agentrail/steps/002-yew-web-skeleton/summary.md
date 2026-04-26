@@ -1,0 +1,1 @@
+Yew SPA at ui/web/ builds via Trunk; standalone crate (workspace excludes ui/web) so wasm32 target doesn't pollute host workspace. Yew 0.21 csr, wasm-bindgen, console_error_panic_hook. Trunk port defaults to 1078 per user direction. Manual preview works: cd ui/web && trunk serve --port 1078.

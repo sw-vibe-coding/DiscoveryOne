@@ -1,6 +1,6 @@
 number = 2
 slug = "yew-web-skeleton"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: yew-web-skeleton
 
@@ -8,4 +8,5 @@ Stand up the Yew SPA crate that future sagas will e..."""
 role = "production"
 context_files = []
 created_at = "2026-04-26T13:54:03"
-commits = []
+completed_at = "2026-04-26T14:49:00"
+commits = ["a468aa6738f4dacfc6b1af26306691166c0ac6d4"]
