@@ -1,0 +1,54 @@
+/* DiscoveryOne SPA -- minimal scaffold styles.
+ * Real visual design arrives in M6 alongside the facet viewer. */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  background: #0e1116;
+  color: #e6edf3;
+}
+
+.app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid #30363d;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.badge {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  letter-spacing: 0.02em;
+}
+
+.placeholder p {
+  line-height: 1.6;
+  margin: 0.75rem 0;
+}
+
+code {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 4px;
+  padding: 0 0.3em;
+  font-size: 0.95em;
+}

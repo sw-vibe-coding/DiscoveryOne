@@ -12,9 +12,10 @@ members = [
     "crates/d1-cli",
 ]
 
-# Note: ui/web (Yew SPA, wasm32 target) is intentionally excluded
-# from this workspace and built separately via Trunk. See
+# ui/web (Yew SPA, wasm32 target) is intentionally excluded from
+# this workspace and built separately via Trunk. See
 # docs/architecture.md section 5 and saga step 002.
+exclude = ["ui/web"]
 
 [workspace.package]
 version = "0.1.0"

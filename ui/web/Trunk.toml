@@ -1,0 +1,12 @@
+# DiscoveryOne web SPA -- Trunk config.
+#
+# Build output goes under ui/web/dist (gitignored). The dev
+# server defaults to 127.0.0.1:1078; override via
+# `trunk serve --port <N>` or `scripts/run-web.sh <N>`.
+
+[build]
+dist = "dist"
+
+[serve]
+address = "127.0.0.1"
+port = 1078
