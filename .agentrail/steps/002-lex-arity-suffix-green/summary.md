@@ -1,0 +1,1 @@
+d1 lex now tokenizes the arity-suffix fixture and reg-rs is green

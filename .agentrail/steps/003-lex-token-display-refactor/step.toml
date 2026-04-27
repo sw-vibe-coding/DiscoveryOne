@@ -1,0 +1,11 @@
+number = 3
+slug = "lex-token-display-refactor"
+status = "in-progress"
+description = """
+# Step: lex-token-display-refactor
+
+Refactor the first lexer implementation w..."""
+role = "production"
+context_files = []
+created_at = "2026-04-26T17:59:52"
+commits = []

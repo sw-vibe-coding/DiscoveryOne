@@ -1,6 +1,6 @@
 number = 2
 slug = "lex-arity-suffix-green"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: lex-arity-suffix-green
 
@@ -8,4 +8,5 @@ Implement the minimum `d1-lex` and `d1 lex` C..."""
 role = "production"
 context_files = []
 created_at = "2026-04-26T17:49:50"
-commits = []
+completed_at = "2026-04-26T17:57:47"
+commits = ["a652c77c6ca570329d63183608ef54e580deb628"]

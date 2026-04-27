@@ -34,30 +34,22 @@ fn lex_one<'src>(
     tokens: &mut Tokens<'src>,
 ) -> usize {
     let byte = bytes[offset];
-    match byte {
-        b if b.is_ascii_whitespace() => offset + 1,
-        b'(' => {
-            tokens.push(Token::LParen);
-            offset + 1
-        }
-        b')' => {
-            tokens.push(Token::RParen);
-            offset + 1
-        }
-        b'-' if bytes.get(offset + 1) == Some(&b'>') => {
-            tokens.push(Token::RArrow);
-            offset + 2
-        }
+    if byte.is_ascii_whitespace() {
+        return offset + 1;
+    }
+
+    let (token, next) = match byte {
+        b'(' => (Token::LParen, offset + 1),
+        b')' => (Token::RParen, offset + 1),
+        b'-' if bytes.get(offset + 1) == Some(&b'>') => (Token::RArrow, offset + 2),
         b if b.is_ascii_alphabetic() || b == b'_' => {
             let (start, end) = take_ident(bytes, offset);
-            tokens.push(Token::Ident(&source[start..end]));
-            end
+            (Token::Ident(&source[start..end]), end)
         }
-        b => {
-            tokens.push(Token::Unknown(b));
-            offset + 1
-        }
-    }
+        b => (Token::Unknown(b), offset + 1),
+    };
+    tokens.push(token);
+    next
 }
 
 fn take_ident(bytes: &[u8], start: usize) -> (usize, usize) {
