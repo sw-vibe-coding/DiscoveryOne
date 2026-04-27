@@ -1,6 +1,6 @@
 number = 5
 slug = "sw-checklist-cleanup"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: sw-checklist-cleanup
 
@@ -8,4 +8,5 @@ Pay down the Software Wrighter checklist failur..."""
 role = "production"
 context_files = []
 created_at = "2026-04-26T18:58:42"
-commits = []
+completed_at = "2026-04-26T19:05:51"
+commits = ["77041ae6dd9109d500ee56ff45d4634d6aee7d20"]

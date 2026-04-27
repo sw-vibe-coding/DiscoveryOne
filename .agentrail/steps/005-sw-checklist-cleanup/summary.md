@@ -1,0 +1,1 @@
+Fixed Software Wrighter checklist metadata; sw-checklist is clean with zero warnings.
