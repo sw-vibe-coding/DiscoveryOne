@@ -1,0 +1,11 @@
+number = 6
+slug = "source-loader-face-left-green"
+status = "pending"
+description = """
+# Step: source-loader-face-left-green
+
+Implement the minimal left-face projec..."""
+role = "legacy"
+context_files = []
+created_at = "2026-04-27T13:42:37"
+commits = []
