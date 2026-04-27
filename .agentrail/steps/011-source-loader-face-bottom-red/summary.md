@@ -1,0 +1,1 @@
+BLOCKED: Interrupted by urgent d1 build-version metadata fix requested by user before bottom-face RED work began.
