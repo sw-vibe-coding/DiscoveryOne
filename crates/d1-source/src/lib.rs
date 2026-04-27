@@ -33,6 +33,29 @@ macro_rules! definition {
     };
 }
 
+macro_rules! render_face {
+    ($set:expr, $face:expr) => {{
+        let symbols = $set
+            .definitions
+            .iter()
+            .flat_map(|definition| &definition.symbols);
+        let mut rows = Vec::<Vec<char>>::new();
+        for symbol in symbols.filter(|symbol| symbol.aspect.eq_ignore_ascii_case($face)) {
+            rows.resize(rows.len().max(symbol.y + 1), Vec::new());
+            let row = &mut rows[symbol.y];
+            row.resize(row.len().max(symbol.x + symbol.text.len()), ' ');
+            for (offset, ch) in symbol.text.chars().enumerate() {
+                row[symbol.x + offset] = ch;
+            }
+        }
+        rows.into_iter()
+            .map(|row| row.into_iter().collect::<String>().trim_end().to_string())
+            .collect::<Vec<_>>()
+            .join("\n")
+            + "\n"
+    }};
+}
+
 pub fn load_layered(source: &str) -> Result<SourceSet, String> {
     let mut definitions = Vec::<Definition>::new();
     let mut aspect = String::from("Front");
@@ -58,9 +81,13 @@ pub fn load_layered(source: &str) -> Result<SourceSet, String> {
     Ok(SourceSet { definitions })
 }
 
-pub fn normalize_layered(source: &str) -> Result<String, String> {
-    load_layered(source)?;
-    Ok(source.strip_suffix('\n').unwrap_or(source).to_string() + "\n")
+pub fn emit_layered(source: &str, face: Option<&str>) -> Result<String, String> {
+    let source_set = load_layered(source)?;
+    match face {
+        Some("front") | Some("Front") => Ok(render_face!(source_set, "front")),
+        Some(face) => Err(format!("unsupported face: {face}")),
+        None => Ok(source.strip_suffix('\n').unwrap_or(source).to_string() + "\n"),
+    }
 }
 
 fn parse_tags(line: &str, aspect: &str, z: i32) -> Result<(String, i32), String> {

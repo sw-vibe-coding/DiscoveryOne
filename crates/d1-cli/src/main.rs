@@ -137,7 +137,8 @@ fn main() -> ExitCode {
     let cli = Cli::parse();
     match cli.cmd {
         Cmd::Lex { file } => run_lex(&file),
-        Cmd::Normalize { file } => run_normalize(&file),
+        Cmd::Face { file, face } => run_source(&file, Some(&face), "face"),
+        Cmd::Normalize { file } => run_source(&file, None, "normalize"),
         cmd => {
             eprintln!("d1 {}: not yet implemented", cmd.name());
             ExitCode::from(1)
@@ -158,17 +159,17 @@ fn run_lex(file: &PathBuf) -> ExitCode {
     }
 }
 
-fn run_normalize(file: &PathBuf) -> ExitCode {
+fn run_source(file: &PathBuf, face: Option<&str>, command: &str) -> ExitCode {
     match fs::read_to_string(file)
         .map_err(|err| err.to_string())
-        .and_then(|source| d1_source::normalize_layered(&source))
+        .and_then(|source| d1_source::emit_layered(&source, face))
     {
-        Ok(normalized) => {
-            print!("{normalized}");
+        Ok(output) => {
+            print!("{output}");
             ExitCode::SUCCESS
         }
         Err(err) => {
-            eprintln!("d1 normalize: {}: {err}", file.display());
+            eprintln!("d1 {command}: {}: {err}", file.display());
             ExitCode::from(1)
         }
     }
