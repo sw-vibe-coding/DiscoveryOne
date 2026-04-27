@@ -1,0 +1,1 @@
+Implemented the minimal source loader normalize path and rebased d1_normalize_roundtrip_power to green.
