@@ -1,0 +1,4 @@
+command = "scripts/run-fixture.sh lex tests/lexer/comment.input"
+timeout = 60
+exit_code = 0
+desc = "d1 lex RED: comments still emit unknown hash bytes"
