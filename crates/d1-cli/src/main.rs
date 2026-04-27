@@ -29,9 +29,12 @@ const VERSION: &str = concat!(
     "\nCopyright: Copyright (c) 2026 Michael A Wright",
     "\nLicense: MIT",
     "\nRepository: https://github.com/sw-vibe-coding/DiscoveryOne",
-    "\nBuild Host: unknown",
-    "\nBuild Commit: unknown",
-    "\nBuild Time: unknown",
+    "\nBuild Host: ",
+    env!("BUILD_HOST"),
+    "\nBuild Commit: ",
+    env!("BUILD_COMMIT"),
+    "\nBuild Time: ",
+    env!("BUILD_TIME"),
 );
 
 #[derive(Parser)]

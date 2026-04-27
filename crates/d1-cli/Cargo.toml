@@ -6,6 +6,7 @@ license.workspace = true
 authors.workspace = true
 repository.workspace = true
 description = "DiscoveryOne command-line driver. Reg-rs test harness; not a user-facing tool."
+build = "build.rs"
 
 [[bin]]
 name = "d1"
