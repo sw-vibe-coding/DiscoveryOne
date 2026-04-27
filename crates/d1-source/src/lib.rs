@@ -85,6 +85,7 @@ pub fn emit_layered(source: &str, face: Option<&str>) -> Result<String, String> 
     let source_set = load_layered(source)?;
     match face {
         Some("front") | Some("Front") => Ok(render_face!(source_set, "front")),
+        Some("left") | Some("Left") => Ok(render_face!(source_set, "left")),
         Some(face) => Err(format!("unsupported face: {face}")),
         None => Ok(source.strip_suffix('\n').unwrap_or(source).to_string() + "\n"),
     }
