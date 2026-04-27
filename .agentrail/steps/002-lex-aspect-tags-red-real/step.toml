@@ -1,0 +1,11 @@
+number = 2
+slug = "lex-aspect-tags-red-real"
+status = "in-progress"
+description = """
+# Step: lex-aspect-tags-red
+
+Create the next M1 RED baseline for aspect tag l..."""
+role = "production"
+context_files = []
+created_at = "2026-04-27T09:08:42"
+commits = []

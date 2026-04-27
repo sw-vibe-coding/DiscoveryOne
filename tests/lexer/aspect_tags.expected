@@ -1,0 +1,8 @@
+ASPECT front
+ASPECT left
+ASPECT right
+ASPECT top
+ASPECT bottom
+ASPECT rear
+ASPECT internal
+EOF
