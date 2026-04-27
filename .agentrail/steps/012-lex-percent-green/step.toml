@@ -1,0 +1,11 @@
+number = 12
+slug = "lex-percent-green"
+status = "pending"
+description = """
+# Step: lex-percent-green
+
+Implement the minimal M1 lexer support for percent..."""
+role = "legacy"
+context_files = []
+created_at = "2026-04-27T11:24:36"
+commits = []

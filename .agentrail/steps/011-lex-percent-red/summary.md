@@ -1,0 +1,1 @@
+Added the percent literal lexer RED fixture and reg-rs baseline for 75%.
