@@ -17,6 +17,7 @@ pub enum AspectKind {
 pub enum Token<'src> {
     Mint,
     AspectTag(AspectKind),
+    ZTag(i32),
     Ident(&'src str),
     RArrow,
     LParen,
@@ -58,36 +59,46 @@ fn lex_one<'src>(source: &'src str, bytes: &[u8], offset: usize) -> (Token<'src>
     let byte = bytes[offset];
     match byte {
         b'*' => (Token::Mint, offset + 1),
-        b'@' => {
-            let (start, end) = take_word(bytes, offset + 1);
-            let aspect = ASPECT_TAGS
-                .iter()
-                .find(|(name, _)| *name == &source[start..end])
-                .map(|(_, aspect)| *aspect);
-            aspect.map_or((Token::Unknown(byte), offset + 1), |aspect| {
-                (Token::AspectTag(aspect), end)
-            })
-        }
+        b'@' => lex_at(source, bytes, offset),
         b'(' => (Token::LParen, offset + 1),
         b')' => (Token::RParen, offset + 1),
         b'-' if bytes.get(offset + 1) == Some(&b'>') => (Token::RArrow, offset + 2),
         b if b.is_ascii_alphabetic() || b == b'_' => {
-            let (start, end) = take_word(bytes, offset);
-            (Token::Ident(&source[start..end]), end)
+            let mut end = offset + 1;
+            while bytes
+                .get(end)
+                .is_some_and(|b| b.is_ascii_alphanumeric() || *b == b'_')
+            {
+                end += 1;
+            }
+            (Token::Ident(&source[offset..end]), end)
         }
         b => (Token::Unknown(b), offset + 1),
     }
 }
 
-fn take_word(bytes: &[u8], start: usize) -> (usize, usize) {
-    let mut end = start + 1;
-    while bytes
-        .get(end)
-        .is_some_and(|b| b.is_ascii_alphanumeric() || *b == b'_')
-    {
+fn lex_at<'src>(source: &'src str, bytes: &[u8], offset: usize) -> (Token<'src>, usize) {
+    let mut end = offset + 2;
+    while bytes.get(end).is_some_and(|b| b.is_ascii_alphabetic()) {
         end += 1;
     }
-    (start, end)
+    if &source[offset + 1..end] == "z" {
+        let mut start = end;
+        while bytes.get(start).is_some_and(|b| b.is_ascii_whitespace()) {
+            start += 1;
+        }
+        end = start;
+        while bytes.get(end).is_some_and(|b| b.is_ascii_digit()) {
+            end += 1;
+        }
+        return (Token::ZTag(source[start..end].parse().unwrap_or(0)), end);
+    }
+    ASPECT_TAGS
+        .iter()
+        .find(|(name, _)| *name == &source[offset + 1..end])
+        .map_or((Token::Unknown(b'@'), offset + 1), |(_, aspect)| {
+            (Token::AspectTag(*aspect), end)
+        })
 }
 
 pub fn dump_tokens(tokens: &[Token<'_>]) -> String {
@@ -103,6 +114,7 @@ pub fn dump_tokens(tokens: &[Token<'_>]) -> String {
                     .unwrap_or("unknown");
                 dump.push_str(&format!("ASPECT {name}"));
             }
+            Token::ZTag(value) => dump.push_str(&format!("ZTAG   {value}")),
             Token::Ident(text) => dump.push_str(&format!("IDENT  {text}")),
             Token::RArrow => dump.push_str("RARROW"),
             Token::LParen => dump.push_str("LPAREN"),
