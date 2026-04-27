@@ -1,0 +1,11 @@
+number = 9
+slug = "lex-neg-int-red"
+status = "pending"
+description = """
+# Step: lex-neg-int-red
+
+Create the next M1 RED baseline for negative integer..."""
+role = "legacy"
+context_files = []
+created_at = "2026-04-27T10:55:08"
+commits = []
