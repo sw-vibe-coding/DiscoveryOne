@@ -7,9 +7,9 @@ Snapshot of where the project is. Updated as milestones close.
 - **Phase:** M1 lexer started.
 - **Code:** Cargo workspace, placeholder library crates, Yew web
   shell, build/run scripts, and first reg-rs smoke baseline are
-  in place. `d1 lex` handles the first arity-suffix lexer
-  fixture with a compact token display path.
-- **Last meaningful commit:** M1 lexer display refactor.
+  in place. `d1 lex` handles the arity-suffix lexer fixture;
+  the mint-operator fixture is captured as the next RED case.
+- **Last meaningful commit:** M1 mint-operator RED baseline.
 
 ## Done
 
@@ -46,12 +46,12 @@ Snapshot of where the project is. Updated as milestones close.
 
 ## In flight
 
-**M1 -- `discoveryone-lex`.** Current state is GREEN for the
-first lexer case: `d1_lex_arity_suffix` passes and `d1 lex`
-prints the expected token dump for `coord2 -> (x y)`. The lexer
-surface has been refactored enough for the next case. The next
-step should continue the M1 TDD sequence with the mint-operator
-RED baseline.
+**M1 -- `discoveryone-lex`.** Current state is GREEN for
+`d1_lex_arity_suffix` and RED for `d1_lex_mint_operator`.
+`tests/lexer/mint_operator.expected` documents the intended token
+dump beginning with `MINT`, while reg-rs captures the current
+lexer output before mint support lands. The next step should add
+minimal `*` lexing and rebase `d1_lex_mint_operator` to green.
 
 The next session that picks up feature work should:
 
