@@ -1,7 +1,3 @@
 IDENT  coord2
-UNK    35
-IDENT  front
-IDENT  face
-IDENT  coordinate
-IDENT  helper
+HASH   # front face coordinate helper
 EOF

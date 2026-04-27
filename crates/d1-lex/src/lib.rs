@@ -18,6 +18,7 @@ pub enum Token<'src> {
     Mint,
     AspectTag(AspectKind),
     ZTag(i32),
+    Hash(&'src str),
     Ident(&'src str),
     RArrow,
     LParen,
@@ -60,17 +61,20 @@ fn lex_one<'src>(source: &'src str, bytes: &[u8], offset: usize) -> (Token<'src>
     match byte {
         b'*' => (Token::Mint, offset + 1),
         b'@' => lex_at(source, bytes, offset),
+        b'#' => {
+            let end = source[offset..]
+                .find('\n')
+                .map_or(source.len(), |i| offset + i);
+            (Token::Hash(&source[offset..end]), end)
+        }
         b'(' => (Token::LParen, offset + 1),
         b')' => (Token::RParen, offset + 1),
         b'-' if bytes.get(offset + 1) == Some(&b'>') => (Token::RArrow, offset + 2),
         b if b.is_ascii_alphabetic() || b == b'_' => {
-            let mut end = offset + 1;
-            while bytes
-                .get(end)
-                .is_some_and(|b| b.is_ascii_alphanumeric() || *b == b'_')
-            {
-                end += 1;
-            }
+            let tail = &source[offset..];
+            let end = tail
+                .find(|c: char| !c.is_ascii_alphanumeric() && c != '_')
+                .map_or(source.len(), |i| offset + i);
             (Token::Ident(&source[offset..end]), end)
         }
         b => (Token::Unknown(b), offset + 1),
@@ -107,14 +111,12 @@ pub fn dump_tokens(tokens: &[Token<'_>]) -> String {
         match token {
             Token::Mint => dump.push_str("MINT"),
             Token::AspectTag(aspect) => {
-                let name = ASPECT_TAGS
-                    .iter()
-                    .find(|(_, kind)| kind == aspect)
-                    .map(|(name, _)| *name)
-                    .unwrap_or("unknown");
+                let name = ASPECT_TAGS.iter().find(|(_, kind)| kind == aspect);
+                let name = name.map(|(name, _)| *name).unwrap_or("unknown");
                 dump.push_str(&format!("ASPECT {name}"));
             }
             Token::ZTag(value) => dump.push_str(&format!("ZTAG   {value}")),
+            Token::Hash(text) => dump.push_str(&format!("HASH   {text}")),
             Token::Ident(text) => dump.push_str(&format!("IDENT  {text}")),
             Token::RArrow => dump.push_str("RARROW"),
             Token::LParen => dump.push_str("LPAREN"),
