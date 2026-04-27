@@ -1,6 +1,6 @@
 number = 9
 slug = "lex-neg-int-red"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: lex-neg-int-red
 
@@ -8,4 +8,5 @@ Create the next M1 RED baseline for negative integer..."""
 role = "legacy"
 context_files = []
 created_at = "2026-04-27T10:55:08"
-commits = []
+completed_at = "2026-04-27T11:12:34"
+commits = ["61c50048e83e839879c95b9b965cd84824c39386"]

@@ -1,0 +1,1 @@
+Added the negative integer lexer RED fixture and reg-rs baseline for -42.
