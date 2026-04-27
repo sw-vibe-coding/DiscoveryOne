@@ -7,10 +7,10 @@ Snapshot of where the project is. Updated as milestones close.
 - **Phase:** M1 lexer started.
 - **Code:** Cargo workspace, placeholder library crates, Yew web
   shell, build/run scripts, and first reg-rs smoke baseline are
-  in place. `d1 lex` handles the arity-suffix lexer fixture;
-  the mint-operator and aspect-tag fixtures are captured as RED
-  lexer cases. Software Wrighter checklist metadata is clean.
-- **Last meaningful commit:** Aspect tag lexer RED baseline.
+  in place. `d1 lex` handles the arity-suffix and mint-operator
+  lexer fixtures; the aspect-tag fixture is captured as the next
+  RED lexer case. Software Wrighter checklist metadata is clean.
+- **Last meaningful commit:** Mint operator lexer green.
 
 ## Done
 
@@ -48,13 +48,13 @@ Snapshot of where the project is. Updated as milestones close.
 ## In flight
 
 **M1 -- `discoveryone-lex`.** Current state is GREEN for
-`d1_lex_arity_suffix` and RED for `d1_lex_mint_operator` and
-`d1_lex_aspect_tags`. The `.expected` files document the
-intended token dumps, while reg-rs captures current lexer output
-before those token families land. The next feature step should
-add minimal `*` lexing and rebase `d1_lex_mint_operator` to
-green, then proceed to aspect tags. `sw-checklist` must remain
-clean before each step is committed.
+`d1_lex_arity_suffix` and `d1_lex_mint_operator`, and RED for
+`d1_lex_aspect_tags`. The aspect-tag `.expected` file documents
+the intended token dump, while reg-rs captures current lexer
+output before that token family lands. The next feature step
+should add minimal aspect-tag lexing and rebase
+`d1_lex_aspect_tags` to green. `sw-checklist` must remain clean
+before each step is committed.
 
 The next session that picks up feature work should:
 

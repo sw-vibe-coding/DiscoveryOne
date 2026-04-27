@@ -4,6 +4,7 @@
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Token<'src> {
+    Mint,
     Ident(&'src str),
     RArrow,
     LParen,
@@ -39,6 +40,7 @@ fn lex_one<'src>(
     }
 
     let (token, next) = match byte {
+        b'*' => (Token::Mint, offset + 1),
         b'(' => (Token::LParen, offset + 1),
         b')' => (Token::RParen, offset + 1),
         b'-' if bytes.get(offset + 1) == Some(&b'>') => (Token::RArrow, offset + 2),
@@ -67,6 +69,7 @@ pub fn dump_tokens(tokens: &[Token<'_>]) -> String {
     let mut dump = String::new();
     for token in tokens {
         match token {
+            Token::Mint => dump.push_str("MINT"),
             Token::Ident(text) => dump.push_str(&format!("IDENT  {text}")),
             Token::RArrow => dump.push_str("RARROW"),
             Token::LParen => dump.push_str("LPAREN"),
