@@ -1,0 +1,4 @@
+command = "scripts/run-fixture.sh face examples/power.d1 --face front"
+timeout = 60
+exit_code = 1
+desc = "d1 face RED: front projection command is still scaffolded"

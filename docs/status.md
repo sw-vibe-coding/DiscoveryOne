@@ -11,8 +11,10 @@ Snapshot of where the project is. Updated as milestones close.
   aspect-tag, Z-layer, comment, negative integer, and percent
   literal lexer fixtures. `d1 normalize` now round-trips the
   Power layered-text fixture through the source loader path.
-  Software Wrighter checklist metadata is clean.
-- **Last meaningful commit:** Source normalize round-trip green.
+  `d1_face_front_power` is captured as the next M2 RED baseline
+  against the scaffolded face command. Software Wrighter
+  checklist metadata is clean.
+- **Last meaningful commit:** Front face projection RED baseline.
 
 ## Done
 
@@ -56,7 +58,9 @@ Snapshot of where the project is. Updated as milestones close.
 **M2 -- `discoveryone-source-loader`.** Current state is GREEN for
 `d1_normalize_roundtrip_power`: `examples/power.d1` and
 `examples/power.d1.json` exist, and `d1 normalize` emits the
-canonical layered text for the Power fixture. `sw-checklist`
+canonical layered text for the Power fixture. Current state is
+RED for `d1_face_front_power`: `d1 face` is still the CLI
+scaffold and exits with `not yet implemented`. `sw-checklist`
 must remain clean before each step is committed.
 
 The next session that picks up feature work should:
