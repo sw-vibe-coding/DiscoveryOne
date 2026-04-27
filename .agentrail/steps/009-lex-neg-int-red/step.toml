@@ -1,6 +1,6 @@
 number = 9
 slug = "lex-neg-int-red"
-status = "pending"
+status = "in-progress"
 description = """
 # Step: lex-neg-int-red
 
