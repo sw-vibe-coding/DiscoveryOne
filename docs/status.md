@@ -9,11 +9,10 @@ Snapshot of where the project is. Updated as milestones close.
   shell, build/run scripts, and first reg-rs smoke baseline are
   in place. `d1 lex` handles the arity-suffix, mint-operator,
   aspect-tag, Z-layer, comment, negative integer, and percent
-  literal lexer fixtures. `d1_normalize_roundtrip_power` is
-  captured as the first M2 RED baseline against the scaffolded
-  normalize command. Software Wrighter checklist metadata is
-  clean.
-- **Last meaningful commit:** Source normalize RED baseline.
+  literal lexer fixtures. `d1 normalize` now round-trips the
+  Power layered-text fixture through the source loader path.
+  Software Wrighter checklist metadata is clean.
+- **Last meaningful commit:** Source normalize round-trip green.
 
 ## Done
 
@@ -54,11 +53,11 @@ Snapshot of where the project is. Updated as milestones close.
 
 ## In flight
 
-**M2 -- `discoveryone-source-loader`.** Current state is RED for
+**M2 -- `discoveryone-source-loader`.** Current state is GREEN for
 `d1_normalize_roundtrip_power`: `examples/power.d1` and
-`examples/power.d1.json` exist, but `d1 normalize` is still the
-CLI scaffold and exits with `not yet implemented`.
-`sw-checklist` must remain clean before each step is committed.
+`examples/power.d1.json` exist, and `d1 normalize` emits the
+canonical layered text for the Power fixture. `sw-checklist`
+must remain clean before each step is committed.
 
 The next session that picks up feature work should:
 

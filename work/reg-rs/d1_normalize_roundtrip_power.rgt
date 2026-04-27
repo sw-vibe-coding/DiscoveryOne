@@ -1,4 +1,4 @@
 command = "scripts/run-fixture.sh normalize examples/power.d1"
 timeout = 60
-exit_code = 1
-desc = "d1 normalize RED: source loader command is still scaffolded"
+exit_code = 0
+desc = "d1 normalize: Power layered text round-trips through source loader"

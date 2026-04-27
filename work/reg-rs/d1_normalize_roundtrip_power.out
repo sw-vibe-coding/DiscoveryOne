@@ -1,0 +1,30 @@
+*Power
+  @front
+    n e -> p
+    p <- 1
+    loop e times: p <- p * n
+
+  @left
+    n : Int
+    e : Int
+
+  @right
+    p : Int
+
+  @top
+    e >= 0
+
+  @bottom
+    p == n^e
+
+  @rear wasm
+    (regenerated; do not hand-edit)
+
+  @z 0 @internal
+    p <- 1
+  @z 1 @internal
+    counter <- 0
+  @z 2 @internal
+    while counter < e:
+      p <- p * n
+      counter <- counter + 1

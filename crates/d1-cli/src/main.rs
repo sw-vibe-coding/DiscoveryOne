@@ -136,18 +136,39 @@ impl Cmd {
 fn main() -> ExitCode {
     let cli = Cli::parse();
     match cli.cmd {
-        Cmd::Lex { file } => match fs::read_to_string(&file) {
-            Ok(source) => {
-                print!("{}", d1_lex::dump_tokens(&d1_lex::lex(&source)));
-                ExitCode::SUCCESS
-            }
-            Err(err) => {
-                eprintln!("d1 lex: {}: {err}", file.display());
-                ExitCode::from(1)
-            }
-        },
+        Cmd::Lex { file } => run_lex(&file),
+        Cmd::Normalize { file } => run_normalize(&file),
         cmd => {
             eprintln!("d1 {}: not yet implemented", cmd.name());
+            ExitCode::from(1)
+        }
+    }
+}
+
+fn run_lex(file: &PathBuf) -> ExitCode {
+    match fs::read_to_string(file) {
+        Ok(source) => {
+            print!("{}", d1_lex::dump_tokens(&d1_lex::lex(&source)));
+            ExitCode::SUCCESS
+        }
+        Err(err) => {
+            eprintln!("d1 lex: {}: {err}", file.display());
+            ExitCode::from(1)
+        }
+    }
+}
+
+fn run_normalize(file: &PathBuf) -> ExitCode {
+    match fs::read_to_string(file)
+        .map_err(|err| err.to_string())
+        .and_then(|source| d1_source::normalize_layered(&source))
+    {
+        Ok(normalized) => {
+            print!("{normalized}");
+            ExitCode::SUCCESS
+        }
+        Err(err) => {
+            eprintln!("d1 normalize: {}: {err}", file.display());
             ExitCode::from(1)
         }
     }

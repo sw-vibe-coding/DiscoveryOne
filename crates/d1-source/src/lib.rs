@@ -4,17 +4,101 @@
 //! coordinates) into a positioned-symbol set. See
 //! `docs/design.md` section 1 for the file formats.
 
-/// Crate version. Stable string used by the smoke baseline.
-pub fn version() -> &'static str {
-    env!("CARGO_PKG_VERSION")
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct SourceSet {
+    pub definitions: Vec<Definition>,
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct Definition {
+    pub name: String,
+    pub symbols: Vec<Symbol>,
+}
 
-    #[test]
-    fn version_is_set() {
-        assert!(!version().is_empty());
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct Symbol {
+    pub text: String,
+    pub x: usize,
+    pub y: usize,
+    pub z: i32,
+    pub aspect: String,
+}
+
+macro_rules! definition {
+    ($name:expr) => {
+        Definition {
+            name: $name.trim().to_string(),
+            symbols: Vec::new(),
+        }
+    };
+}
+
+pub fn load_layered(source: &str) -> Result<SourceSet, String> {
+    let mut definitions = Vec::<Definition>::new();
+    let mut aspect = String::from("Front");
+    let (mut z, mut y) = (0, 0);
+
+    for line in source.lines().filter(|line| !line.trim_start().is_empty()) {
+        let trimmed = line.trim_start();
+        if let Some(name) = line.strip_prefix('*') {
+            definitions.push(definition!(name));
+            y = 0;
+            continue;
+        }
+        if trimmed.starts_with('@') {
+            (aspect, z) = parse_tags(trimmed, &aspect, z)?;
+            y = 0;
+            continue;
+        }
+        if let Some(definition) = definitions.last_mut() {
+            push_symbols(definition, trimmed, y, z, &aspect);
+            y += 1;
+        }
+    }
+    Ok(SourceSet { definitions })
+}
+
+pub fn normalize_layered(source: &str) -> Result<String, String> {
+    load_layered(source)?;
+    Ok(source.strip_suffix('\n').unwrap_or(source).to_string() + "\n")
+}
+
+fn parse_tags(line: &str, aspect: &str, z: i32) -> Result<(String, i32), String> {
+    let mut next_aspect = aspect.to_string();
+    let mut next_z = z;
+    let mut words = line.split_whitespace();
+    while let Some(word) = words.next() {
+        match word {
+            "@front" | "@left" | "@right" | "@top" | "@bottom" | "@rear" | "@internal" => {
+                next_aspect = match word {
+                    "@front" => "Front",
+                    "@left" => "Left",
+                    "@right" => "Right",
+                    "@top" => "Top",
+                    "@bottom" => "Bottom",
+                    "@rear" => "Rear",
+                    _ => "Internal",
+                }
+                .to_string();
+            }
+            "@z" => next_z = words.next().ok_or("@z missing depth")?.parse().unwrap_or(0),
+            _ => {}
+        }
+    }
+    Ok((next_aspect, next_z))
+}
+
+fn push_symbols(definition: &mut Definition, line: &str, y: usize, z: i32, aspect: &str) {
+    let mut cursor = 0;
+    for text in line.split_whitespace() {
+        let x = cursor + line[cursor..].find(text).unwrap_or(0);
+        cursor = x + text.len();
+        definition.symbols.push(Symbol {
+            text: text.to_string(),
+            x,
+            y,
+            z,
+            aspect: aspect.into(),
+        });
     }
 }
