@@ -1,0 +1,1 @@
+Implemented percent literal lexing for N% values in range 0..=100 and rebased d1_lex_percent to green.
