@@ -8,11 +8,10 @@ Snapshot of where the project is. Updated as milestones close.
 - **Code:** Cargo workspace, placeholder library crates, Yew web
   shell, build/run scripts, and first reg-rs smoke baseline are
   in place. `d1 lex` handles the arity-suffix, mint-operator,
-  aspect-tag, Z-layer, comment, and negative integer lexer
-  fixtures. The percent literal lexer fixture is captured as the
-  final M1 RED baseline. Software Wrighter checklist metadata is
-  clean.
-- **Last meaningful commit:** Percent lexer RED baseline.
+  aspect-tag, Z-layer, comment, negative integer, and percent
+  literal lexer fixtures. Software Wrighter checklist metadata
+  is clean.
+- **Last meaningful commit:** Percent lexer green.
 
 ## Done
 
@@ -49,15 +48,12 @@ Snapshot of where the project is. Updated as milestones close.
 
 ## In flight
 
-**M1 -- `discoveryone-lex`.** Current state is GREEN for
+**M1 -- `discoveryone-lex`.** Current state is GREEN for every
+planned M1 lexer baseline:
 `d1_lex_arity_suffix`, `d1_lex_mint_operator`,
 `d1_lex_aspect_tags`, `d1_lex_zlayer_tags`, `d1_lex_comment`,
-and `d1_lex_neg_int`. Current state is RED for
-`d1_lex_percent`: `75%` still tokenizes as `INT 75` plus an
-unknown percent byte instead of `PCT 75`. The next feature step
-should add minimal percent literal lexing and rebase
-`d1_lex_percent` to green. `sw-checklist` must remain clean
-before each step is committed.
+`d1_lex_neg_int`, and `d1_lex_percent`. `sw-checklist` must
+remain clean before each step is committed.
 
 The next session that picks up feature work should:
 

@@ -19,6 +19,7 @@ pub enum Token<'src> {
     AspectTag(AspectKind),
     ZTag(i32),
     Hash(&'src str),
+    Pct(u8),
     Int(i64),
     Ident(&'src str),
     RArrow,
@@ -45,6 +46,20 @@ macro_rules! scan {
             end += 1;
         }
         end
+    }};
+}
+
+macro_rules! number_or_pct {
+    ($source:expr, $bytes:expr, $offset:expr) => {{
+        let start = $offset + usize::from($bytes[$offset] == b'-');
+        let end = scan!($bytes, start, u8::is_ascii_digit);
+        let value = $source[$offset..end].parse().unwrap_or(0);
+        let is_pct = (0..=100).contains(&value) && $bytes.get(end) == Some(&b'%');
+        let token = match is_pct {
+            true => Token::Pct(value as u8),
+            false => Token::Int(value),
+        };
+        (token, end + usize::from(is_pct))
     }};
 }
 
@@ -81,9 +96,7 @@ fn lex_one<'src>(source: &'src str, bytes: &[u8], offset: usize) -> (Token<'src>
         b'-' | b'0'..=b'9'
             if bytes[offset] != b'-' || bytes.get(offset + 1).is_some_and(u8::is_ascii_digit) =>
         {
-            let start = offset + usize::from(bytes[offset] == b'-');
-            let end = scan!(bytes, start, u8::is_ascii_digit);
-            (Token::Int(source[offset..end].parse().unwrap_or(0)), end)
+            number_or_pct!(source, bytes, offset)
         }
         b if b.is_ascii_alphabetic() || b == b'_' => {
             let end = scan!(bytes, offset, |b| b.is_ascii_alphanumeric() || *b == b'_');
@@ -121,6 +134,7 @@ pub fn dump_tokens(tokens: &[Token<'_>]) -> String {
             }
             Token::ZTag(value) => dump.push_str(&format!("ZTAG   {value}")),
             Token::Hash(text) => dump.push_str(&format!("HASH   {text}")),
+            Token::Pct(value) => dump.push_str(&format!("PCT    {value}")),
             Token::Int(value) => dump.push_str(&format!("INT    {value}")),
             Token::Ident(text) => dump.push_str(&format!("IDENT  {text}")),
             Token::RArrow => dump.push_str("RARROW"),
