@@ -1,0 +1,1 @@
+Added the top-face projection RED baseline for the Power fixture.
