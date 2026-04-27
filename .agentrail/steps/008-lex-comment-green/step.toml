@@ -1,0 +1,11 @@
+number = 8
+slug = "lex-comment-green"
+status = "pending"
+description = """
+# Step: lex-comment-green
+
+Implement the minimal M1 lexer support for `#` lin..."""
+role = "legacy"
+context_files = []
+created_at = "2026-04-27T10:50:16"
+commits = []

@@ -1,6 +1,6 @@
 number = 7
 slug = "lex-comment-red"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: lex-comment-red
 
@@ -9,4 +9,5 @@ Create the next M1 RED baseline for comment lexing.
 role = "legacy"
 context_files = []
 created_at = "2026-04-27T10:05:41"
-commits = []
+completed_at = "2026-04-27T10:50:16"
+commits = ["0623096130ce2aaa132cb4d08a25b4432c4d0d81"]
