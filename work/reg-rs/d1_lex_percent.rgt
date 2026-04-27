@@ -1,0 +1,4 @@
+command = "scripts/run-fixture.sh lex tests/lexer/percent.input"
+timeout = 60
+exit_code = 0
+desc = "d1 lex RED: percent literals still emit integer plus unknown percent bytes"
