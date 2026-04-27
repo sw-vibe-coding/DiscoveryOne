@@ -1,0 +1,1 @@
+Implemented minimal right-face projection and rebased d1_face_right_power to green.
