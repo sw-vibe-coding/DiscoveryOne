@@ -1,6 +1,6 @@
 number = 6
 slug = "lex-zlayer-tags-green"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: lex-zlayer-tags-green
 
@@ -8,4 +8,5 @@ Implement the minimal M1 lexer support for Z-l..."""
 role = "legacy"
 context_files = []
 created_at = "2026-04-27T09:54:31"
-commits = []
+completed_at = "2026-04-27T10:05:41"
+commits = ["ab0efafda7c3bfa7ab36e88d6db9ad2f6a8e0771"]
