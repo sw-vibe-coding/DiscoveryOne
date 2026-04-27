@@ -8,11 +8,9 @@ Snapshot of where the project is. Updated as milestones close.
 - **Code:** Cargo workspace, placeholder library crates, Yew web
   shell, build/run scripts, and first reg-rs smoke baseline are
   in place. `d1 lex` handles the arity-suffix, mint-operator,
-  aspect-tag, Z-layer, and comment lexer fixtures; the negative
-  integer fixture is captured as the next RED lexer case.
-  Software Wrighter checklist metadata is clean.
-- **Last meaningful commit:** Negative integer lexer RED
-  baseline.
+  aspect-tag, Z-layer, comment, and negative integer lexer
+  fixtures. Software Wrighter checklist metadata is clean.
+- **Last meaningful commit:** Negative integer lexer green.
 
 ## Done
 
@@ -51,13 +49,10 @@ Snapshot of where the project is. Updated as milestones close.
 
 **M1 -- `discoveryone-lex`.** Current state is GREEN for
 `d1_lex_arity_suffix`, `d1_lex_mint_operator`,
-`d1_lex_aspect_tags`, `d1_lex_zlayer_tags`, and
-`d1_lex_comment`, and RED for `d1_lex_neg_int`. The negative
-integer `.expected` file documents the intended token dump,
-while reg-rs captures current lexer output before that token
-family lands. The next feature step should add minimal negative
-integer lexing and rebase `d1_lex_neg_int` to green.
-`sw-checklist` must remain clean before each step is committed.
+`d1_lex_aspect_tags`, `d1_lex_zlayer_tags`, `d1_lex_comment`,
+and `d1_lex_neg_int`. The next RED step should add
+`d1_lex_percent`. `sw-checklist` must remain clean before each
+step is committed.
 
 The next session that picks up feature work should:
 

@@ -19,6 +19,7 @@ pub enum Token<'src> {
     AspectTag(AspectKind),
     ZTag(i32),
     Hash(&'src str),
+    Int(i64),
     Ident(&'src str),
     RArrow,
     LParen,
@@ -36,6 +37,16 @@ const ASPECT_TAGS: [(&str, AspectKind); 7] = [
     ("rear", AspectKind::Rear),
     ("internal", AspectKind::Internal),
 ];
+
+macro_rules! scan {
+    ($bytes:expr, $start:expr, $pred:expr) => {{
+        let mut end = $start;
+        while $bytes.get(end).is_some_and($pred) {
+            end += 1;
+        }
+        end
+    }};
+}
 
 pub fn lex(source: &str) -> Vec<Token<'_>> {
     let mut tokens = Vec::new();
@@ -57,24 +68,25 @@ pub fn lex(source: &str) -> Vec<Token<'_>> {
 }
 
 fn lex_one<'src>(source: &'src str, bytes: &[u8], offset: usize) -> (Token<'src>, usize) {
-    let byte = bytes[offset];
-    match byte {
+    match bytes[offset] {
         b'*' => (Token::Mint, offset + 1),
         b'@' => lex_at(source, bytes, offset),
         b'#' => {
-            let end = source[offset..]
-                .find('\n')
-                .map_or(source.len(), |i| offset + i);
+            let end = source[offset..].find('\n').unwrap_or(source.len() - offset) + offset;
             (Token::Hash(&source[offset..end]), end)
         }
         b'(' => (Token::LParen, offset + 1),
         b')' => (Token::RParen, offset + 1),
         b'-' if bytes.get(offset + 1) == Some(&b'>') => (Token::RArrow, offset + 2),
+        b'-' | b'0'..=b'9'
+            if bytes[offset] != b'-' || bytes.get(offset + 1).is_some_and(u8::is_ascii_digit) =>
+        {
+            let start = offset + usize::from(bytes[offset] == b'-');
+            let end = scan!(bytes, start, u8::is_ascii_digit);
+            (Token::Int(source[offset..end].parse().unwrap_or(0)), end)
+        }
         b if b.is_ascii_alphabetic() || b == b'_' => {
-            let tail = &source[offset..];
-            let end = tail
-                .find(|c: char| !c.is_ascii_alphanumeric() && c != '_')
-                .map_or(source.len(), |i| offset + i);
+            let end = scan!(bytes, offset, |b| b.is_ascii_alphanumeric() || *b == b'_');
             (Token::Ident(&source[offset..end]), end)
         }
         b => (Token::Unknown(b), offset + 1),
@@ -82,19 +94,11 @@ fn lex_one<'src>(source: &'src str, bytes: &[u8], offset: usize) -> (Token<'src>
 }
 
 fn lex_at<'src>(source: &'src str, bytes: &[u8], offset: usize) -> (Token<'src>, usize) {
-    let mut end = offset + 2;
-    while bytes.get(end).is_some_and(|b| b.is_ascii_alphabetic()) {
-        end += 1;
-    }
+    let mut end = scan!(bytes, offset + 2, u8::is_ascii_alphabetic);
     if &source[offset + 1..end] == "z" {
-        let mut start = end;
-        while bytes.get(start).is_some_and(|b| b.is_ascii_whitespace()) {
-            start += 1;
-        }
+        let start = scan!(bytes, end, u8::is_ascii_whitespace);
         end = start;
-        while bytes.get(end).is_some_and(|b| b.is_ascii_digit()) {
-            end += 1;
-        }
+        end = scan!(bytes, end, u8::is_ascii_digit);
         return (Token::ZTag(source[start..end].parse().unwrap_or(0)), end);
     }
     ASPECT_TAGS
@@ -117,6 +121,7 @@ pub fn dump_tokens(tokens: &[Token<'_>]) -> String {
             }
             Token::ZTag(value) => dump.push_str(&format!("ZTAG   {value}")),
             Token::Hash(text) => dump.push_str(&format!("HASH   {text}")),
+            Token::Int(value) => dump.push_str(&format!("INT    {value}")),
             Token::Ident(text) => dump.push_str(&format!("IDENT  {text}")),
             Token::RArrow => dump.push_str("RARROW"),
             Token::LParen => dump.push_str("LPAREN"),
