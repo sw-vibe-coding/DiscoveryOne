@@ -4,11 +4,12 @@ Snapshot of where the project is. Updated as milestones close.
 
 ## Today (2026-04-26)
 
-- **Phase:** M0 scaffold complete.
+- **Phase:** M1 lexer started.
 - **Code:** Cargo workspace, placeholder library crates, `d1`
   CLI stub, Yew web shell, build/run scripts, and first reg-rs
-  smoke baseline are in place.
-- **Last meaningful commit:** M0 scaffold closeout.
+  smoke baseline are in place. M1 has its first RED lexer
+  baseline for arity-suffixed identifiers.
+- **Last meaningful commit:** M1 RED baseline start.
 
 ## Done
 
@@ -45,14 +46,20 @@ Snapshot of where the project is. Updated as milestones close.
 
 ## In flight
 
-Nothing. M0 (`discoveryone-scaffold`) is complete. The next
-session that picks up feature work should:
+**M1 -- `discoveryone-lex`.** Current state is RED:
+`tests/lexer/arity_suffix.expected` documents the intended
+`d1 lex` token dump for `coord2 -> (x y)`, while reg-rs
+`d1_lex_arity_suffix` captures the current CLI stub failure.
+The next step should implement the minimum `d1-lex` and `d1
+lex` CLI wiring needed to rebase that baseline to the expected
+token dump.
+
+The next session that picks up feature work should:
 
 1. Read this file.
 2. Read `docs/plan.md` section 3 (M1 work list).
-3. Run `agentrail init --name discoveryone-lex` (per
-   `CLAUDE.md`).
-4. Begin the M1 lexer work.
+3. Run `agentrail next` (per `CLAUDE.md`).
+4. Continue the M1 lexer work.
 
 ## Up next
 
