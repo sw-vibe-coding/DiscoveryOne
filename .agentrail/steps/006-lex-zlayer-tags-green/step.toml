@@ -1,0 +1,11 @@
+number = 6
+slug = "lex-zlayer-tags-green"
+status = "pending"
+description = """
+# Step: lex-zlayer-tags-green
+
+Implement the minimal M1 lexer support for Z-l..."""
+role = "legacy"
+context_files = []
+created_at = "2026-04-27T09:54:31"
+commits = []
