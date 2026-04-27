@@ -1,0 +1,11 @@
+number = 1
+slug = "source-loader-roundtrip-power-red"
+status = "in-progress"
+description = """
+# Step: source-loader-roundtrip-power-red
+
+Create the M2 RED baseline for lay..."""
+role = "production"
+context_files = []
+created_at = "2026-04-27T12:37:00"
+commits = []

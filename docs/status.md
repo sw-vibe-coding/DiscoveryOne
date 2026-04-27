@@ -2,16 +2,18 @@
 
 Snapshot of where the project is. Updated as milestones close.
 
-## Today (2026-04-26)
+## Today (2026-04-27)
 
-- **Phase:** M1 lexer started.
+- **Phase:** M2 source-loader started.
 - **Code:** Cargo workspace, placeholder library crates, Yew web
   shell, build/run scripts, and first reg-rs smoke baseline are
   in place. `d1 lex` handles the arity-suffix, mint-operator,
   aspect-tag, Z-layer, comment, negative integer, and percent
-  literal lexer fixtures. Software Wrighter checklist metadata
-  is clean.
-- **Last meaningful commit:** Percent lexer green.
+  literal lexer fixtures. `d1_normalize_roundtrip_power` is
+  captured as the first M2 RED baseline against the scaffolded
+  normalize command. Software Wrighter checklist metadata is
+  clean.
+- **Last meaningful commit:** Source normalize RED baseline.
 
 ## Done
 
@@ -45,27 +47,31 @@ Snapshot of where the project is. Updated as milestones close.
   `d1-ir`, `d1-interp`, `d1-emit-wasm`, `d1-cli`, Yew
   `ui/web`, helper scripts, `.gitignore` policy, and
   `d1_smoke_cli_help` reg-rs baseline.
+- **M1 -- `discoveryone-lex`** -- all planned lexer baselines are
+  GREEN: `d1_lex_arity_suffix`, `d1_lex_mint_operator`,
+  `d1_lex_aspect_tags`, `d1_lex_zlayer_tags`, `d1_lex_comment`,
+  `d1_lex_neg_int`, and `d1_lex_percent`.
 
 ## In flight
 
-**M1 -- `discoveryone-lex`.** Current state is GREEN for every
-planned M1 lexer baseline:
-`d1_lex_arity_suffix`, `d1_lex_mint_operator`,
-`d1_lex_aspect_tags`, `d1_lex_zlayer_tags`, `d1_lex_comment`,
-`d1_lex_neg_int`, and `d1_lex_percent`. `sw-checklist` must
-remain clean before each step is committed.
+**M2 -- `discoveryone-source-loader`.** Current state is RED for
+`d1_normalize_roundtrip_power`: `examples/power.d1` and
+`examples/power.d1.json` exist, but `d1 normalize` is still the
+CLI scaffold and exits with `not yet implemented`.
+`sw-checklist` must remain clean before each step is committed.
 
 The next session that picks up feature work should:
 
 1. Read this file.
-2. Read `docs/plan.md` section 3 (M1 work list).
+2. Read `docs/plan.md` section 4 (M2 work list).
 3. Run `agentrail next` (per `CLAUDE.md`).
-4. Continue the M1 lexer work.
+4. Continue the M2 source-loader work.
 
 ## Up next
 
-**M1 -- `discoveryone-lex`.** The first substantive feature is
-the Rust port of Tuplet's lexer. See `docs/plan.md` section 3.
+**M2 -- `discoveryone-source-loader`.** Implement the loader and
+dumper needed to make `d1_normalize_roundtrip_power` green. See
+`docs/plan.md` section 4.
 
 ## Open questions parked
 
