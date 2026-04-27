@@ -9,7 +9,8 @@ Snapshot of where the project is. Updated as milestones close.
   shell, build/run scripts, and first reg-rs smoke baseline are
   in place. `d1 lex` handles the arity-suffix lexer fixture;
   the mint-operator fixture is captured as the next RED case.
-- **Last meaningful commit:** M1 mint-operator RED baseline.
+  Software Wrighter checklist metadata is clean.
+- **Last meaningful commit:** Software Wrighter checklist cleanup.
 
 ## Done
 
@@ -52,6 +53,7 @@ Snapshot of where the project is. Updated as milestones close.
 dump beginning with `MINT`, while reg-rs captures the current
 lexer output before mint support lands. The next step should add
 minimal `*` lexing and rebase `d1_lex_mint_operator` to green.
+`sw-checklist` must remain clean before that step is committed.
 
 The next session that picks up feature work should:
 

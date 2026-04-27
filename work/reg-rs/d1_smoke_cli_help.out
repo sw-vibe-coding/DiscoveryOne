@@ -1,5 +1,13 @@
 DiscoveryOne language driver. Test-harness CLI; see docs/design.md.
 
+AI CODING AGENT INSTRUCTIONS:
+
+Use d1 as the stable command-line surface for regression tests.
+Prefer reg-rs fixtures under work/reg-rs when adding behavior.
+Subcommands other than lex are scaffolded and may exit with
+"not yet implemented" until their milestone lands.
+
+
 Usage: d1 <COMMAND>
 
 Commands:
@@ -15,5 +23,8 @@ Commands:
   facet-snapshot  Render FACE of FILE as deterministic ASCII (for reg-rs)
 
 Options:
-  -h, --help     Print help
-  -V, --version  Print version
+  -h, --help
+          Print help (see a summary with '-h')
+
+  -V, --version
+          Print version

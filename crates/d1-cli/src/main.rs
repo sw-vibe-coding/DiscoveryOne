@@ -14,13 +14,32 @@ use std::process::ExitCode;
 use clap::{Parser, Subcommand};
 
 const ABOUT: &str = "DiscoveryOne language driver. Test-harness CLI; see docs/design.md.";
+const LONG_ABOUT: &str = "\
+DiscoveryOne language driver. Test-harness CLI; see docs/design.md.
+
+AI CODING AGENT INSTRUCTIONS:
+
+Use d1 as the stable command-line surface for regression tests.
+Prefer reg-rs fixtures under work/reg-rs when adding behavior.
+Subcommands other than lex are scaffolded and may exit with
+\"not yet implemented\" until their milestone lands.
+";
+const VERSION: &str = concat!(
+    env!("CARGO_PKG_VERSION"),
+    "\nCopyright: Copyright (c) 2026 Michael A Wright",
+    "\nLicense: MIT",
+    "\nRepository: https://github.com/sw-vibe-coding/DiscoveryOne",
+    "\nBuild Host: unknown",
+    "\nBuild Commit: unknown",
+    "\nBuild Time: unknown",
+);
 
 #[derive(Parser)]
 #[command(
     name = "d1",
-    version,
+    version = VERSION,
     about = ABOUT,
-    long_about = None,
+    long_about = LONG_ABOUT,
     disable_help_subcommand = true
 )]
 struct Cli {

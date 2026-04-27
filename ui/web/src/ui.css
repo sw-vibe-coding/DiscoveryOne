@@ -52,3 +52,13 @@ code {
   padding: 0 0.3em;
   font-size: 0.95em;
 }
+
+.footer {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #30363d;
+  color: #9da7b3;
+  font-size: 0.8rem;
+}

@@ -1,0 +1,1 @@
+Captured RED baseline for d1 lex mint operator
