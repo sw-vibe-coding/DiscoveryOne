@@ -1,6 +1,6 @@
 number = 3
 slug = "source-loader-face-front-red"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: source-loader-face-front-red
 
@@ -8,4 +8,5 @@ Create the next M2 RED baseline for pro..."""
 role = "legacy"
 context_files = []
 created_at = "2026-04-27T12:51:26"
-commits = []
+completed_at = "2026-04-27T13:14:19"
+commits = ["38ea06198c539d6423b93edf275059f14fe04617"]

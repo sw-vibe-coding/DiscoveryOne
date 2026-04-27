@@ -1,0 +1,11 @@
+number = 4
+slug = "source-loader-face-front-green"
+status = "pending"
+description = """
+# Step: source-loader-face-front-green
+
+Implement the minimal front-face proj..."""
+role = "legacy"
+context_files = []
+created_at = "2026-04-27T13:14:19"
+commits = []
