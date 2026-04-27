@@ -107,6 +107,7 @@ name = "d1-cli"
 version = "0.1.0"
 dependencies = [
  "clap",
+ "d1-lex",
 ]
 
 [[package]]

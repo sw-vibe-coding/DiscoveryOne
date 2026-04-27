@@ -7,6 +7,7 @@
 //! `--help` and `--version` produce stable output, which the
 //! `d1_smoke_cli_help` reg-rs baseline locks in.
 
+use std::fs;
 use std::path::PathBuf;
 use std::process::ExitCode;
 
@@ -115,6 +116,20 @@ impl Cmd {
 
 fn main() -> ExitCode {
     let cli = Cli::parse();
-    eprintln!("d1 {}: not yet implemented", cli.cmd.name());
-    ExitCode::from(1)
+    match cli.cmd {
+        Cmd::Lex { file } => match fs::read_to_string(&file) {
+            Ok(source) => {
+                print!("{}", d1_lex::dump_tokens(&d1_lex::lex(&source)));
+                ExitCode::SUCCESS
+            }
+            Err(err) => {
+                eprintln!("d1 lex: {}: {err}", file.display());
+                ExitCode::from(1)
+            }
+        },
+        cmd => {
+            eprintln!("d1 {}: not yet implemented", cmd.name());
+            ExitCode::from(1)
+        }
+    }
 }

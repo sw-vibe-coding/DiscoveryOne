@@ -13,3 +13,4 @@ path = "src/main.rs"
 
 [dependencies]
 clap = { workspace = true }
+d1-lex = { path = "../d1-lex" }

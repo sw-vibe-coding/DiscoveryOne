@@ -5,11 +5,11 @@ Snapshot of where the project is. Updated as milestones close.
 ## Today (2026-04-26)
 
 - **Phase:** M1 lexer started.
-- **Code:** Cargo workspace, placeholder library crates, `d1`
-  CLI stub, Yew web shell, build/run scripts, and first reg-rs
-  smoke baseline are in place. M1 has its first RED lexer
-  baseline for arity-suffixed identifiers.
-- **Last meaningful commit:** M1 RED baseline start.
+- **Code:** Cargo workspace, placeholder library crates, Yew web
+  shell, build/run scripts, and first reg-rs smoke baseline are
+  in place. `d1 lex` now handles the first arity-suffix lexer
+  fixture.
+- **Last meaningful commit:** M1 arity-suffix lexer green.
 
 ## Done
 
@@ -46,13 +46,11 @@ Snapshot of where the project is. Updated as milestones close.
 
 ## In flight
 
-**M1 -- `discoveryone-lex`.** Current state is RED:
-`tests/lexer/arity_suffix.expected` documents the intended
-`d1 lex` token dump for `coord2 -> (x y)`, while reg-rs
-`d1_lex_arity_suffix` captures the current CLI stub failure.
-The next step should implement the minimum `d1-lex` and `d1
-lex` CLI wiring needed to rebase that baseline to the expected
-token dump.
+**M1 -- `discoveryone-lex`.** Current state is GREEN for the
+first lexer case: `d1_lex_arity_suffix` passes and `d1 lex`
+prints the expected token dump for `coord2 -> (x y)`. The next
+step should refactor token display as needed, then continue the
+M1 TDD sequence with the mint-operator lexer case.
 
 The next session that picks up feature work should:
 

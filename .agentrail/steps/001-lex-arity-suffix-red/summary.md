@@ -1,0 +1,1 @@
+M1 started with RED d1_lex_arity_suffix fixture and reg-rs baseline
