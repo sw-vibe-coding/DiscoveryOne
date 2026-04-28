@@ -1,0 +1,11 @@
+number = 4
+slug = "interp-power-2-8-green"
+status = "pending"
+description = """
+# Step: interp-power-2-8-green
+
+Implement the minimal reference interpreter p..."""
+role = "production"
+context_files = []
+created_at = "2026-04-28T11:23:22"
+commits = []

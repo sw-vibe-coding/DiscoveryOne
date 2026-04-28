@@ -1,0 +1,11 @@
+number = 4
+slug = "interp-power-5-0"
+status = "pending"
+description = """
+# Step: interp-power-5-0
+
+Add the second M4 interpreter baseline for Power wi..."""
+role = "production"
+context_files = []
+created_at = "2026-04-28T11:22:22"
+commits = []

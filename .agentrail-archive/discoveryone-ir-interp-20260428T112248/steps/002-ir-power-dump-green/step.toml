@@ -1,0 +1,11 @@
+number = 2
+slug = "ir-power-dump-green"
+status = "pending"
+description = """
+# Step: ir-power-dump-green
+
+Implement the minimal IR dump scaffold that turn..."""
+role = "production"
+context_files = []
+created_at = "2026-04-28T11:22:22"
+commits = []

@@ -1,0 +1,11 @@
+number = 3
+slug = "interp-power-2-8-red"
+status = "pending"
+description = """
+# Step: interp-power-2-8-red
+
+Create the M4 RED baseline for interpreting Pow..."""
+role = "production"
+context_files = []
+created_at = "2026-04-28T11:22:22"
+commits = []
