@@ -1,6 +1,6 @@
 number = 4
 slug = "wasm-interp-parity-corpus"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: wasm-interp-parity-corpus
 
@@ -8,4 +8,5 @@ Add a corpus parity watchdog that compares..."""
 role = "production"
 context_files = []
 created_at = "2026-04-28T12:27:31"
-commits = []
+completed_at = "2026-04-28T15:27:21"
+commits = ["022f844581ed3b3ec1653d4f815713272176c343"]

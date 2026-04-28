@@ -1,0 +1,1 @@
+Added d1_wasm_interp_parity_corpus to compare current Power interpreter and WASM outputs, completing M5.
