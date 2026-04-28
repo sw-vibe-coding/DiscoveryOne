@@ -65,8 +65,10 @@ Snapshot of where the project is. Updated as milestones close.
 **M3 -- `discoveryone-parse-check`.** Current state is RED for
 `d1_parse_mint_signature`, while `d1_parse_mint_init` is GREEN:
 `tests/parser/mint_init.input` parses to one Front-facet
-assignment AST dump. `sw-checklist` must remain clean before
-each step is committed.
+assignment AST dump. `tests/parser/mint_signature.input` exists
+and captures the current scaffold error for a signature-shaped
+mint form. `sw-checklist` must remain clean before each step is
+committed.
 
 The next session that picks up feature work should:
 
@@ -77,8 +79,9 @@ The next session that picks up feature work should:
 
 ## Up next
 
-**M3 -- `discoveryone-parse-check`.** Add the RED baseline for
-`d1_parse_mint_signature`. See `docs/plan.md` section 5.
+**M3 -- `discoveryone-parse-check`.** Implement the parser
+scaffold needed to make `d1_parse_mint_signature` green. See
+`docs/plan.md` section 5.
 
 ## Open questions parked
 

@@ -1,0 +1,1 @@
+Implemented the minimal parser scaffold for mint init and rebased d1_parse_mint_init to a GREEN AST dump.

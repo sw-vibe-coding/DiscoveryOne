@@ -1,0 +1,11 @@
+number = 3
+slug = "parse-mint-signature-red"
+status = "in-progress"
+description = """
+# Step: parse-mint-signature-red
+
+Create the next M3 RED baseline for parsing..."""
+role = "legacy"
+context_files = []
+created_at = "2026-04-27T21:08:16"
+commits = []
