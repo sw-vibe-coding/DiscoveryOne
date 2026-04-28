@@ -185,6 +185,17 @@ git status
 
 #### Step 6: Run Software Wrighter Checklist
 
+If `d1` changed, or if any test invokes `scripts/run-fixture.sh`
+or the installed `d1` binary, rebuild and reinstall before
+running fixture/reg-rs/checklist gates:
+
+```bash
+cargo build --release
+sw-install -p /path/to/DiscoveryOne --bin d1
+```
+
+This avoids testing a stale installed CLI after code changes.
+
 ```bash
 sw-checklist
 ```
