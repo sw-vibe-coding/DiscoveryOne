@@ -1,0 +1,4 @@
+command = "scripts/run-fixture.sh parse tests/parser/mint_init.input"
+timeout = 60
+exit_code = 1
+desc = "d1 parse RED: mint init assignment is not implemented yet"

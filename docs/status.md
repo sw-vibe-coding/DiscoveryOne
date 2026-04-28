@@ -4,17 +4,18 @@ Snapshot of where the project is. Updated as milestones close.
 
 ## Today (2026-04-27)
 
-- **Phase:** M2 source-loader started.
+- **Phase:** M3 parse/check started.
 - **Code:** Cargo workspace, placeholder library crates, Yew web
   shell, build/run scripts, and first reg-rs smoke baseline are
   in place. `d1 lex` handles the arity-suffix, mint-operator,
   aspect-tag, Z-layer, comment, negative integer, and percent
   literal lexer fixtures. `d1 normalize` now round-trips the
-  Power layered-text fixture through the source loader path,
-  and `d1 face --face front`, `left`, `right`, `top`, and
-  `bottom`, and `rear` render Power facets. Software Wrighter
-  checklist metadata is clean.
-- **Last meaningful commit:** Rear face projection green.
+  Power layered-text fixture through the source loader path, and
+  all six planned Power face projections render through `d1
+  face`. `d1_parse_mint_init` captures the first M3 RED
+  baseline against the current not-implemented parse path.
+  Software Wrighter checklist metadata is clean.
+- **Last meaningful commit:** Mint init parse RED baseline.
 
 ## Done
 
@@ -52,31 +53,33 @@ Snapshot of where the project is. Updated as milestones close.
   GREEN: `d1_lex_arity_suffix`, `d1_lex_mint_operator`,
   `d1_lex_aspect_tags`, `d1_lex_zlayer_tags`, `d1_lex_comment`,
   `d1_lex_neg_int`, and `d1_lex_percent`.
+- **M2 -- `discoveryone-source-loader`** -- `d1 normalize`
+  round-trips the Power layered-text fixture, and
+  `d1_face_front_power`, `d1_face_left_power`,
+  `d1_face_right_power`, `d1_face_top_power`,
+  `d1_face_bottom_power`, and `d1_face_rear_power` render all
+  six planned Power face projections.
 
 ## In flight
 
-**M2 -- `discoveryone-source-loader`.** Current state is GREEN for
-`d1_normalize_roundtrip_power`: `examples/power.d1` and
-`examples/power.d1.json` exist, `d1 normalize` emits the
-canonical layered text for the Power fixture, and
-`d1_face_front_power`, `d1_face_left_power`,
-`d1_face_right_power`, `d1_face_top_power`,
-`d1_face_bottom_power`, and `d1_face_rear_power` render all six
-planned Power face projections. `sw-checklist` must remain clean
-before each step is committed.
+**M3 -- `discoveryone-parse-check`.** Current state is RED for
+`d1_parse_mint_init`: `tests/parser/mint_init.input` exists and
+`d1 parse` currently reports `not yet implemented`. Parser
+behavior is intentionally not implemented yet. `sw-checklist`
+must remain clean before each step is committed.
 
 The next session that picks up feature work should:
 
 1. Read this file.
-2. Read `docs/plan.md` section 4 (M2 work list).
+2. Read `docs/plan.md` section 5 (M3 work list).
 3. Run `agentrail next` (per `CLAUDE.md`).
-4. Continue the M2 source-loader work.
+4. Continue the M3 parse/check work.
 
 ## Up next
 
-**M2 -- `discoveryone-source-loader`.** Implement the loader and
-dumper needed to make `d1_normalize_roundtrip_power` green. See
-`docs/plan.md` section 4.
+**M3 -- `discoveryone-parse-check`.** Implement the parser
+scaffold needed to make `d1_parse_mint_init` green. See
+`docs/plan.md` section 5.
 
 ## Open questions parked
 
