@@ -1,0 +1,1 @@
+Added the d1_interp_power_2_8_eq_256 RED baseline for the current d1 interp scaffold failure.
