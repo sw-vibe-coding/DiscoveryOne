@@ -1,0 +1,7 @@
+(module
+  (facet front
+    (signature power (inputs n e) (outputs p))
+    (assign (name p) (int 1)))
+  (facet left
+    (assign (name p) (int 2)))
+)

@@ -37,6 +37,7 @@ pub struct Facet {
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Aspect {
     Front,
+    Left,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]

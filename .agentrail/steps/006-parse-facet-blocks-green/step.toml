@@ -1,0 +1,11 @@
+number = 6
+slug = "parse-facet-blocks-green"
+status = "in-progress"
+description = """
+# Step: parse-facet-blocks-green
+
+Implement the minimal parser scaffold neede..."""
+role = "legacy"
+context_files = []
+created_at = "2026-04-27T22:10:07"
+commits = []

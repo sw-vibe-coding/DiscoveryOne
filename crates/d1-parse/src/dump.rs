@@ -15,6 +15,7 @@ pub fn dump_module(module: &Module) -> String {
 fn dump_facet(facet: &Facet) -> String {
     let aspect = match facet.aspect {
         Aspect::Front => "front",
+        Aspect::Left => "left",
     };
     let mut dump = format!("(facet {aspect}");
     for stmt in &facet.stmts {

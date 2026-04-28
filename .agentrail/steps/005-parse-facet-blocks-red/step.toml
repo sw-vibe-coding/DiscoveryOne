@@ -1,6 +1,6 @@
 number = 5
 slug = "parse-facet-blocks-red"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: parse-facet-blocks-red
 
@@ -8,4 +8,5 @@ Create the next M3 RED baseline for parsing m..."""
 role = "legacy"
 context_files = []
 created_at = "2026-04-27T21:45:37"
-commits = []
+completed_at = "2026-04-27T22:10:07"
+commits = ["29a1a008ba7427cd49ef18950e3957990a8d0f90"]

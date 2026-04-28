@@ -2,7 +2,7 @@
 
 Snapshot of where the project is. Updated as milestones close.
 
-## Today (2026-04-27)
+## Today (2026-04-28)
 
 - **Phase:** M3 parse/check in progress.
 - **Code:** Cargo workspace, placeholder library crates, Yew web
@@ -12,10 +12,10 @@ Snapshot of where the project is. Updated as milestones close.
   literal lexer fixtures. `d1 normalize` now round-trips the
   Power layered-text fixture through the source loader path, and
   all six planned Power face projections render through `d1
-  face`. `d1_parse_mint_init` and
-  `d1_parse_mint_signature` are GREEN with minimal Front-facet
-  AST dumps. Software Wrighter checklist metadata is clean.
-- **Last meaningful commit:** Mint signature parse GREEN baseline.
+  face`. `d1_parse_mint_init`, `d1_parse_mint_signature`,
+  and `d1_parse_facet_blocks` are GREEN with minimal AST dumps.
+  Software Wrighter checklist metadata is clean.
+- **Last meaningful commit:** Facet blocks parse GREEN baseline.
 
 ## Done
 
@@ -63,12 +63,12 @@ Snapshot of where the project is. Updated as milestones close.
 ## In flight
 
 **M3 -- `discoveryone-parse-check`.** Current state is RED for
-`d1_parse_facet_blocks`, while `d1_parse_mint_init` and
-`d1_parse_mint_signature` are GREEN. The parser handles the
-minimal Front-facet assignment and signature forms needed so
-far. `tests/parser/facet_blocks.input` exists and captures the
-current scaffold error for multiple `@`-tagged facet blocks.
-`sw-checklist` must remain clean before each step is committed.
+`d1_check_pass_power`, while the planned parse baselines
+`d1_parse_mint_init`, `d1_parse_mint_signature`, and
+`d1_parse_facet_blocks` are GREEN. The parser handles the
+minimal assignment, signature, and multi-facet forms needed so
+far. `sw-checklist` must remain clean before each step is
+committed.
 
 The next session that picks up feature work should:
 
@@ -79,9 +79,8 @@ The next session that picks up feature work should:
 
 ## Up next
 
-**M3 -- `discoveryone-parse-check`.** Implement the parser
-scaffold needed to make `d1_parse_facet_blocks` green. See
-`docs/plan.md` section 5.
+**M3 -- `discoveryone-parse-check`.** Add the RED baseline for
+`d1_check_pass_power`. See `docs/plan.md` section 5.
 
 ## Open questions parked
 
