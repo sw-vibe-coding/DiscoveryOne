@@ -20,10 +20,10 @@ Snapshot of where the project is. Updated as milestones close.
   fixture.
   `d1_check_fail_unbound_name` is GREEN with stable checker
   error code `E008` for the first unbound-name fixture.
-  `d1_ir_power_dump` captures the current RED CLI scaffold
-  failure for stack-IR dumping.
+  `d1_ir_power_dump` is GREEN with a minimal deterministic
+  stack-IR dump for the Power fixture.
   Software Wrighter checklist metadata is clean.
-- **Last meaningful commit:** Power IR dump RED baseline.
+- **Last meaningful commit:** Power IR dump GREEN baseline.
 
 ## Done
 
@@ -71,23 +71,21 @@ Snapshot of where the project is. Updated as milestones close.
 ## In flight
 
 **M4 -- `discoveryone-ir-interp`.** Current state is RED for
-`d1_ir_power_dump`: `d1 lower examples/power.d1` still reports
-the CLI scaffold failure. The M3 parse/check baselines remain
-GREEN. `sw-checklist` must remain clean before each step is
-committed.
+`d1_interp_power_2_8_eq_256`, while `d1_ir_power_dump` and the
+M3 parse/check baselines are GREEN. `sw-checklist` must remain
+clean before each step is committed.
 
 The next session that picks up feature work should:
 
 1. Read this file.
-2. Read `docs/plan.md` section 5 (M3 work list).
+2. Read `docs/plan.md` section 6 (M4 work list).
 3. Run `agentrail next` (per `CLAUDE.md`).
-4. Continue the M3 parse/check work.
+4. Continue the M4 IR/interpreter work.
 
 ## Up next
 
-**M4 -- `discoveryone-ir-interp`.** Implement the minimal IR
-dump scaffold that turns `d1_ir_power_dump` GREEN. See
-`docs/plan.md` section 6.
+**M4 -- `discoveryone-ir-interp`.** Add the RED baseline for
+`d1_interp_power_2_8_eq_256`. See `docs/plan.md` section 6.
 
 ## Open questions parked
 

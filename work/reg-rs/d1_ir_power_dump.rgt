@@ -1,4 +1,4 @@
 command = "scripts/run-fixture.sh lower examples/power.d1"
 timeout = 60
-exit_code = 1
-desc = "d1 lower RED: Power stack IR dump is not implemented yet"
+exit_code = 0
+desc = "d1 lower: Power stack IR dump"

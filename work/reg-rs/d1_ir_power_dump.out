@@ -1,0 +1,22 @@
+(stack-ir
+  (function Power
+    (inputs n e)
+    (outputs p)
+    (locals p counter)
+    (block
+      (push-int 1)
+      (store p)
+      (push-int 0)
+      (store counter)
+      (loop while (< counter e)
+        (load p)
+        (load n)
+        (mul)
+        (store p)
+        (load counter)
+        (push-int 1)
+        (add)
+        (store counter))
+      (load p)
+      (return)))
+)
