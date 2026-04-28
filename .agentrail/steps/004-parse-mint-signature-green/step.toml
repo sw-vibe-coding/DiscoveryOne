@@ -1,0 +1,11 @@
+number = 4
+slug = "parse-mint-signature-green"
+status = "in-progress"
+description = """
+# Step: parse-mint-signature-green
+
+Implement the minimal parser scaffold nee..."""
+role = "legacy"
+context_files = []
+created_at = "2026-04-27T21:13:02"
+commits = []

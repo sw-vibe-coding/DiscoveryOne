@@ -1,0 +1,4 @@
+(module
+  (facet front
+    (signature power (inputs n e) (outputs p)))
+)

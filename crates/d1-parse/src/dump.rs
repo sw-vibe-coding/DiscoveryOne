@@ -1,4 +1,4 @@
-use crate::{Aspect, Expr, Facet, Module, Pattern, Stmt};
+use crate::{Aspect, Expr, Facet, Module, Pattern, SigDecl, Stmt};
 
 pub fn dump_module(module: &Module) -> String {
     let mut dump = String::new();
@@ -28,8 +28,28 @@ fn dump_facet(facet: &Facet) -> String {
 
 fn dump_stmt(stmt: &Stmt) -> String {
     match stmt {
+        Stmt::Signature(sig) => dump_signature(sig),
         Stmt::Assign(Pattern::Name(name), Expr::Int(value)) => {
             format!("(assign (name {name}) (int {value}))")
         }
     }
+}
+
+fn dump_signature(sig: &SigDecl) -> String {
+    let inputs = sig
+        .inputs
+        .iter()
+        .map(|field| field.name.as_str())
+        .collect::<Vec<_>>()
+        .join(" ");
+    let outputs = sig
+        .outputs
+        .iter()
+        .map(|field| field.name.as_str())
+        .collect::<Vec<_>>()
+        .join(" ");
+    format!(
+        "(signature {} (inputs {}) (outputs {}))",
+        sig.name, inputs, outputs
+    )
 }

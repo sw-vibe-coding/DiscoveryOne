@@ -3,15 +3,19 @@
 
 mod ast;
 mod dump;
-mod parser;
+mod tokens;
 
-pub use ast::{Aspect, Expr, Facet, Module, Name, Pattern, Stmt};
+pub use ast::{Aspect, Expr, Facet, Field, Module, Name, Pattern, SigDecl, Stmt};
 pub use dump::dump_module;
-pub use parser::parse;
 
 /// Crate version. Stable string used by the smoke baseline.
 pub fn version() -> &'static str {
     env!("CARGO_PKG_VERSION")
+}
+
+pub fn parse(source: &str) -> Result<Module, String> {
+    let tokens = d1_lex::lex(source);
+    tokens::parse_tokens(&tokens)
 }
 
 pub fn parse_and_dump(source: &str) -> Result<String, String> {
