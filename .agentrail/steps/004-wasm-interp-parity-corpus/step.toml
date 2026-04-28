@@ -1,6 +1,6 @@
 number = 4
 slug = "wasm-interp-parity-corpus"
-status = "pending"
+status = "in-progress"
 description = """
 # Step: wasm-interp-parity-corpus
 

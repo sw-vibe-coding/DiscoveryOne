@@ -4,7 +4,7 @@ Snapshot of where the project is. Updated as milestones close.
 
 ## Today (2026-04-28)
 
-- **Phase:** M5 WASM emit planned.
+- **Phase:** M5 WASM emit complete.
 - **Code:** Cargo workspace, placeholder library crates, Yew web
   shell, build/run scripts, and first reg-rs smoke baseline are
   in place. `d1 lex` handles the arity-suffix, mint-operator,
@@ -27,9 +27,10 @@ Snapshot of where the project is. Updated as milestones close.
   interpreter scaffold.
   `d1_wasm_power_2_8_eq_256` and `d1_wasm_power_5_0_eq_1`
   are GREEN through the minimal WAT/Wasmtime runtime path.
+  `d1_wasm_interp_parity_corpus` is GREEN and verifies the
+  current Power interpreter and WASM outputs match.
   Software Wrighter checklist metadata is clean.
-- **Last meaningful commit:** Power WASM run zero-exponent GREEN
-  baseline.
+- **Last meaningful commit:** WASM/interpreter parity watchdog.
 
 ## Done
 
@@ -76,25 +77,26 @@ Snapshot of where the project is. Updated as milestones close.
 - **M4 -- `discoveryone-ir-interp`** -- `d1_ir_power_dump`,
   `d1_interp_power_2_8_eq_256`, and
   `d1_interp_power_5_0_eq_1` are GREEN.
+- **M5 -- `discoveryone-wasm-emit`** --
+  `d1_wasm_power_2_8_eq_256`, `d1_wasm_power_5_0_eq_1`, and
+  `d1_wasm_interp_parity_corpus` are GREEN.
 
 ## In flight
 
-**M5 -- `discoveryone-wasm-emit`.** Planned and ready to start.
-`d1_wasm_power_2_8_eq_256` and `d1_wasm_power_5_0_eq_1` are
-GREEN through the minimal WAT/Wasmtime runtime path. All M4
-IR/interpreter baselines remain GREEN.
+No active feature saga. M5 WASM emit is complete: all current
+Power interpreter cases have matching WASM run baselines and the
+parity watchdog is GREEN.
 
 The next session that picks up feature work should:
 
 1. Read this file.
-2. Read `docs/plan.md` section 7 (M5 work list).
+2. Read `docs/plan.md` section 8 (M6 work list).
 3. Run `agentrail next` (per `CLAUDE.md`).
-4. Continue the M5 WASM emit work.
+4. Plan the next web shell milestone.
 
 ## Up next
 
-Add the `d1_wasm_interp_parity_corpus` watchdog comparing
-interpreter and WASM outputs.
+Archive M5 and create the next saga for M6 web shell work.
 
 ## Open questions parked
 

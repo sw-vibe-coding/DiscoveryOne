@@ -1,0 +1,4 @@
+command = "scripts/check-wasm-interp-parity.sh"
+timeout = 60
+exit_code = 0
+desc = "d1 WASM/interpreter parity corpus"
