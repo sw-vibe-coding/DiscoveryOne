@@ -1,0 +1,11 @@
+number = 3
+slug = "facet-snapshot-all-faces"
+status = "pending"
+description = """
+# Step: facet-snapshot-all-faces
+
+Add GREEN facet-snapshot baselines for the ..."""
+role = "production"
+context_files = []
+created_at = "2026-04-28T15:41:54"
+commits = []

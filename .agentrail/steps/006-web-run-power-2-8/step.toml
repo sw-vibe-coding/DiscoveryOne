@@ -1,0 +1,11 @@
+number = 6
+slug = "web-run-power-2-8"
+status = "pending"
+description = """
+# Step: web-run-power-2-8
+
+Add the M6 RunPanel browser/demo baseline for runn..."""
+role = "production"
+context_files = []
+created_at = "2026-04-28T15:42:19"
+commits = []

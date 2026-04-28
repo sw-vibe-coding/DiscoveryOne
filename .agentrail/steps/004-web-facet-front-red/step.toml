@@ -1,0 +1,11 @@
+number = 4
+slug = "web-facet-front-red"
+status = "pending"
+description = """
+# Step: web-facet-front-red
+
+Create the M6 RED web snapshot baseline for rend..."""
+role = "production"
+context_files = []
+created_at = "2026-04-28T15:42:01"
+commits = []

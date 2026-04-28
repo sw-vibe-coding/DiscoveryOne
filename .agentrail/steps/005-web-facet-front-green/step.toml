@@ -1,0 +1,11 @@
+number = 5
+slug = "web-facet-front-green"
+status = "pending"
+description = """
+# Step: web-facet-front-green
+
+Wire the Yew web shell so the Power Front face..."""
+role = "production"
+context_files = []
+created_at = "2026-04-28T15:42:11"
+commits = []

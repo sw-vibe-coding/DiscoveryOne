@@ -1,0 +1,11 @@
+number = 2
+slug = "facet-snapshot-front-green"
+status = "pending"
+description = """
+# Step: facet-snapshot-front-green
+
+Implement the minimal CLI facet-snapshot ..."""
+role = "production"
+context_files = []
+created_at = "2026-04-28T15:41:45"
+commits = []

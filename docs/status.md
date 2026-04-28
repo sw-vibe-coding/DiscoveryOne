@@ -4,7 +4,7 @@ Snapshot of where the project is. Updated as milestones close.
 
 ## Today (2026-04-28)
 
-- **Phase:** M5 WASM emit complete.
+- **Phase:** M6 web shell planned.
 - **Code:** Cargo workspace, placeholder library crates, Yew web
   shell, build/run scripts, and first reg-rs smoke baseline are
   in place. `d1 lex` handles the arity-suffix, mint-operator,
@@ -29,8 +29,10 @@ Snapshot of where the project is. Updated as milestones close.
   are GREEN through the minimal WAT/Wasmtime runtime path.
   `d1_wasm_interp_parity_corpus` is GREEN and verifies the
   current Power interpreter and WASM outputs match.
+  The M6 `discoveryone-web-shell` saga is planned with facet
+  snapshot and web-shell baselines.
   Software Wrighter checklist metadata is clean.
-- **Last meaningful commit:** WASM/interpreter parity watchdog.
+- **Last meaningful commit:** M6 web shell saga setup.
 
 ## Done
 
@@ -83,20 +85,21 @@ Snapshot of where the project is. Updated as milestones close.
 
 ## In flight
 
-No active feature saga. M5 WASM emit is complete: all current
-Power interpreter cases have matching WASM run baselines and the
-parity watchdog is GREEN.
+**M6 -- `discoveryone-web-shell`.** Planned and ready to start.
+The first step is `facet-snapshot-front-red`, which adds the RED
+baseline for `d1 facet-snapshot examples/power.d1 --face front`.
 
 The next session that picks up feature work should:
 
 1. Read this file.
 2. Read `docs/plan.md` section 8 (M6 work list).
 3. Run `agentrail next` (per `CLAUDE.md`).
-4. Plan the next web shell milestone.
+4. Start `facet-snapshot-front-red`.
 
 ## Up next
 
-Archive M5 and create the next saga for M6 web shell work.
+Run the first M6 step: add `d1_facet_snapshot_power_front` as a
+RED baseline.
 
 ## Open questions parked
 

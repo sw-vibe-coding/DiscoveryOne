@@ -1,0 +1,1 @@
+M5 WASM emit completed; all planned WASM and interpreter parity reg-rs cases are GREEN.
