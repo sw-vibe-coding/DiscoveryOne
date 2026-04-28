@@ -1,0 +1,4 @@
+command = "scripts/snapshot-web-front-facet.sh"
+timeout = 60
+exit_code = 1
+desc = "d1 web RED: Power front facet HTML snapshot is not implemented yet"

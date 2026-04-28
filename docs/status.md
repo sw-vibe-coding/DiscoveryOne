@@ -31,8 +31,10 @@ Snapshot of where the project is. Updated as milestones close.
   current Power interpreter and WASM outputs match.
   all six `d1_facet_snapshot_power_*` baselines are GREEN
   through the existing source projection path.
+  `d1_web_facet_front_html_snapshot` captures the current RED
+  web snapshot scaffold failure before the Yew facet viewer lands.
   Software Wrighter checklist metadata is clean.
-- **Last meaningful commit:** All Power facet snapshots GREEN.
+- **Last meaningful commit:** Power front facet HTML RED baseline.
 
 ## Done
 
@@ -87,7 +89,9 @@ Snapshot of where the project is. Updated as milestones close.
 
 **M6 -- `discoveryone-web-shell`.** Planned and ready to start.
 All six Power `facet-snapshot` baselines are GREEN and render the
-same stable projections as `d1 face`.
+same stable projections as `d1 face`. Current state is RED for
+`d1_web_facet_front_html_snapshot`, which still reports the web
+snapshot scaffold failure.
 
 The next session that picks up feature work should:
 
@@ -98,8 +102,8 @@ The next session that picks up feature work should:
 
 ## Up next
 
-Add the RED web-shell HTML snapshot baseline for the Power Front
-facet.
+Wire the Yew shell so `d1_web_facet_front_html_snapshot` renders
+the Power Front facet.
 
 ## Open questions parked
 
