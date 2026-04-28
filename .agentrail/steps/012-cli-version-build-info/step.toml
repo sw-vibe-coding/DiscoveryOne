@@ -1,6 +1,6 @@
 number = 12
 slug = "cli-version-build-info"
-status = "pending"
+status = "in-progress"
 description = """
 # Step: cli-version-build-info
 
