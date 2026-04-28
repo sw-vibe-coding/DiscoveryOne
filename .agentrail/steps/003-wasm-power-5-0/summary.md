@@ -1,0 +1,1 @@
+Added and passed d1_wasm_power_5_0_eq_1 for Power with n=5,e=0, confirming the existing WAT/Wasmtime run path returns 1 for zero exponent.
