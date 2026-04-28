@@ -1,5 +1,4 @@
-/* DiscoveryOne SPA -- minimal scaffold styles.
- * Real visual design arrives in M6 alongside the facet viewer. */
+/* DiscoveryOne SPA -- M6 facet viewer. */
 
 * {
   box-sizing: border-box;
@@ -9,56 +8,151 @@ body {
   margin: 0;
   font-family:
     "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
-  background: #0e1116;
-  color: #e6edf3;
+  background: #111418;
+  color: #edf1f5;
 }
 
 .app {
-  max-width: 960px;
+  max-width: 1040px;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 1.5rem;
 }
 
-.banner {
-  display: flex;
+.topbar {
+  display: grid;
+  grid-template-columns: auto minmax(10rem, 1fr) auto;
   align-items: center;
-  gap: 1rem;
-  border-bottom: 1px solid #30363d;
-  padding-bottom: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 0.8rem 1rem;
+  border-bottom: 1px solid #38404a;
+  padding-bottom: 0.9rem;
+  margin-bottom: 1rem;
 }
 
 .badge {
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
   object-fit: contain;
+}
+
+.titleblock {
+  display: grid;
+  gap: 0.2rem;
 }
 
 h1 {
   margin: 0;
-  font-size: 1.75rem;
-  letter-spacing: 0.02em;
+  font-size: 1.35rem;
+  letter-spacing: 0;
 }
 
-.placeholder p {
-  line-height: 1.6;
-  margin: 0.75rem 0;
+.titleblock span,
+.definition-picker span {
+  color: #a9b4c0;
+  font-size: 0.78rem;
 }
 
-code {
-  background: #161b22;
-  border: 1px solid #30363d;
+.definition-picker {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.definition-picker select {
+  min-width: 9rem;
+  border: 1px solid #596574;
   border-radius: 4px;
-  padding: 0 0.3em;
-  font-size: 0.95em;
+  padding: 0.35rem 0.45rem;
+  background: #181d23;
+  color: #edf1f5;
+  font: inherit;
+}
+
+.face-selector {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.face-button {
+  min-width: 5.5rem;
+  border: 1px solid #596574;
+  border-radius: 4px;
+  padding: 0.45rem 0.65rem;
+  background: #181d23;
+  color: #d8e0e8;
+  font: inherit;
+  cursor: pointer;
+}
+
+.face-button:hover {
+  border-color: #8da2b8;
+}
+
+.face-button.selected {
+  border-color: #7cc7a2;
+  background: #173027;
+  color: #f2fff8;
+}
+
+.workspace {
+  min-height: 18rem;
+}
+
+.facet-view {
+  border: 1px solid #38404a;
+  border-radius: 6px;
+  background: #151a20;
+}
+
+.facet-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid #38404a;
+  color: #a9b4c0;
+}
+
+.facet-header strong {
+  color: #edf1f5;
+}
+
+.facet-grid {
+  min-height: 10rem;
+  margin: 0;
+  padding: 1rem;
+  overflow-x: auto;
+  color: #f6fbff;
+  font: inherit;
+  line-height: 1.55;
+  white-space: pre;
 }
 
 .footer {
   display: grid;
   gap: 0.35rem;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   padding-top: 1rem;
-  border-top: 1px solid #30363d;
-  color: #9da7b3;
+  border-top: 1px solid #38404a;
+  color: #a9b4c0;
   font-size: 0.8rem;
+}
+
+@media (max-width: 720px) {
+  .app {
+    padding: 1rem;
+  }
+
+  .topbar {
+    grid-template-columns: auto 1fr;
+  }
+
+  .definition-picker {
+    grid-column: 1 / -1;
+  }
+
+  .face-button {
+    min-width: 4.8rem;
+    flex: 1 1 4.8rem;
+  }
 }

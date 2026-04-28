@@ -87,23 +87,23 @@ Snapshot of where the project is. Updated as milestones close.
 
 ## In flight
 
-**M6 -- `discoveryone-web-shell`.** Planned and ready to start.
-All six Power `facet-snapshot` baselines are GREEN and render the
-same stable projections as `d1 face`. Current state is RED for
-`d1_web_facet_front_html_snapshot`, which still reports the web
-snapshot scaffold failure.
+**M6 -- `discoveryone-web-shell`.** In progress. All six Power
+`facet-snapshot` baselines are GREEN and render the same stable
+projections as `d1 face`. `d1_web_facet_front_html_snapshot` is
+GREEN for the bundled Power definition, with the Yew shell rendering
+`DefinitionPicker`, `FaceSelector`, and `FacetView`.
 
 The next session that picks up feature work should:
 
 1. Read this file.
 2. Read `docs/plan.md` section 8 (M6 work list).
 3. Run `agentrail next` (per `CLAUDE.md`).
-4. Continue the M6 web shell work.
+4. Continue the M6 web runtime panel work.
 
 ## Up next
 
-Wire the Yew shell so `d1_web_facet_front_html_snapshot` renders
-the Power Front facet.
+Add the M6 browser/demo baseline for running Power with `n=2,e=8`
+through the web-side runtime.
 
 ## Open questions parked
 
