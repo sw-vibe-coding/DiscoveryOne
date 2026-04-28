@@ -6,3 +6,7 @@ license.workspace = true
 authors.workspace = true
 repository.workspace = true
 description = "DiscoveryOne WASM emitter: stack IR to WAT, assembled to .wasm bytes."
+
+[dependencies]
+wasmtime = "38"
+wat = "1"

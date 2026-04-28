@@ -1,4 +1,4 @@
 command = "scripts/run-fixture.sh run examples/power.d1 --inputs n=2,e=8"
 timeout = 60
-exit_code = 1
-desc = "d1 run RED: Power 2^8 WASM path is not implemented yet"
+exit_code = 0
+desc = "d1 run: Power 2^8 equals 256 via WASM"

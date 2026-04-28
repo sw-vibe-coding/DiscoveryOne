@@ -15,6 +15,7 @@ path = "src/main.rs"
 [dependencies]
 clap = { workspace = true }
 d1-check = { path = "../d1-check" }
+d1-emit-wasm = { path = "../d1-emit-wasm" }
 d1-interp = { path = "../d1-interp" }
 d1-ir = { path = "../d1-ir" }
 d1-lex = { path = "../d1-lex" }

@@ -25,10 +25,10 @@ Snapshot of where the project is. Updated as milestones close.
   `d1_interp_power_2_8_eq_256` and
   `d1_interp_power_5_0_eq_1` are GREEN with the reference
   interpreter scaffold.
-  `d1_wasm_power_2_8_eq_256` captures the current RED `d1 run`
-  scaffold failure before the WASM runtime path lands.
+  `d1_wasm_power_2_8_eq_256` is GREEN through the minimal
+  WAT/Wasmtime runtime path.
   Software Wrighter checklist metadata is clean.
-- **Last meaningful commit:** Power WASM run RED baseline.
+- **Last meaningful commit:** Power WASM run 2^8 GREEN baseline.
 
 ## Done
 
@@ -79,9 +79,10 @@ Snapshot of where the project is. Updated as milestones close.
 ## In flight
 
 **M5 -- `discoveryone-wasm-emit`.** Planned and ready to start.
-Current state is RED for `d1_wasm_power_2_8_eq_256`: `d1 run
-examples/power.d1 --inputs n=2,e=8` still reports the CLI
-scaffold failure. All M4 IR/interpreter baselines remain GREEN.
+`d1_wasm_power_2_8_eq_256` is GREEN: `d1 run
+examples/power.d1 --inputs n=2,e=8` returns `256` through a
+minimal WAT/Wasmtime runtime path. All M4 IR/interpreter
+baselines remain GREEN.
 
 The next session that picks up feature work should:
 
@@ -92,8 +93,7 @@ The next session that picks up feature work should:
 
 ## Up next
 
-Implement the minimal WASM run path that turns
-`d1_wasm_power_2_8_eq_256` GREEN.
+Add and pass `d1_wasm_power_5_0_eq_1`.
 
 ## Open questions parked
 
