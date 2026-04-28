@@ -1,0 +1,1 @@
+Implemented rear-face projection for the Power fixture and completed all planned M2 face projections.

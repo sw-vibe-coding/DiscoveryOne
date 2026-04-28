@@ -1,6 +1,6 @@
 number = 15
 slug = "source-loader-face-rear-green"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: source-loader-face-rear-green
 
@@ -8,4 +8,5 @@ Implement the minimal rear-face projec..."""
 role = "legacy"
 context_files = []
 created_at = "2026-04-27T18:38:30"
-commits = []
+completed_at = "2026-04-27T19:22:50"
+commits = ["563b16bea994186241b7ad32bbf24cab56a4dfce"]
