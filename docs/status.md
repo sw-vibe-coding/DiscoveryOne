@@ -29,11 +29,10 @@ Snapshot of where the project is. Updated as milestones close.
   are GREEN through the minimal WAT/Wasmtime runtime path.
   `d1_wasm_interp_parity_corpus` is GREEN and verifies the
   current Power interpreter and WASM outputs match.
-  `d1_facet_snapshot_power_front` is GREEN through the existing
-  source projection path.
+  all six `d1_facet_snapshot_power_*` baselines are GREEN
+  through the existing source projection path.
   Software Wrighter checklist metadata is clean.
-- **Last meaningful commit:** Power front facet snapshot GREEN
-  baseline.
+- **Last meaningful commit:** All Power facet snapshots GREEN.
 
 ## Done
 
@@ -87,9 +86,8 @@ Snapshot of where the project is. Updated as milestones close.
 ## In flight
 
 **M6 -- `discoveryone-web-shell`.** Planned and ready to start.
-`d1_facet_snapshot_power_front` is GREEN:
-`d1 facet-snapshot examples/power.d1 --face front` renders the
-same stable projection as `d1 face`.
+All six Power `facet-snapshot` baselines are GREEN and render the
+same stable projections as `d1 face`.
 
 The next session that picks up feature work should:
 
@@ -100,8 +98,8 @@ The next session that picks up feature work should:
 
 ## Up next
 
-Add GREEN `facet-snapshot` baselines for the remaining Power
-faces.
+Add the RED web-shell HTML snapshot baseline for the Power Front
+facet.
 
 ## Open questions parked
 

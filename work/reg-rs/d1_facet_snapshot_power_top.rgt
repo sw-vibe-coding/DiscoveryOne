@@ -1,0 +1,4 @@
+command = "scripts/run-fixture.sh facet-snapshot examples/power.d1 --face top"
+timeout = 60
+exit_code = 0
+desc = "d1 facet-snapshot: Power top facet"
