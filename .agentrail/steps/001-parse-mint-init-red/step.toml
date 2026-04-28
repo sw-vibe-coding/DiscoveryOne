@@ -1,0 +1,11 @@
+number = 1
+slug = "parse-mint-init-red"
+status = "pending"
+description = """
+# Step: parse-mint-init-red
+
+Create the first M3 RED baseline for parsing a s..."""
+role = "production"
+context_files = []
+created_at = "2026-04-27T20:24:10"
+commits = []
