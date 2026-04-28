@@ -1,0 +1,10 @@
+*UnboundName
+  @front
+    n -> p
+    p <- missing + n
+
+  @left
+    n : Int
+
+  @right
+    p : Int

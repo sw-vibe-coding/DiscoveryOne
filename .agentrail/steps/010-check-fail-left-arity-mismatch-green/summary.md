@@ -1,0 +1,1 @@
+Implemented the minimal E007 checker path for left-facet input arity mismatch and rebased the baseline to GREEN.

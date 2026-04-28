@@ -1,0 +1,4 @@
+command = "scripts/run-fixture.sh check tests/check/unbound_name.d1"
+timeout = 60
+exit_code = 1
+desc = "d1 check RED: unbound name diagnostic is not implemented yet"

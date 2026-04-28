@@ -18,8 +18,10 @@ Snapshot of where the project is. Updated as milestones close.
   `d1_check_fail_left_arity_mismatch` is GREEN with stable
   checker error code `E007` for the first input arity mismatch
   fixture.
+  `d1_check_fail_unbound_name` captures the current RED checker
+  scaffold failure for an unbound-name fixture.
   Software Wrighter checklist metadata is clean.
-- **Last meaningful commit:** Left arity mismatch check GREEN baseline.
+- **Last meaningful commit:** Unbound name check RED baseline.
 
 ## Done
 
@@ -66,10 +68,13 @@ Snapshot of where the project is. Updated as milestones close.
 
 ## In flight
 
-**M3 -- `discoveryone-parse-check`.** Current state is GREEN for
-the planned parse baselines, `d1_check_pass_power`, and
-`d1_check_fail_left_arity_mismatch`. `sw-checklist` must remain
-clean before each step is committed.
+**M3 -- `discoveryone-parse-check`.** Current state is RED for
+`d1_check_fail_unbound_name`: the fixture references `missing`
+from a front-facet expression, but the checker still reports the
+generic scaffold failure. The planned parse baselines,
+`d1_check_pass_power`, and `d1_check_fail_left_arity_mismatch`
+are GREEN. `sw-checklist` must remain clean before each step is
+committed.
 
 The next session that picks up feature work should:
 
@@ -80,8 +85,9 @@ The next session that picks up feature work should:
 
 ## Up next
 
-**M3 -- `discoveryone-parse-check`.** Add the RED baseline for
-`d1_check_fail_unbound_name`. See `docs/plan.md` section 5.
+**M3 -- `discoveryone-parse-check`.** Implement the minimal
+checker behavior that turns `d1_check_fail_unbound_name` GREEN
+with a stable checker error code. See `docs/plan.md` section 5.
 
 ## Open questions parked
 
