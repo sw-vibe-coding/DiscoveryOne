@@ -1,4 +1,4 @@
 command = "scripts/run-fixture.sh face examples/power.d1 --face bottom"
 timeout = 60
-exit_code = 1
-desc = "d1 face RED: bottom projection is not supported yet"
+exit_code = 0
+desc = "d1 face: Power bottom projection renders deterministic ASCII"
