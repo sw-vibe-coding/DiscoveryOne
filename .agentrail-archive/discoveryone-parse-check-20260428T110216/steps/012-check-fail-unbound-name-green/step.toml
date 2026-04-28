@@ -1,6 +1,6 @@
 number = 12
 slug = "check-fail-unbound-name-green"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: check-fail-unbound-name-green
 
@@ -8,4 +8,5 @@ Implement the minimal checker behavior..."""
 role = "legacy"
 context_files = []
 created_at = "2026-04-28T10:51:44"
-commits = []
+completed_at = "2026-04-28T11:01:59"
+commits = ["81343d841c1feb79907080c683b5bcea27b1e681"]

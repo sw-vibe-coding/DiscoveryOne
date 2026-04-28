@@ -1,0 +1,1 @@
+Implemented the minimal E008 checker path for unbound names and rebased d1_check_fail_unbound_name to GREEN.
