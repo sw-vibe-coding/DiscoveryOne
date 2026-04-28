@@ -1,6 +1,6 @@
 number = 3
 slug = "facet-snapshot-all-faces"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: facet-snapshot-all-faces
 
@@ -8,4 +8,5 @@ Add GREEN facet-snapshot baselines for the ..."""
 role = "production"
 context_files = []
 created_at = "2026-04-28T15:41:54"
-commits = []
+completed_at = "2026-04-28T16:14:10"
+commits = ["95da8c9a09b1e091edb81817b1f5f9d29e8ebf31"]

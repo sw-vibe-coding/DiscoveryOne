@@ -1,0 +1,1 @@
+Added GREEN facet-snapshot baselines for the remaining Power faces using the existing facet-snapshot projection path.
