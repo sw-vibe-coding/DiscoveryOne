@@ -9,3 +9,10 @@ fn runs_power_2_8() {
         .expect("Power should run");
     assert_eq!(output, "256\n");
 }
+
+#[test]
+fn runs_power_5_0() {
+    let output = d1_interp::run_and_dump("*Power\n", &["n=5".to_owned(), "e=0".to_owned()])
+        .expect("Power should run");
+    assert_eq!(output, "1\n");
+}

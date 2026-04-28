@@ -4,7 +4,7 @@ Snapshot of where the project is. Updated as milestones close.
 
 ## Today (2026-04-28)
 
-- **Phase:** M4 IR/interpreter in progress.
+- **Phase:** M4 IR/interpreter complete.
 - **Code:** Cargo workspace, placeholder library crates, Yew web
   shell, build/run scripts, and first reg-rs smoke baseline are
   in place. `d1 lex` handles the arity-suffix, mint-operator,
@@ -22,10 +22,12 @@ Snapshot of where the project is. Updated as milestones close.
   error code `E008` for the first unbound-name fixture.
   `d1_ir_power_dump` is GREEN with a minimal deterministic
   stack-IR dump for the Power fixture.
-  `d1_interp_power_2_8_eq_256` is GREEN with the reference
+  `d1_interp_power_2_8_eq_256` and
+  `d1_interp_power_5_0_eq_1` are GREEN with the reference
   interpreter scaffold.
   Software Wrighter checklist metadata is clean.
-- **Last meaningful commit:** Power interpreter 2^8 GREEN baseline.
+- **Last meaningful commit:** Power interpreter zero-exponent
+  GREEN baseline.
 
 ## Done
 
@@ -72,23 +74,20 @@ Snapshot of where the project is. Updated as milestones close.
 
 ## In flight
 
-**M4 -- `discoveryone-ir-interp`.** Current state is RED for
-`d1_interp_power_5_0_eq_1`, while `d1_ir_power_dump`,
-`d1_interp_power_2_8_eq_256`, and the M3 parse/check baselines
-are GREEN. `sw-checklist` must remain clean before each step is
-committed.
+No active feature saga. M4 IR/interpreter is complete:
+`d1_ir_power_dump`, `d1_interp_power_2_8_eq_256`, and
+`d1_interp_power_5_0_eq_1` are GREEN.
 
 The next session that picks up feature work should:
 
 1. Read this file.
-2. Read `docs/plan.md` section 6 (M4 work list).
+2. Read `docs/plan.md` section 7 (M5 work list).
 3. Run `agentrail next` (per `CLAUDE.md`).
-4. Continue the M4 IR/interpreter work.
+4. Plan the next demo milestone.
 
 ## Up next
 
-**M4 -- `discoveryone-ir-interp`.** Add and pass
-`d1_interp_power_5_0_eq_1`. See `docs/plan.md` section 6.
+Archive M4 and create the next saga toward a web demo milestone.
 
 ## Open questions parked
 
