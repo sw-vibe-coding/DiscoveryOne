@@ -1,0 +1,1 @@
+Added d1_wasm_power_2_8_eq_256 as an expected RED baseline for d1 run examples/power.d1 --inputs n=2,e=8, capturing the current not-yet-implemented WASM run path.
