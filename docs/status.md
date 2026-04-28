@@ -87,23 +87,23 @@ Snapshot of where the project is. Updated as milestones close.
 
 ## In flight
 
-**M6 -- `discoveryone-web-shell`.** In progress. All six Power
+**M6 -- `discoveryone-web-shell`.** Complete. All six Power
 `facet-snapshot` baselines are GREEN and render the same stable
-projections as `d1 face`. `d1_web_facet_front_html_snapshot` is
-GREEN for the bundled Power definition, with the Yew shell rendering
-`DefinitionPicker`, `FaceSelector`, and `FacetView`.
+projections as `d1 face`. `d1_web_facet_front_html_snapshot` and
+`d1_web_run_power_2_8` are GREEN for the bundled Power definition,
+with the Yew shell rendering `DefinitionPicker`, `FaceSelector`,
+`FacetView`, and `RunPanel`.
 
 The next session that picks up feature work should:
 
 1. Read this file.
 2. Read `docs/plan.md` section 8 (M6 work list).
 3. Run `agentrail next` (per `CLAUDE.md`).
-4. Continue the M6 web runtime panel work.
+4. Start the next planned milestone or add the next saga.
 
 ## Up next
 
-Add the M6 browser/demo baseline for running Power with `n=2,e=8`
-through the web-side runtime.
+Plan the next saga after M6 web shell completion.
 
 ## Open questions parked
 

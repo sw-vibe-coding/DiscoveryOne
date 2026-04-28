@@ -1,0 +1,1 @@
+Rendered the bundled Power front facet in the Yew shell with DefinitionPicker, FaceSelector, and FacetView, and made d1_web_facet_front_html_snapshot GREEN via a deterministic snapshot script.

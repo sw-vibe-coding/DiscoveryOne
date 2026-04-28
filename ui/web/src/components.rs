@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::{DEFINITIONS, FACES, Face, facet_rows};
+use crate::{DEFINITIONS, FACES, Face, facet_rows, power_run_2_8_output};
 
 #[function_component(DefinitionPicker)]
 pub(crate) fn definition_picker() -> Html {
@@ -67,16 +67,22 @@ pub(crate) fn facet_view(props: &FacetViewProps) -> Html {
     }
 }
 
-#[function_component(BuildFooter)]
-pub(crate) fn build_footer() -> Html {
+#[function_component(RunPanel)]
+pub(crate) fn run_panel() -> Html {
+    let output = power_run_2_8_output();
+
     html! {
-        <footer class="footer">
-            <span>{ "Copyright: Copyright (c) 2026 Michael A Wright" }</span>
-            <span>{ "License: MIT" }</span>
-            <span>{ "Repository: https://github.com/sw-vibe-coding/DiscoveryOne" }</span>
-            <span>{ "Build Host: unknown" }</span>
-            <span>{ "Build Commit: unknown" }</span>
-            <span>{ "Build Time: 1970-01-01 00:00:00 UTC" }</span>
-        </footer>
+        <aside class="run-panel" data-definition="Power">
+            <header class="run-header">
+                <span>{ "RunPanel" }</span>
+                <strong>{ "Power" }</strong>
+            </header>
+            <div class="run-inputs" aria-label="Power inputs">
+                <label><span>{ "n" }</span><input value="2" readonly=true /></label>
+                <label><span>{ "e" }</span><input value="8" readonly=true /></label>
+                <button type="button">{ "Run" }</button>
+            </div>
+            <output class="run-output" aria-label="Power output">{ output }</output>
+        </aside>
     }
 }

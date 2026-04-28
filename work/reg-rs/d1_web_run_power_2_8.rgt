@@ -1,0 +1,4 @@
+command = "scripts/snapshot-web-run-power-2-8.sh"
+timeout = 60
+exit_code = 0
+desc = "d1 web: RunPanel runs Power with n=2,e=8"

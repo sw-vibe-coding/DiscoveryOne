@@ -95,16 +95,21 @@ h1 {
 }
 
 .workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 22rem);
+  gap: 1rem;
   min-height: 18rem;
 }
 
-.facet-view {
+.facet-view,
+.run-panel {
   border: 1px solid #38404a;
   border-radius: 6px;
   background: #151a20;
 }
 
-.facet-header {
+.facet-header,
+.run-header {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
@@ -113,7 +118,8 @@ h1 {
   color: #a9b4c0;
 }
 
-.facet-header strong {
+.facet-header strong,
+.run-header strong {
   color: #edf1f5;
 }
 
@@ -126,6 +132,53 @@ h1 {
   font: inherit;
   line-height: 1.55;
   white-space: pre;
+}
+
+.run-panel {
+  align-self: start;
+}
+
+.run-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 0.55rem;
+  padding: 1rem;
+}
+
+.run-inputs label {
+  display: grid;
+  gap: 0.3rem;
+  color: #a9b4c0;
+  font-size: 0.78rem;
+}
+
+.run-inputs input,
+.run-inputs button {
+  width: 100%;
+  border: 1px solid #596574;
+  border-radius: 4px;
+  padding: 0.45rem 0.55rem;
+  background: #181d23;
+  color: #edf1f5;
+  font: inherit;
+}
+
+.run-inputs button {
+  align-self: end;
+  border-color: #7cc7a2;
+  background: #173027;
+  cursor: pointer;
+}
+
+.run-output {
+  display: block;
+  margin: 0 1rem 1rem;
+  border: 1px solid #38404a;
+  border-radius: 4px;
+  padding: 0.8rem;
+  background: #101419;
+  color: #f6fbff;
+  font-size: 1.2rem;
 }
 
 .footer {
@@ -149,6 +202,10 @@ h1 {
 
   .definition-picker {
     grid-column: 1 / -1;
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
   }
 
   .face-button {

@@ -1,8 +1,9 @@
 use yew::prelude::*;
 
 mod components;
+mod snapshots;
 
-use components::{BuildFooter, DefinitionPicker, FaceSelector, FacetView};
+use components::{DefinitionPicker, FaceSelector, FacetView, RunPanel};
 
 pub(crate) const POWER_SOURCE: &str = include_str!("../../../examples/power.d1");
 pub(crate) const DEFINITIONS: &[&str] = &["Power"];
@@ -33,28 +34,6 @@ pub(crate) const FACES: [Face; 6] = [
     },
 ];
 pub(crate) const FRONT: Face = FACES[0];
-const SNAPSHOT_BEFORE_ROWS: &str = r#"<main class="app">
-  <header class="topbar">
-    <h1>DiscoveryOne</h1>
-    <label class="definition-picker"><span>Definition</span><select aria-label="Definition"><option value="Power">Power</option></select></label>
-    <nav class="face-selector" aria-label="Face">
-      <button type="button" class="face-button selected" aria-pressed="true">Front</button>
-      <button type="button" class="face-button" aria-pressed="false">Left</button>
-      <button type="button" class="face-button" aria-pressed="false">Right</button>
-      <button type="button" class="face-button" aria-pressed="false">Top</button>
-      <button type="button" class="face-button" aria-pressed="false">Bottom</button>
-      <button type="button" class="face-button" aria-pressed="false">Rear</button>
-    </nav>
-  </header>
-  <section class="workspace">
-    <article class="facet-view" data-definition="Power" data-face="front">
-      <header class="facet-header"><span>Power</span><strong>Front</strong></header>
-      <pre class="facet-grid" aria-label="Power Front facet">"#;
-const SNAPSHOT_AFTER_ROWS: &str = r#"</pre>
-    </article>
-  </section>
-</main>
-"#;
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub(crate) struct Face {
@@ -82,9 +61,24 @@ pub fn app() -> Html {
             </header>
             <section class="workspace">
                 <FacetView face={*current_face} />
+                <RunPanel />
             </section>
             <BuildFooter />
         </main>
+    }
+}
+
+#[function_component(BuildFooter)]
+fn build_footer() -> Html {
+    html! {
+        <footer class="footer">
+            <span>{ "Copyright: Copyright (c) 2026 Michael A Wright" }</span>
+            <span>{ "License: MIT" }</span>
+            <span>{ "Repository: https://github.com/sw-vibe-coding/DiscoveryOne" }</span>
+            <span>{ "Build Host: unknown" }</span>
+            <span>{ "Build Commit: unknown" }</span>
+            <span>{ "Build Time: 1970-01-01 00:00:00 UTC" }</span>
+        </footer>
     }
 }
 
@@ -97,7 +91,11 @@ pub(crate) fn facet_rows(face: Face) -> Vec<String> {
         .collect()
 }
 
-pub fn power_front_facet_html_snapshot() -> String {
-    let rows = facet_rows(FRONT).join("\n");
-    format!("{SNAPSHOT_BEFORE_ROWS}{rows}{SNAPSHOT_AFTER_ROWS}")
+pub(crate) fn power_run_2_8_output() -> String {
+    d1_interp::run_and_dump(POWER_SOURCE, &["n=2".to_owned(), "e=8".to_owned()])
+        .expect("bundled Power fixture should run")
+        .trim_end()
+        .to_owned()
 }
+
+pub use snapshots::{power_front_facet_html_snapshot, power_run_2_8_html_snapshot};

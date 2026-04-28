@@ -1,6 +1,6 @@
 number = 5
 slug = "web-facet-front-green"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: web-facet-front-green
 
@@ -8,4 +8,5 @@ Wire the Yew web shell so the Power Front face..."""
 role = "production"
 context_files = []
 created_at = "2026-04-28T15:42:11"
-commits = []
+completed_at = "2026-04-28T16:42:32"
+commits = ["728fe2ded36d2264365b96eced3680d6cb305b80"]
