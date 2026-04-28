@@ -1,0 +1,1 @@
+Added and passed d1_interp_power_5_0_eq_1 for Power with n=5,e=0, confirming the existing interpreter path returns 1 for zero exponent.

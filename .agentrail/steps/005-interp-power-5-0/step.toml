@@ -1,6 +1,6 @@
 number = 5
 slug = "interp-power-5-0"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: interp-power-5-0
 
@@ -8,4 +8,5 @@ Add the second M4 interpreter baseline for Power wi..."""
 role = "production"
 context_files = []
 created_at = "2026-04-28T11:23:28"
-commits = []
+completed_at = "2026-04-28T12:22:33"
+commits = ["62e6bd3d48090c60f37f00ad56b14c3a2b36b5f1"]
