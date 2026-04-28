@@ -1,0 +1,1 @@
+Verified and closed the CLI version build-info maintenance record.

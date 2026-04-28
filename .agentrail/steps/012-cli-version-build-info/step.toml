@@ -1,6 +1,6 @@
 number = 12
 slug = "cli-version-build-info"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: cli-version-build-info
 
@@ -8,4 +8,8 @@ Add real build metadata to `d1 -V` / `d1 --ve..."""
 role = "meta"
 context_files = []
 created_at = "2026-04-27T16:55:17"
-commits = ["a133b47e1b7f1d6498d1b330cae2c3cee51af261"]
+completed_at = "2026-04-27T18:18:21"
+commits = [
+    "a133b47e1b7f1d6498d1b330cae2c3cee51af261",
+    "c3e3cb0d057891db7fc9924ea3bf8c16bec4322f",
+]
