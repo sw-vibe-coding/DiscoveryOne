@@ -151,6 +151,7 @@ fn main() -> ExitCode {
         Cmd::Run { file, inputs } => run_wasm(&file, &inputs),
         Cmd::Interp { file, inputs } => run_interp(&file, &inputs),
         Cmd::Face { file, face } => run_source(&file, Some(&face), "face"),
+        Cmd::FacetSnapshot { file, face } => run_source(&file, Some(&face), "facet-snapshot"),
         Cmd::Normalize { file } => run_source(&file, None, "normalize"),
         cmd => {
             eprintln!("d1 {}: not yet implemented", cmd.name());

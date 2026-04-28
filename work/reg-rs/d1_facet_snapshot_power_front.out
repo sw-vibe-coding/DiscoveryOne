@@ -1,0 +1,3 @@
+n e -> p
+p <- 1
+loop e times: p <- p * n
