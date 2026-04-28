@@ -25,11 +25,10 @@ Snapshot of where the project is. Updated as milestones close.
   `d1_interp_power_2_8_eq_256` and
   `d1_interp_power_5_0_eq_1` are GREEN with the reference
   interpreter scaffold.
-  The M5 `discoveryone-wasm-emit` saga is planned with RED/GREEN
-  Power WASM run baselines and an interpreter-vs-WASM parity
-  watchdog.
+  `d1_wasm_power_2_8_eq_256` captures the current RED `d1 run`
+  scaffold failure before the WASM runtime path lands.
   Software Wrighter checklist metadata is clean.
-- **Last meaningful commit:** M5 WASM emit saga setup.
+- **Last meaningful commit:** Power WASM run RED baseline.
 
 ## Done
 
@@ -80,20 +79,21 @@ Snapshot of where the project is. Updated as milestones close.
 ## In flight
 
 **M5 -- `discoveryone-wasm-emit`.** Planned and ready to start.
-The first step is `wasm-power-2-8-red`, which adds the RED
-baseline for `d1 run examples/power.d1 --inputs n=2,e=8`.
+Current state is RED for `d1_wasm_power_2_8_eq_256`: `d1 run
+examples/power.d1 --inputs n=2,e=8` still reports the CLI
+scaffold failure. All M4 IR/interpreter baselines remain GREEN.
 
 The next session that picks up feature work should:
 
 1. Read this file.
 2. Read `docs/plan.md` section 7 (M5 work list).
 3. Run `agentrail next` (per `CLAUDE.md`).
-4. Start `wasm-power-2-8-red`.
+4. Continue the M5 WASM emit work.
 
 ## Up next
 
-Run the first M5 step: add `d1_wasm_power_2_8_eq_256` as a RED
-baseline.
+Implement the minimal WASM run path that turns
+`d1_wasm_power_2_8_eq_256` GREEN.
 
 ## Open questions parked
 
