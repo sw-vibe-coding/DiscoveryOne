@@ -1,6 +1,6 @@
 number = 13
 slug = "source-loader-face-bottom-green"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: source-loader-face-bottom-green
 
@@ -8,4 +8,5 @@ Implement the minimal bottom-face pr..."""
 role = "legacy"
 context_files = []
 created_at = "2026-04-27T18:18:21"
-commits = []
+completed_at = "2026-04-27T18:32:30"
+commits = ["b30d5df99c6570c179914d2dffec6952d0b904ef"]

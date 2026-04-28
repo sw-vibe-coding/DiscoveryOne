@@ -1,0 +1,1 @@
+Implemented bottom-face projection for the Power fixture.

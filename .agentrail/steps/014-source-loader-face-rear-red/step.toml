@@ -1,0 +1,11 @@
+number = 14
+slug = "source-loader-face-rear-red"
+status = "pending"
+description = """
+# Step: source-loader-face-rear-red
+
+Create the next M2 RED baseline for proj..."""
+role = "legacy"
+context_files = []
+created_at = "2026-04-27T18:32:30"
+commits = []
