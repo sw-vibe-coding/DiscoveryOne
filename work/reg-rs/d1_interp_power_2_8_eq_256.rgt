@@ -1,0 +1,4 @@
+command = "scripts/run-fixture.sh interp examples/power.d1 --inputs n=2,e=8"
+timeout = 60
+exit_code = 1
+desc = "d1 interp RED: Power 2^8 is not implemented yet"
