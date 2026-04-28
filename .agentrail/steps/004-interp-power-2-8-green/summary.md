@@ -1,0 +1,1 @@
+Implemented the minimal Power interpreter path for n=2,e=8 and rebased d1_interp_power_2_8_eq_256 to GREEN.
