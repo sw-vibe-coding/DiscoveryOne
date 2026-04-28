@@ -6,3 +6,6 @@ license.workspace = true
 authors.workspace = true
 repository.workspace = true
 description = "DiscoveryOne parser: builds AST and registers user-minted syntax templates."
+
+[dependencies]
+d1-lex = { path = "../d1-lex" }

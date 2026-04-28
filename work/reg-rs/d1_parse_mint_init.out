@@ -1,0 +1,4 @@
+(module
+  (facet front
+    (assign (name n) (int 0)))
+)

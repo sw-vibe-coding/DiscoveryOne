@@ -2,16 +2,17 @@
 //!
 //! Subcommand surface defined in `docs/design.md` section 9.
 //! In the M0 scaffold (`discoveryone-scaffold`) every
-//! subcommand is a stub: it parses arguments, prints
-//! `not yet implemented` to stderr, and exits 1. Only
-//! `--help` and `--version` produce stable output, which the
-//! `d1_smoke_cli_help` reg-rs baseline locks in.
+//! subcommand starts as a stub: it parses arguments, prints
+//! `not yet implemented` to stderr, and exits 1 until its
+//! milestone lands.
 
-use std::fs;
 use std::path::PathBuf;
 use std::process::ExitCode;
 
 use clap::{Parser, Subcommand};
+
+mod commands;
+use commands::{run_lex, run_parse, run_source};
 
 const ABOUT: &str = "DiscoveryOne language driver. Test-harness CLI; see docs/design.md.";
 const LONG_ABOUT: &str = "\
@@ -140,39 +141,11 @@ fn main() -> ExitCode {
     let cli = Cli::parse();
     match cli.cmd {
         Cmd::Lex { file } => run_lex(&file),
+        Cmd::Parse { file } => run_parse(&file),
         Cmd::Face { file, face } => run_source(&file, Some(&face), "face"),
         Cmd::Normalize { file } => run_source(&file, None, "normalize"),
         cmd => {
             eprintln!("d1 {}: not yet implemented", cmd.name());
-            ExitCode::from(1)
-        }
-    }
-}
-
-fn run_lex(file: &PathBuf) -> ExitCode {
-    match fs::read_to_string(file) {
-        Ok(source) => {
-            print!("{}", d1_lex::dump_tokens(&d1_lex::lex(&source)));
-            ExitCode::SUCCESS
-        }
-        Err(err) => {
-            eprintln!("d1 lex: {}: {err}", file.display());
-            ExitCode::from(1)
-        }
-    }
-}
-
-fn run_source(file: &PathBuf, face: Option<&str>, command: &str) -> ExitCode {
-    match fs::read_to_string(file)
-        .map_err(|err| err.to_string())
-        .and_then(|source| d1_source::emit_layered(&source, face))
-    {
-        Ok(output) => {
-            print!("{output}");
-            ExitCode::SUCCESS
-        }
-        Err(err) => {
-            eprintln!("d1 {command}: {}: {err}", file.display());
             ExitCode::from(1)
         }
     }

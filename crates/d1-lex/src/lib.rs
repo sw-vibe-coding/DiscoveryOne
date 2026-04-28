@@ -2,6 +2,9 @@
 //! `docs/design.md` section 3; arrives in saga
 //! `discoveryone-lex` (M1).
 
+mod dump;
+pub use dump::dump_tokens;
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum AspectKind {
     Front,
@@ -23,6 +26,7 @@ pub enum Token<'src> {
     Int(i64),
     Ident(&'src str),
     RArrow,
+    LArrow,
     LParen,
     RParen,
     Eof,
@@ -92,6 +96,7 @@ fn lex_one<'src>(source: &'src str, bytes: &[u8], offset: usize) -> (Token<'src>
         }
         b'(' => (Token::LParen, offset + 1),
         b')' => (Token::RParen, offset + 1),
+        b'<' if bytes.get(offset + 1) == Some(&b'-') => (Token::LArrow, offset + 2),
         b'-' if bytes.get(offset + 1) == Some(&b'>') => (Token::RArrow, offset + 2),
         b'-' | b'0'..=b'9'
             if bytes[offset] != b'-' || bytes.get(offset + 1).is_some_and(u8::is_ascii_digit) =>
@@ -120,30 +125,4 @@ fn lex_at<'src>(source: &'src str, bytes: &[u8], offset: usize) -> (Token<'src>,
         .map_or((Token::Unknown(b'@'), offset + 1), |(_, aspect)| {
             (Token::AspectTag(*aspect), end)
         })
-}
-
-pub fn dump_tokens(tokens: &[Token<'_>]) -> String {
-    let mut dump = String::new();
-    for token in tokens {
-        match token {
-            Token::Mint => dump.push_str("MINT"),
-            Token::AspectTag(aspect) => {
-                let name = ASPECT_TAGS.iter().find(|(_, kind)| kind == aspect);
-                let name = name.map(|(name, _)| *name).unwrap_or("unknown");
-                dump.push_str(&format!("ASPECT {name}"));
-            }
-            Token::ZTag(value) => dump.push_str(&format!("ZTAG   {value}")),
-            Token::Hash(text) => dump.push_str(&format!("HASH   {text}")),
-            Token::Pct(value) => dump.push_str(&format!("PCT    {value}")),
-            Token::Int(value) => dump.push_str(&format!("INT    {value}")),
-            Token::Ident(text) => dump.push_str(&format!("IDENT  {text}")),
-            Token::RArrow => dump.push_str("RARROW"),
-            Token::LParen => dump.push_str("LPAREN"),
-            Token::RParen => dump.push_str("RPAREN"),
-            Token::Eof => dump.push_str("EOF"),
-            Token::Unknown(byte) => dump.push_str(&format!("UNK    {byte}")),
-        }
-        dump.push('\n');
-    }
-    dump
 }

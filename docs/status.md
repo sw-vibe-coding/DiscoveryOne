@@ -4,7 +4,7 @@ Snapshot of where the project is. Updated as milestones close.
 
 ## Today (2026-04-27)
 
-- **Phase:** M3 parse/check started.
+- **Phase:** M3 parse/check in progress.
 - **Code:** Cargo workspace, placeholder library crates, Yew web
   shell, build/run scripts, and first reg-rs smoke baseline are
   in place. `d1 lex` handles the arity-suffix, mint-operator,
@@ -12,10 +12,10 @@ Snapshot of where the project is. Updated as milestones close.
   literal lexer fixtures. `d1 normalize` now round-trips the
   Power layered-text fixture through the source loader path, and
   all six planned Power face projections render through `d1
-  face`. `d1_parse_mint_init` captures the first M3 RED
-  baseline against the current not-implemented parse path.
-  Software Wrighter checklist metadata is clean.
-- **Last meaningful commit:** Mint init parse RED baseline.
+  face`. `d1_parse_mint_init` is GREEN with a minimal Front
+  facet AST dump for `*n <- 0`. Software Wrighter checklist
+  metadata is clean.
+- **Last meaningful commit:** Mint init parse GREEN baseline.
 
 ## Done
 
@@ -63,10 +63,10 @@ Snapshot of where the project is. Updated as milestones close.
 ## In flight
 
 **M3 -- `discoveryone-parse-check`.** Current state is RED for
-`d1_parse_mint_init`: `tests/parser/mint_init.input` exists and
-`d1 parse` currently reports `not yet implemented`. Parser
-behavior is intentionally not implemented yet. `sw-checklist`
-must remain clean before each step is committed.
+`d1_parse_mint_signature`, while `d1_parse_mint_init` is GREEN:
+`tests/parser/mint_init.input` parses to one Front-facet
+assignment AST dump. `sw-checklist` must remain clean before
+each step is committed.
 
 The next session that picks up feature work should:
 
@@ -77,9 +77,8 @@ The next session that picks up feature work should:
 
 ## Up next
 
-**M3 -- `discoveryone-parse-check`.** Implement the parser
-scaffold needed to make `d1_parse_mint_init` green. See
-`docs/plan.md` section 5.
+**M3 -- `discoveryone-parse-check`.** Add the RED baseline for
+`d1_parse_mint_signature`. See `docs/plan.md` section 5.
 
 ## Open questions parked
 
