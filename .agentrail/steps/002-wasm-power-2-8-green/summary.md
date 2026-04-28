@@ -1,0 +1,1 @@
+Implemented the minimal WAT/Wasmtime run path for Power and rebased d1_wasm_power_2_8_eq_256 to GREEN.
