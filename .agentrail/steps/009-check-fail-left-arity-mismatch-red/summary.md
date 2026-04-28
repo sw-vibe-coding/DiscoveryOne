@@ -1,0 +1,1 @@
+Added the left-facet arity mismatch RED fixture and reg-rs baseline for the current checker scaffold failure.

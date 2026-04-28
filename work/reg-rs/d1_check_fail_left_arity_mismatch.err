@@ -1,1 +1,3 @@
-d1 check: tests/check/left_arity_mismatch.d1: unsupported source for checker scaffold
+d1 check: tests/check/left_arity_mismatch.d1: E007 left-facet input arity mismatch
+  at definition 'LeftArityMismatch', face Left, (x=0, y=6, z=0)
+  Front declares 2 inputs (n, e); Left lists 3 names.

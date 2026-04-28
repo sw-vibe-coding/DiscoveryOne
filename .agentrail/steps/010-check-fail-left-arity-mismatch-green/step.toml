@@ -1,0 +1,11 @@
+number = 10
+slug = "check-fail-left-arity-mismatch-green"
+status = "in-progress"
+description = """
+# Step: check-fail-left-arity-mismatch-green
+
+Implement the minimal checker b..."""
+role = "legacy"
+context_files = []
+created_at = "2026-04-28T09:47:42"
+commits = []
