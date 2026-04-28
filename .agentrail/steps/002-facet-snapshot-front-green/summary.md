@@ -1,0 +1,1 @@
+Wired d1 facet-snapshot through the existing source projection path and rebased d1_facet_snapshot_power_front to GREEN.
