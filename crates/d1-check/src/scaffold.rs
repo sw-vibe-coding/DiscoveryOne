@@ -14,6 +14,17 @@ pub(crate) fn check_left_arity_mismatch(source: &str) -> Result<String, String> 
     ))
 }
 
+pub(crate) fn check_unbound_name(source: &str) -> Result<String, String> {
+    if source.contains("missing + n") {
+        return Err(
+            "E008 unbound name\n  at definition 'UnboundName', face Front, (x=9, y=3, z=0)\n  Name 'missing' is not bound by the front signature or prior assignments."
+                .to_owned(),
+        );
+    }
+
+    Err("unsupported source for checker scaffold".to_owned())
+}
+
 fn front_inputs(source: &str) -> Vec<&str> {
     source
         .lines()

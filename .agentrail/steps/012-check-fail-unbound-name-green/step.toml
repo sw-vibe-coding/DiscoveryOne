@@ -1,0 +1,11 @@
+number = 12
+slug = "check-fail-unbound-name-green"
+status = "in-progress"
+description = """
+# Step: check-fail-unbound-name-green
+
+Implement the minimal checker behavior..."""
+role = "legacy"
+context_files = []
+created_at = "2026-04-28T10:51:44"
+commits = []

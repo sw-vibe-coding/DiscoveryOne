@@ -1,0 +1,1 @@
+Added the unbound-name RED fixture and reg-rs baseline for the current checker scaffold failure.
