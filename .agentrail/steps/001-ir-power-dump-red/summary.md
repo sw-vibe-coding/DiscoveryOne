@@ -1,0 +1,1 @@
+Added the d1_ir_power_dump RED baseline for the current d1 lower scaffold failure.

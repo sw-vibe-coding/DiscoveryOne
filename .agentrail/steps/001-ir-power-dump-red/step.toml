@@ -1,6 +1,6 @@
 number = 1
 slug = "ir-power-dump-red"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: ir-power-dump-red
 
@@ -8,4 +8,5 @@ Create the first M4 RED baseline for dumping stack..."""
 role = "production"
 context_files = []
 created_at = "2026-04-28T11:23:02"
-commits = []
+completed_at = "2026-04-28T11:26:10"
+commits = ["4f0276972cee12db5220f3d48c4233d1e1ff4d07"]
