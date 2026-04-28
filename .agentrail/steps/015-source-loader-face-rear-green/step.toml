@@ -1,0 +1,11 @@
+number = 15
+slug = "source-loader-face-rear-green"
+status = "pending"
+description = """
+# Step: source-loader-face-rear-green
+
+Implement the minimal rear-face projec..."""
+role = "legacy"
+context_files = []
+created_at = "2026-04-27T18:38:30"
+commits = []
