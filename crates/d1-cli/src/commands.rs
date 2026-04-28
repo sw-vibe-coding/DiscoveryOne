@@ -31,6 +31,22 @@ pub fn run_parse(file: &Path) -> ExitCode {
     }
 }
 
+pub fn run_check(file: &Path) -> ExitCode {
+    match fs::read_to_string(file)
+        .map_err(|err| err.to_string())
+        .and_then(|source| d1_check::check_and_dump(&source))
+    {
+        Ok(output) => {
+            print!("{output}");
+            ExitCode::SUCCESS
+        }
+        Err(err) => {
+            eprintln!("d1 check: {}: {err}", file.display());
+            ExitCode::from(1)
+        }
+    }
+}
+
 pub fn run_source(file: &Path, face: Option<&str>, command: &str) -> ExitCode {
     match fs::read_to_string(file)
         .map_err(|err| err.to_string())

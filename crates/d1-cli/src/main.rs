@@ -12,7 +12,7 @@ use std::process::ExitCode;
 use clap::{Parser, Subcommand};
 
 mod commands;
-use commands::{run_lex, run_parse, run_source};
+use commands::{run_check, run_lex, run_parse, run_source};
 
 const ABOUT: &str = "DiscoveryOne language driver. Test-harness CLI; see docs/design.md.";
 const LONG_ABOUT: &str = "\
@@ -142,6 +142,7 @@ fn main() -> ExitCode {
     match cli.cmd {
         Cmd::Lex { file } => run_lex(&file),
         Cmd::Parse { file } => run_parse(&file),
+        Cmd::Check { file } => run_check(&file),
         Cmd::Face { file, face } => run_source(&file, Some(&face), "face"),
         Cmd::Normalize { file } => run_source(&file, None, "normalize"),
         cmd => {

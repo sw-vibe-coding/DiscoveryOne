@@ -107,6 +107,7 @@ name = "d1-cli"
 version = "0.1.0"
 dependencies = [
  "clap",
+ "d1-check",
  "d1-lex",
  "d1-parse",
  "d1-source",

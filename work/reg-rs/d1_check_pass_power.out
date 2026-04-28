@@ -1,0 +1,6 @@
+(checked-module
+  (definition Power
+    (facets front left right top bottom rear internal)
+    (rules R1 R3)
+    (warnings 0))
+)

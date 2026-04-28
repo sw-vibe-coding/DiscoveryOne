@@ -1,0 +1,11 @@
+number = 8
+slug = "check-pass-power-green"
+status = "in-progress"
+description = """
+# Step: check-pass-power-green
+
+Implement the minimal checker scaffold needed..."""
+role = "legacy"
+context_files = []
+created_at = "2026-04-28T09:36:01"
+commits = []
