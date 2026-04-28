@@ -4,7 +4,7 @@ Snapshot of where the project is. Updated as milestones close.
 
 ## Today (2026-04-28)
 
-- **Phase:** M4 IR/interpreter complete.
+- **Phase:** M5 WASM emit planned.
 - **Code:** Cargo workspace, placeholder library crates, Yew web
   shell, build/run scripts, and first reg-rs smoke baseline are
   in place. `d1 lex` handles the arity-suffix, mint-operator,
@@ -25,9 +25,11 @@ Snapshot of where the project is. Updated as milestones close.
   `d1_interp_power_2_8_eq_256` and
   `d1_interp_power_5_0_eq_1` are GREEN with the reference
   interpreter scaffold.
+  The M5 `discoveryone-wasm-emit` saga is planned with RED/GREEN
+  Power WASM run baselines and an interpreter-vs-WASM parity
+  watchdog.
   Software Wrighter checklist metadata is clean.
-- **Last meaningful commit:** Power interpreter zero-exponent
-  GREEN baseline.
+- **Last meaningful commit:** M5 WASM emit saga setup.
 
 ## Done
 
@@ -71,23 +73,27 @@ Snapshot of where the project is. Updated as milestones close.
   `d1_face_right_power`, `d1_face_top_power`,
   `d1_face_bottom_power`, and `d1_face_rear_power` render all
   six planned Power face projections.
+- **M4 -- `discoveryone-ir-interp`** -- `d1_ir_power_dump`,
+  `d1_interp_power_2_8_eq_256`, and
+  `d1_interp_power_5_0_eq_1` are GREEN.
 
 ## In flight
 
-No active feature saga. M4 IR/interpreter is complete:
-`d1_ir_power_dump`, `d1_interp_power_2_8_eq_256`, and
-`d1_interp_power_5_0_eq_1` are GREEN.
+**M5 -- `discoveryone-wasm-emit`.** Planned and ready to start.
+The first step is `wasm-power-2-8-red`, which adds the RED
+baseline for `d1 run examples/power.d1 --inputs n=2,e=8`.
 
 The next session that picks up feature work should:
 
 1. Read this file.
 2. Read `docs/plan.md` section 7 (M5 work list).
 3. Run `agentrail next` (per `CLAUDE.md`).
-4. Plan the next demo milestone.
+4. Start `wasm-power-2-8-red`.
 
 ## Up next
 
-Archive M4 and create the next saga toward a web demo milestone.
+Run the first M5 step: add `d1_wasm_power_2_8_eq_256` as a RED
+baseline.
 
 ## Open questions parked
 

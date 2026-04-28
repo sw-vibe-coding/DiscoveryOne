@@ -1,0 +1,11 @@
+number = 2
+slug = "wasm-power-2-8-green"
+status = "pending"
+description = """
+# Step: wasm-power-2-8-green
+
+Implement the minimal WASM run path that turns ..."""
+role = "production"
+context_files = []
+created_at = "2026-04-28T12:27:18"
+commits = []
