@@ -1,6 +1,6 @@
 number = 4
 slug = "web-facet-front-red"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: web-facet-front-red
 
@@ -8,4 +8,5 @@ Create the M6 RED web snapshot baseline for rend..."""
 role = "production"
 context_files = []
 created_at = "2026-04-28T15:42:01"
-commits = []
+completed_at = "2026-04-28T16:31:29"
+commits = ["3d55c8a875a3df519be4a994506a5d3f517aaeba"]

@@ -1,0 +1,1 @@
+Added d1_web_facet_front_html_snapshot as an expected RED baseline for the future Power Front facet web snapshot.
