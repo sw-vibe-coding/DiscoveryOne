@@ -29,10 +29,12 @@ Snapshot of where the project is. Updated as milestones close.
   are GREEN through the minimal WAT/Wasmtime runtime path.
   `d1_wasm_interp_parity_corpus` is GREEN and verifies the
   current Power interpreter and WASM outputs match.
-  The M6 `discoveryone-web-shell` saga is planned with facet
-  snapshot and web-shell baselines.
+  `d1_facet_snapshot_power_front` captures the current RED
+  `d1 facet-snapshot` scaffold failure before the web-shell
+  snapshot path lands.
   Software Wrighter checklist metadata is clean.
-- **Last meaningful commit:** M6 web shell saga setup.
+- **Last meaningful commit:** Power front facet snapshot RED
+  baseline.
 
 ## Done
 
@@ -86,20 +88,21 @@ Snapshot of where the project is. Updated as milestones close.
 ## In flight
 
 **M6 -- `discoveryone-web-shell`.** Planned and ready to start.
-The first step is `facet-snapshot-front-red`, which adds the RED
-baseline for `d1 facet-snapshot examples/power.d1 --face front`.
+Current state is RED for `d1_facet_snapshot_power_front`:
+`d1 facet-snapshot examples/power.d1 --face front` still reports
+the CLI scaffold failure.
 
 The next session that picks up feature work should:
 
 1. Read this file.
 2. Read `docs/plan.md` section 8 (M6 work list).
 3. Run `agentrail next` (per `CLAUDE.md`).
-4. Start `facet-snapshot-front-red`.
+4. Continue the M6 web shell work.
 
 ## Up next
 
-Run the first M6 step: add `d1_facet_snapshot_power_front` as a
-RED baseline.
+Implement the minimal `facet-snapshot` path that turns
+`d1_facet_snapshot_power_front` GREEN.
 
 ## Open questions parked
 

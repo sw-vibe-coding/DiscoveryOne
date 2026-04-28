@@ -1,0 +1,4 @@
+command = "scripts/run-fixture.sh facet-snapshot examples/power.d1 --face front"
+timeout = 60
+exit_code = 1
+desc = "d1 facet-snapshot RED: Power front facet snapshot is not implemented yet"
