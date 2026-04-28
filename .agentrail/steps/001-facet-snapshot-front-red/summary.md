@@ -1,0 +1,1 @@
+Added d1_facet_snapshot_power_front as an expected RED baseline for d1 facet-snapshot examples/power.d1 --face front.
