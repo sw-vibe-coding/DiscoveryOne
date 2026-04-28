@@ -1,0 +1,4 @@
+command = "scripts/run-fixture.sh parse tests/parser/facet_blocks.input"
+timeout = 60
+exit_code = 1
+desc = "d1 parse RED: facet blocks are not implemented yet"

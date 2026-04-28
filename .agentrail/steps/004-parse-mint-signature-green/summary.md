@@ -1,0 +1,1 @@
+Implemented the minimal parser scaffold for mint signatures and rebased d1_parse_mint_signature to a GREEN AST dump.

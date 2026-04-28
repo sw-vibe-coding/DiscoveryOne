@@ -1,6 +1,6 @@
 number = 4
 slug = "parse-mint-signature-green"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: parse-mint-signature-green
 
@@ -8,4 +8,5 @@ Implement the minimal parser scaffold nee..."""
 role = "legacy"
 context_files = []
 created_at = "2026-04-27T21:13:02"
-commits = []
+completed_at = "2026-04-27T21:45:37"
+commits = ["94b9ea587749f637f0552de9415d5ebd37409d80"]

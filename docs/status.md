@@ -66,8 +66,9 @@ Snapshot of where the project is. Updated as milestones close.
 `d1_parse_facet_blocks`, while `d1_parse_mint_init` and
 `d1_parse_mint_signature` are GREEN. The parser handles the
 minimal Front-facet assignment and signature forms needed so
-far. `sw-checklist` must remain clean before each step is
-committed.
+far. `tests/parser/facet_blocks.input` exists and captures the
+current scaffold error for multiple `@`-tagged facet blocks.
+`sw-checklist` must remain clean before each step is committed.
 
 The next session that picks up feature work should:
 
@@ -78,8 +79,9 @@ The next session that picks up feature work should:
 
 ## Up next
 
-**M3 -- `discoveryone-parse-check`.** Add the RED baseline for
-`d1_parse_facet_blocks`. See `docs/plan.md` section 5.
+**M3 -- `discoveryone-parse-check`.** Implement the parser
+scaffold needed to make `d1_parse_facet_blocks` green. See
+`docs/plan.md` section 5.
 
 ## Open questions parked
 

@@ -1,0 +1,5 @@
+*power(n e) -> (p) <-
+@front
+*p <- 1
+@left
+*p <- 2
