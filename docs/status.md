@@ -12,9 +12,10 @@ Snapshot of where the project is. Updated as milestones close.
   literal lexer fixtures. `d1 normalize` now round-trips the
   Power layered-text fixture through the source loader path,
   and `d1 face --face front`, `left`, `right`, `top`, and
-  `bottom` render Power facets. Software Wrighter checklist
-  metadata is clean.
-- **Last meaningful commit:** Bottom face projection green.
+  `bottom` render Power facets. `d1_face_rear_power` captures
+  the next RED baseline against the current unsupported-face
+  path. Software Wrighter checklist metadata is clean.
+- **Last meaningful commit:** Rear face projection RED baseline.
 
 ## Done
 
@@ -62,8 +63,10 @@ canonical layered text for the Power fixture, and
 `d1_face_front_power`, `d1_face_left_power`, and
 `d1_face_right_power`, and `d1_face_top_power` render the Power
 front, left, right, and top facets. `d1_face_bottom_power`
-renders the Power bottom facet. `sw-checklist` must remain clean
-before each step is committed.
+renders the Power bottom facet. `d1_face_rear_power` is RED and
+records that `d1 face --face rear` currently reports an
+unsupported face. `sw-checklist` must remain clean before each
+step is committed.
 
 The next session that picks up feature work should:
 
