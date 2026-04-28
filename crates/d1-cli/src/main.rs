@@ -12,8 +12,10 @@ use std::process::ExitCode;
 use clap::{Parser, Subcommand};
 
 mod commands;
+mod interp;
 mod lower;
 use commands::{run_check, run_lex, run_parse, run_source};
+use interp::run_interp;
 use lower::run_lower;
 
 const ABOUT: &str = "DiscoveryOne language driver. Test-harness CLI; see docs/design.md.";
@@ -146,6 +148,7 @@ fn main() -> ExitCode {
         Cmd::Parse { file } => run_parse(&file),
         Cmd::Check { file } => run_check(&file),
         Cmd::Lower { file } => run_lower(&file),
+        Cmd::Interp { file, inputs } => run_interp(&file, &inputs),
         Cmd::Face { file, face } => run_source(&file, Some(&face), "face"),
         Cmd::Normalize { file } => run_source(&file, None, "normalize"),
         cmd => {

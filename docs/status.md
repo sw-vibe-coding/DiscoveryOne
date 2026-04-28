@@ -22,10 +22,10 @@ Snapshot of where the project is. Updated as milestones close.
   error code `E008` for the first unbound-name fixture.
   `d1_ir_power_dump` is GREEN with a minimal deterministic
   stack-IR dump for the Power fixture.
-  `d1_interp_power_2_8_eq_256` captures the current RED CLI
-  scaffold failure for the reference interpreter.
+  `d1_interp_power_2_8_eq_256` is GREEN with the reference
+  interpreter scaffold.
   Software Wrighter checklist metadata is clean.
-- **Last meaningful commit:** Power interpreter 2^8 RED baseline.
+- **Last meaningful commit:** Power interpreter 2^8 GREEN baseline.
 
 ## Done
 
@@ -73,10 +73,10 @@ Snapshot of where the project is. Updated as milestones close.
 ## In flight
 
 **M4 -- `discoveryone-ir-interp`.** Current state is RED for
-`d1_interp_power_2_8_eq_256`: `d1 interp examples/power.d1
---inputs n=2,e=8` still reports the CLI scaffold failure.
-`d1_ir_power_dump` and the M3 parse/check baselines are GREEN.
-`sw-checklist` must remain clean before each step is committed.
+`d1_interp_power_5_0_eq_1`, while `d1_ir_power_dump`,
+`d1_interp_power_2_8_eq_256`, and the M3 parse/check baselines
+are GREEN. `sw-checklist` must remain clean before each step is
+committed.
 
 The next session that picks up feature work should:
 
@@ -87,10 +87,8 @@ The next session that picks up feature work should:
 
 ## Up next
 
-**M4 -- `discoveryone-ir-interp`.** Implement the minimal
-reference interpreter path that turns
-`d1_interp_power_2_8_eq_256` GREEN. See `docs/plan.md`
-section 6.
+**M4 -- `discoveryone-ir-interp`.** Add and pass
+`d1_interp_power_5_0_eq_1`. See `docs/plan.md` section 6.
 
 ## Open questions parked
 
