@@ -25,10 +25,11 @@ Snapshot of where the project is. Updated as milestones close.
   `d1_interp_power_2_8_eq_256` and
   `d1_interp_power_5_0_eq_1` are GREEN with the reference
   interpreter scaffold.
-  `d1_wasm_power_2_8_eq_256` is GREEN through the minimal
-  WAT/Wasmtime runtime path.
+  `d1_wasm_power_2_8_eq_256` and `d1_wasm_power_5_0_eq_1`
+  are GREEN through the minimal WAT/Wasmtime runtime path.
   Software Wrighter checklist metadata is clean.
-- **Last meaningful commit:** Power WASM run 2^8 GREEN baseline.
+- **Last meaningful commit:** Power WASM run zero-exponent GREEN
+  baseline.
 
 ## Done
 
@@ -79,10 +80,9 @@ Snapshot of where the project is. Updated as milestones close.
 ## In flight
 
 **M5 -- `discoveryone-wasm-emit`.** Planned and ready to start.
-`d1_wasm_power_2_8_eq_256` is GREEN: `d1 run
-examples/power.d1 --inputs n=2,e=8` returns `256` through a
-minimal WAT/Wasmtime runtime path. All M4 IR/interpreter
-baselines remain GREEN.
+`d1_wasm_power_2_8_eq_256` and `d1_wasm_power_5_0_eq_1` are
+GREEN through the minimal WAT/Wasmtime runtime path. All M4
+IR/interpreter baselines remain GREEN.
 
 The next session that picks up feature work should:
 
@@ -93,7 +93,8 @@ The next session that picks up feature work should:
 
 ## Up next
 
-Add and pass `d1_wasm_power_5_0_eq_1`.
+Add the `d1_wasm_interp_parity_corpus` watchdog comparing
+interpreter and WASM outputs.
 
 ## Open questions parked
 
