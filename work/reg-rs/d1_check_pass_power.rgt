@@ -1,0 +1,4 @@
+command = "scripts/run-fixture.sh check examples/power.d1"
+timeout = 60
+exit_code = 1
+desc = "d1 check RED: Power facet checker is not implemented yet"

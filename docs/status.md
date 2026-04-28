@@ -14,8 +14,9 @@ Snapshot of where the project is. Updated as milestones close.
   all six planned Power face projections render through `d1
   face`. `d1_parse_mint_init`, `d1_parse_mint_signature`,
   and `d1_parse_facet_blocks` are GREEN with minimal AST dumps.
-  Software Wrighter checklist metadata is clean.
-- **Last meaningful commit:** Facet blocks parse GREEN baseline.
+  `d1_check_pass_power` captures the first checker RED
+  baseline. Software Wrighter checklist metadata is clean.
+- **Last meaningful commit:** Power check pass RED baseline.
 
 ## Done
 
@@ -63,12 +64,10 @@ Snapshot of where the project is. Updated as milestones close.
 ## In flight
 
 **M3 -- `discoveryone-parse-check`.** Current state is RED for
-`d1_check_pass_power`, while the planned parse baselines
-`d1_parse_mint_init`, `d1_parse_mint_signature`, and
-`d1_parse_facet_blocks` are GREEN. The parser handles the
-minimal assignment, signature, and multi-facet forms needed so
-far. `sw-checklist` must remain clean before each step is
-committed.
+`d1_check_pass_power`: `d1 check examples/power.d1` currently
+reports `not yet implemented`, while the planned parse
+baselines are GREEN. `sw-checklist` must remain clean before
+each step is committed.
 
 The next session that picks up feature work should:
 
@@ -79,8 +78,9 @@ The next session that picks up feature work should:
 
 ## Up next
 
-**M3 -- `discoveryone-parse-check`.** Add the RED baseline for
-`d1_check_pass_power`. See `docs/plan.md` section 5.
+**M3 -- `discoveryone-parse-check`.** Implement the minimal
+checker scaffold needed to make `d1_check_pass_power` green.
+See `docs/plan.md` section 5.
 
 ## Open questions parked
 
