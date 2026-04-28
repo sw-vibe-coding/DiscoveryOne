@@ -15,8 +15,10 @@ Snapshot of where the project is. Updated as milestones close.
   face`. `d1_parse_mint_init`, `d1_parse_mint_signature`,
   and `d1_parse_facet_blocks` are GREEN with minimal AST dumps.
   `d1_check_pass_power` is GREEN with a minimal checker report.
+  `d1_check_fail_left_arity_mismatch` captures the current RED
+  checker scaffold failure for an input arity mismatch fixture.
   Software Wrighter checklist metadata is clean.
-- **Last meaningful commit:** Power check pass GREEN baseline.
+- **Last meaningful commit:** Left arity mismatch check RED baseline.
 
 ## Done
 
@@ -64,9 +66,11 @@ Snapshot of where the project is. Updated as milestones close.
 ## In flight
 
 **M3 -- `discoveryone-parse-check`.** Current state is RED for
-`d1_check_fail_left_arity_mismatch`, while the planned parse
-baselines and `d1_check_pass_power` are GREEN. `sw-checklist`
-must remain clean before each step is committed.
+`d1_check_fail_left_arity_mismatch`: the fixture intentionally
+lists three left-facet inputs against two front-facet inputs, but
+the checker still reports the generic scaffold failure. The
+planned parse baselines and `d1_check_pass_power` are GREEN.
+`sw-checklist` must remain clean before each step is committed.
 
 The next session that picks up feature work should:
 
@@ -77,8 +81,9 @@ The next session that picks up feature work should:
 
 ## Up next
 
-**M3 -- `discoveryone-parse-check`.** Add the RED baseline for
-`d1_check_fail_left_arity_mismatch`. See `docs/plan.md`
+**M3 -- `discoveryone-parse-check`.** Implement the minimal
+checker behavior that turns `d1_check_fail_left_arity_mismatch`
+GREEN with stable error code `E007`. See `docs/plan.md`
 section 5.
 
 ## Open questions parked

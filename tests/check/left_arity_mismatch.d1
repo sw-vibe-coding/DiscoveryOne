@@ -1,0 +1,12 @@
+*LeftArityMismatch
+  @front
+    n e -> p
+    p <- 1
+
+  @left
+    n : Int
+    e : Int
+    extra : Int
+
+  @right
+    p : Int

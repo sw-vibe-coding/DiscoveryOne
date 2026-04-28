@@ -1,0 +1,1 @@
+Implemented the minimal checker scaffold for Power and rebased d1_check_pass_power to GREEN.

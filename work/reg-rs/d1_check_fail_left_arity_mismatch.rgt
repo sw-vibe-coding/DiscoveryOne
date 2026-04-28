@@ -1,0 +1,4 @@
+command = "scripts/run-fixture.sh check tests/check/left_arity_mismatch.d1"
+timeout = 60
+exit_code = 1
+desc = "d1 check RED: left facet input arity mismatch is not implemented yet"

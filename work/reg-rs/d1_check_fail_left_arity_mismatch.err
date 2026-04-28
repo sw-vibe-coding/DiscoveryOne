@@ -1,0 +1,1 @@
+d1 check: tests/check/left_arity_mismatch.d1: unsupported source for checker scaffold
