@@ -1,0 +1,12 @@
+number = 5
+slug = "front-edit-demo-docs"
+status = "pending"
+description = """
+# Step: front-edit-demo-docs
+
+Close the Power Front edit execution demo with ..."""
+role = "production"
+context_files = []
+created_at = "2026-04-29T16:08:31"
+task_type = "docs"
+commits = []

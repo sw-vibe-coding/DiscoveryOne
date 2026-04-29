@@ -1,0 +1,12 @@
+number = 1
+slug = "front-edit-run-red"
+status = "in-progress"
+description = """
+# Step: front-edit-run-red
+
+Add the RED acceptance baseline for the Power Fro..."""
+role = "production"
+context_files = []
+created_at = "2026-04-29T16:07:53"
+task_type = "red-regression"
+commits = []

@@ -1,0 +1,9 @@
+<aside class="run-panel" data-definition="Power" data-edited-face="front">
+  <header class="run-header"><span>RunPanel</span><strong>Power</strong></header>
+  <div class="run-inputs" aria-label="Power inputs">
+    <label><span>n</span><input value="5" readonly></label>
+    <label><span>e</span><input value="0" readonly></label>
+    <button type="button">Run</button>
+  </div>
+  <output class="run-output" aria-label="Power output">2</output>
+</aside>
