@@ -3,7 +3,7 @@ use yew::prelude::*;
 use yew::TargetCast;
 
 use crate::runtime::definition_by_name;
-use crate::{DEFINITIONS, Definition, FACES, Face, facet_rows};
+use crate::{DEFINITIONS, Definition, FACES, Face, LibraryRow, LibrarySort, facet_rows};
 
 #[derive(Properties, PartialEq)]
 pub(crate) struct TopBarProps {
@@ -212,5 +212,57 @@ pub(crate) fn run_panel(props: &RunPanelProps) -> Html {
             </div>
             <output class="run-output" aria-label="Power output">{ &props.output }</output>
         </aside>
+    }
+}
+
+#[derive(Properties, PartialEq)]
+pub(crate) struct LibraryGridProps {
+    pub(crate) rows: Vec<LibraryRow>,
+    pub(crate) current_sort: LibrarySort,
+    pub(crate) on_sort: Callback<LibrarySort>,
+}
+
+#[function_component(LibraryGrid)]
+pub(crate) fn library_grid(props: &LibraryGridProps) -> Html {
+    html! {
+        <section class="library-grid" aria-label="Library definitions">
+            <header class="library-header">
+                <span>{ "Library" }</span>
+                <div class="sort-controls" aria-label="Library sort">
+                    { for [
+                        (LibrarySort::Name, "Name"),
+                        (LibrarySort::Arity, "Arity"),
+                        (LibrarySort::Category, "Type"),
+                        (LibrarySort::Aspects, "Aspects"),
+                    ].into_iter().map(|(sort, label)| {
+                        let selected = props.current_sort == sort;
+                        let on_sort = props.on_sort.clone();
+                        html! {
+                            <button
+                                type="button"
+                                class={classes!("sort-button", selected.then_some("selected"))}
+                                aria-pressed={selected.to_string()}
+                                onclick={Callback::from(move |_| on_sort.emit(sort))}
+                            >
+                                { label }
+                            </button>
+                        }
+                    }) }
+                </div>
+            </header>
+            <table>
+                <thead><tr><th>{ "Name" }</th><th>{ "Arity" }</th><th>{ "Type" }</th><th>{ "Aspects" }</th></tr></thead>
+                <tbody>
+                    { for props.rows.iter().map(|row| html! {
+                        <tr data-definition={row.name}>
+                            <td>{ row.name }</td>
+                            <td>{ row.arity }</td>
+                            <td>{ row.category }</td>
+                            <td>{ row.aspects }</td>
+                        </tr>
+                    }) }
+                </tbody>
+            </table>
+        </section>
     }
 }

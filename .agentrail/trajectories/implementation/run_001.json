@@ -1,0 +1,11 @@
+{
+  "task_type": "implementation",
+  "state": {
+    "number": 2,
+    "step": "library-grid-green"
+  },
+  "action": "Added LibraryRow metadata and rendered library_grid_html_snapshot from it; verified d1_web_library_grid_snapshot, existing web reg-rs snapshots, cargo test --manifest-path ui/web/Cargo.toml, ./scripts/build-all.sh, sw-install --project ., sw-checklist, and restarted localhost:1078.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-04-29T12:16:12"
+}

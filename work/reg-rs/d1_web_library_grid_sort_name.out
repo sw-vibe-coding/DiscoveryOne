@@ -1,0 +1,10 @@
+<section class="library-grid" aria-label="Library definitions">
+  <table>
+    <thead><tr><th>Name</th><th>Arity</th><th>Type</th><th>Aspects</th></tr></thead>
+    <tbody>
+      <tr data-definition="DowhileCounter"><td>DowhileCounter</td><td>0 -> 1</td><td>syntax-template</td><td>front internal</td></tr>
+      <tr data-definition="Power"><td>Power</td><td>2 -> 1</td><td>numeric</td><td>front left right top bottom rear</td></tr>
+      <tr data-definition="UnlessCounter"><td>UnlessCounter</td><td>0 -> 1</td><td>syntax-template</td><td>front internal</td></tr>
+    </tbody>
+  </table>
+</section>

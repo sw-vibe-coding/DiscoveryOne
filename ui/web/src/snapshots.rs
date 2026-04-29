@@ -1,5 +1,5 @@
 use crate::runtime::run_output;
-use crate::{DEFINITIONS, FRONT, INTERNAL, LIBRARY_ROWS, LibraryRow, facet_rows};
+use crate::{DEFINITIONS, FRONT, INTERNAL, LIBRARY_ROWS, LibraryRow, LibrarySort, facet_rows, sorted_library_rows};
 
 const FRONT_BEFORE_ROWS: &str = r#"<main class="app">
   <header class="topbar">
@@ -30,9 +30,25 @@ pub fn power_front_facet_html_snapshot() -> String {
 }
 
 pub fn library_grid_html_snapshot() -> String {
-    let rows = LIBRARY_ROWS
+    library_grid_html(LIBRARY_ROWS.to_vec())
+}
+
+pub fn library_grid_html_snapshot_sorted(sort: LibrarySort) -> String {
+    library_grid_html(sorted_library_rows(sort))
+}
+
+fn library_grid_html(library_rows: Vec<LibraryRow>) -> String {
+    let rows = library_rows
         .iter()
-        .map(library_grid_row)
+        .map(|row| {
+            format!(
+                r#"      <tr data-definition="{name}"><td>{name}</td><td>{arity}</td><td>{category}</td><td>{aspects}</td></tr>"#,
+                name = row.name,
+                arity = row.arity,
+                category = row.category,
+                aspects = row.aspects
+            )
+        })
         .collect::<Vec<_>>()
         .join("\n");
     format!(
@@ -45,16 +61,6 @@ pub fn library_grid_html_snapshot() -> String {
   </table>
 </section>
 "#
-    )
-}
-
-fn library_grid_row(row: &LibraryRow) -> String {
-    format!(
-        r#"      <tr data-definition="{name}"><td>{name}</td><td>{arity}</td><td>{category}</td><td>{aspects}</td></tr>"#,
-        name = row.name,
-        arity = row.arity,
-        category = row.category,
-        aspects = row.aspects
     )
 }
 

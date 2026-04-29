@@ -1,0 +1,1 @@
+Implemented the first M8 library-grid snapshot from bundled definition metadata, showing name, arity, type/category, and aspect summary for Power, DowhileCounter, and UnlessCounter.

@@ -6,7 +6,7 @@ mod run_state;
 mod runtime;
 mod snapshots;
 
-use components::{FacetView, RunPanel, TopBar};
+use components::{FacetView, LibraryGrid, RunPanel, TopBar};
 use edit_state::use_edit_state;
 use run_state::use_run_state;
 
@@ -108,11 +108,20 @@ pub(crate) struct LibraryRow {
     pub(crate) aspects: &'static str,
 }
 
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum LibrarySort {
+    Name,
+    Arity,
+    Category,
+    Aspects,
+}
+
 #[function_component(App)]
 #[rustfmt::skip]
 pub fn app() -> Html {
     let current_definition = use_state(|| DEFINITIONS[0]);
     let current_face = use_state(|| DEFINITIONS[0].selected_face);
+    let library_sort = use_state(|| LibrarySort::Name);
     let run_state = use_run_state(current_definition.clone(), current_face.clone());
     let edit_state = use_edit_state(current_definition.clone());
     let on_face_select = Callback::from({
@@ -127,6 +136,7 @@ pub fn app() -> Html {
                 <FacetView definition={*current_definition} face={*current_face} is_editing={*edit_state.is_editing} source_text={(*edit_state.source_text).clone()} validation={(*edit_state.validation).clone()} on_toggle_edit={edit_state.on_toggle_edit} on_source_input={edit_state.on_source_input} />
                 <RunPanel definition={*current_definition} n_value={(*run_state.n_input).clone()} e_value={(*run_state.e_input).clone()} output={(*run_state.output).clone()} on_n_input={run_state.on_n_input} on_e_input={run_state.on_e_input} on_run={run_state.on_run} />
             </section>
+            <LibraryGrid rows={sorted_library_rows(*library_sort)} current_sort={*library_sort} on_sort={Callback::from(move |sort| library_sort.set(sort))} />
             <BuildFooter />
         </main>
     }
@@ -160,7 +170,23 @@ pub(crate) fn facet_rows(definition: Definition, face: Face) -> Vec<String> {
         .collect()
 }
 
+pub(crate) fn sorted_library_rows(sort: LibrarySort) -> Vec<LibraryRow> {
+    let mut rows = LIBRARY_ROWS.to_vec();
+    rows.sort_by(|left, right| library_grid_cmp(left, right, sort));
+    rows
+}
+
+fn library_grid_cmp(left: &LibraryRow, right: &LibraryRow, sort: LibrarySort) -> std::cmp::Ordering {
+    let primary = match sort {
+        LibrarySort::Name => left.name.cmp(right.name),
+        LibrarySort::Arity => left.arity.cmp(right.arity),
+        LibrarySort::Category => left.category.cmp(right.category),
+        LibrarySort::Aspects => left.aspects.cmp(right.aspects),
+    };
+    primary.then_with(|| left.name.cmp(right.name))
+}
+
 pub use snapshots::{
-    library_grid_html_snapshot, minted_run_html_snapshot, power_front_facet_html_snapshot,
-    power_run_2_8_html_snapshot,
+    library_grid_html_snapshot, library_grid_html_snapshot_sorted, minted_run_html_snapshot,
+    power_front_facet_html_snapshot, power_run_2_8_html_snapshot,
 };
