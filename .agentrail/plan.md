@@ -1,18 +1,14 @@
-# DiscoveryOne M7 -- Minted Module
+# Saga: discoveryone-power-front-view-demo
 
-Goal: A user authors a *Power definition and a *syntax do _ while _ end expand declaration in the web app; the minted syntax runs in the browser and is baselined by reg-rs.
+Goal: make the Web UI Power front facet demo render the structured mathematical view the user requested, with regression coverage and demo documentation.
 
-Reg-rs cases:
-- d1_poc_dowhile_minted_syntax
-- d1_poc_dowhile_web_run
-- d1_poc_unless_minted_syntax
-- d1_poc_unless_web_run
-- d1_minted_module_acceptance
+Target front view:
+                                      ⎧ 1 →
+   • Power (n : ℤ  e : ℤ) → (p : ℤ) ← ⎨ loop e times    iff e is positive
+                                      ⎩ n (×) →
 
-Exit:
-- All M0-M7 reg-rs cases green.
-- The discoveryone web app demo at localhost:1078 round-trips Power and dowhile interactively.
-- docs/status.md updated.
-- docs/poc-demo.md walks through the scenario.
-
-Every step must keep sw-checklist clean with zero failures and zero warnings, commit .agentrail/ changes, and push.
+Milestones:
+1. Capture the current Power front view as a failing regression baseline for the desired notation.
+2. Implement the Power front facet renderer so the Web UI shows the structured notation.
+3. Add snapshot/acceptance coverage for the rendered Web UI output.
+4. Update demo documentation/status and verify the demo locally on port 1078.

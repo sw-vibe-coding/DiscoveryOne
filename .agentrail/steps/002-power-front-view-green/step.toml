@@ -1,0 +1,12 @@
+number = 2
+slug = "power-front-view-green"
+status = "pending"
+description = """
+# Step: power-front-view-green
+
+Implement the Power front facet renderer need..."""
+role = "production"
+context_files = []
+created_at = "2026-04-29T09:38:34"
+task_type = "implementation"
+commits = []

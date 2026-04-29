@@ -1,0 +1,12 @@
+number = 4
+slug = "power-front-view-demo-docs"
+status = "pending"
+description = """
+# Step: power-front-view-demo-docs
+
+Complete the Power front-view demo saga w..."""
+role = "production"
+context_files = []
+created_at = "2026-04-29T09:38:34"
+task_type = "docs"
+commits = []
