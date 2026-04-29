@@ -4,8 +4,8 @@ Snapshot of where the project is. Updated as milestones close.
 
 ## Today (2026-04-29)
 
-- **Phase:** M8 library-grid milestone complete; M9 pipeline work
-  next after the queued edit-surface polish step.
+- **Phase:** M8 library-grid milestone and Web Edit surface polish
+  complete; choosing the next saga.
 - **Code:** Cargo workspace, placeholder library crates, Yew web
   shell, build/run scripts, and first reg-rs smoke baseline are
   in place. `d1 lex` handles the arity-suffix, mint-operator,
@@ -127,10 +127,10 @@ requested structured Power Front notation:
 
 `d1_web_facet_front_html_snapshot` and
 `d1_power_front_view_acceptance` are GREEN. Layout, real build
-metadata, run controls, browse/edit mode, and validation feedback
-are implemented. One queued polish step remains to make Edit mode
-edit the visible 2D facet syntax rather than raw/internal source
-text.
+metadata, run controls, browse/edit mode, validation feedback,
+and visible 2D facet editing are implemented. Edit mode now
+edits the selected facet text rather than raw/internal source
+text; reverse projection to full source remains preview-only.
 
 ## Completed
 
@@ -149,12 +149,11 @@ The next session that picks up feature work should:
 1. Read this file.
 2. Read `docs/poc-demo.md` for the current localhost:1078 demo.
 3. Run `agentrail next` (per `CLAUDE.md`).
-4. Complete the queued Web Edit mode polish step, then start M9
-   `discoveryone-pipeline-2d`.
+4. Start the selected next saga.
 
 ## Up next
 
-Complete the queued Web Edit mode polish step, then start M9 --
+Choose the next saga. The roadmap's next milestone is M9 --
 `discoveryone-pipeline-2d`.
 
 ## Open questions parked
