@@ -1,4 +1,4 @@
 command = "scripts/run-fixture.sh run examples/dowhile.d1"
 timeout = 60
-exit_code = 1
-desc = "d1 M7 RED: dowhile minted syntax run is not implemented yet"
+exit_code = 0
+desc = "d1 M7: dowhile minted syntax run"

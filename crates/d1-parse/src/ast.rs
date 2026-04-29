@@ -14,6 +14,7 @@ pub enum Pattern {
 pub enum Stmt {
     Signature(SigDecl),
     Assign(Pattern, Expr),
+    Syntax(SyntaxDecl),
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -29,6 +30,12 @@ pub struct SigDecl {
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
+pub struct SyntaxDecl {
+    pub pattern: Vec<Name>,
+    pub expansion: Vec<Name>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Facet {
     pub aspect: Aspect,
     pub stmts: Vec<Stmt>,
@@ -38,6 +45,7 @@ pub struct Facet {
 pub enum Aspect {
     Front,
     Left,
+    Internal,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]

@@ -1,0 +1,1 @@
+Added examples/dowhile.d1 and the d1_poc_dowhile_minted_syntax RED reg-rs baseline, capturing the current unsupported WASM runtime scaffold failure.

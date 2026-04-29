@@ -97,9 +97,9 @@ with the Yew shell rendering `DefinitionPicker`, `FaceSelector`,
 ## In flight
 
 **M7 -- `discoveryone-minted-module`.** In progress.
-`d1_poc_dowhile_minted_syntax` is the RED CLI baseline for
-`examples/dowhile.d1`, which defines `*syntax do _ while _ end
-expand` and currently fails at the WASM runtime scaffold.
+`d1_poc_dowhile_minted_syntax` is GREEN for the CLI path:
+`examples/dowhile.d1` defines `*syntax do _ while _ end expand`
+and `d1 run` prints `1 2 3` followed by `3`.
 
 The next session that picks up feature work should:
 
@@ -110,8 +110,7 @@ The next session that picks up feature work should:
 
 ## Up next
 
-Implement the minimum parser/runtime support for
-`d1_poc_dowhile_minted_syntax`.
+Create the M7 RED web baseline for `d1_poc_dowhile_web_run`.
 
 ## Open questions parked
 

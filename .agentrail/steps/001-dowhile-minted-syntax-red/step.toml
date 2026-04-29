@@ -1,6 +1,6 @@
 number = 1
 slug = "dowhile-minted-syntax-red"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: dowhile-minted-syntax-red
 
@@ -8,4 +8,5 @@ Create the M7 RED baseline for minted synt..."""
 role = "production"
 context_files = []
 created_at = "2026-04-28T16:58:37"
-commits = []
+completed_at = "2026-04-28T17:03:40"
+commits = ["22c5368920186795b0d135d2bf84585e6bfabc2e"]

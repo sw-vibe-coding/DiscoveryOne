@@ -16,6 +16,7 @@ fn dump_facet(facet: &Facet) -> String {
     let aspect = match facet.aspect {
         Aspect::Front => "front",
         Aspect::Left => "left",
+        Aspect::Internal => "internal",
     };
     let mut dump = format!("(facet {aspect}");
     for stmt in &facet.stmts {
@@ -33,6 +34,11 @@ fn dump_stmt(stmt: &Stmt) -> String {
         Stmt::Assign(Pattern::Name(name), Expr::Int(value)) => {
             format!("(assign (name {name}) (int {value}))")
         }
+        Stmt::Syntax(syntax) => format!(
+            "(syntax (pattern {}) (expansion {}))",
+            syntax.pattern.join(" "),
+            syntax.expansion.join(" ")
+        ),
     }
 }
 
