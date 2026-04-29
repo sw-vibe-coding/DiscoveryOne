@@ -1,0 +1,1 @@
+Expanded the library grid metadata fixture to six stable rows covering numeric, syntax-template, and instrumentation entries, with matching snapshot baselines.

@@ -1,0 +1,8 @@
+M8 library grid acceptance
+default-count: 6
+default-order: Add Clamp Power DowhileCounter UnlessCounter TraceValue
+sort-name: Add Clamp DowhileCounter Power TraceValue UnlessCounter
+sort-arity: DowhileCounter UnlessCounter TraceValue Add Power Clamp
+sort-type: TraceValue Add Clamp Power DowhileCounter UnlessCounter
+sort-aspects: DowhileCounter UnlessCounter Power Add TraceValue Clamp
+status: green

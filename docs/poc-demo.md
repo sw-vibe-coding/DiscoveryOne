@@ -1,9 +1,9 @@
-# M7 PoC Demo
+# M8 PoC Demo
 
-This is the M7 minted-module vertical slice. It demonstrates that
+This is the M8 library-grid vertical slice. It demonstrates that
 DiscoveryOne can run the existing `Power` fixture and two user-minted
-syntax fixtures from both the CLI regression path and the Yew web demo
-snapshot path.
+syntax fixtures, and that the Yew web demo presents a sortable library
+grid for the bundled definitions.
 
 ## Build
 
@@ -86,6 +86,19 @@ the RunPanel renders:
 3
 ```
 
+Use the Library grid below the facet and run panels to inspect the
+bundled definitions. The M8 snapshot contains six rows:
+
+- `Add`
+- `Clamp`
+- `Power`
+- `DowhileCounter`
+- `UnlessCounter`
+- `TraceValue`
+
+The grid can be sorted by `Name`, `Arity`, `Type`, and `Aspects`.
+Each sort path is stable, with definition name as the tie-breaker.
+
 ## Regression Baseline
 
 The full M7 acceptance case is:
@@ -101,3 +114,9 @@ reg-rs run -p d1_power_front_view_acceptance
 ```
 
 The complete suite should report all cases green.
+
+The M8 library-grid acceptance case is:
+
+```bash
+reg-rs run -p d1_library_grid_acceptance
+```

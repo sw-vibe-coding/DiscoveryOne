@@ -4,7 +4,8 @@ Snapshot of where the project is. Updated as milestones close.
 
 ## Today (2026-04-29)
 
-- **Phase:** Power front-view demo in progress.
+- **Phase:** M8 library-grid milestone complete; M9 pipeline work
+  next after the queued edit-surface polish step.
 - **Code:** Cargo workspace, placeholder library crates, Yew web
   shell, build/run scripts, and first reg-rs smoke baseline are
   in place. `d1 lex` handles the arity-suffix, mint-operator,
@@ -33,9 +34,11 @@ Snapshot of where the project is. Updated as milestones close.
   through the existing source projection path.
   `d1_web_facet_front_html_snapshot` and
   `d1_power_front_view_acceptance` are GREEN for the structured
-  Power Front notation shown in the web demo.
+  Power Front notation shown in the web demo. The M8 library grid
+  is GREEN with six bundled rows and stable sort snapshots for
+  name, arity, type, and aspects.
   Software Wrighter checklist metadata is clean.
-- **Last meaningful commit:** Power front-view demo acceptance.
+- **Last meaningful commit:** M8 library grid acceptance/docs.
 
 ## Done
 
@@ -111,7 +114,7 @@ used by the dowhile fixture.
 `d1_minted_module_acceptance` is GREEN and `docs/poc-demo.md`
 walks through the localhost:1078 demo scenario.
 
-## In flight
+## Completed
 
 **Power front-view demo usability.** The Web UI now renders the
 requested structured Power Front notation:
@@ -123,22 +126,36 @@ requested structured Power Front notation:
 ```
 
 `d1_web_facet_front_html_snapshot` and
-`d1_power_front_view_acceptance` are GREEN. Follow-up saga steps
-are planned for workspace layout, real build metadata in the Web
-footer, interactive run controls, browse/edit mode, and validation
-feedback.
+`d1_power_front_view_acceptance` are GREEN. Layout, real build
+metadata, run controls, browse/edit mode, and validation feedback
+are implemented. One queued polish step remains to make Edit mode
+edit the visible 2D facet syntax rather than raw/internal source
+text.
+
+## Completed
+
+**M8 -- `discoveryone-library-grid`.** Complete. The Web UI renders
+a Library grid with six bundled metadata rows: `Add`, `Clamp`,
+`Power`, `DowhileCounter`, `UnlessCounter`, and `TraceValue`.
+`d1_web_library_grid_snapshot` is GREEN for the default order, and
+`d1_web_library_grid_sort_name`,
+`d1_web_library_grid_sort_arity`,
+`d1_web_library_grid_sort_type`, and
+`d1_web_library_grid_sort_aspects` are GREEN for stable sort paths.
+`d1_library_grid_acceptance` aggregates the M8 demo acceptance path.
 
 The next session that picks up feature work should:
 
 1. Read this file.
 2. Read `docs/poc-demo.md` for the current localhost:1078 demo.
 3. Run `agentrail next` (per `CLAUDE.md`).
-4. Continue the next planned Power front-view usability step.
+4. Complete the queued Web Edit mode polish step, then start M9
+   `discoveryone-pipeline-2d`.
 
 ## Up next
 
-Continue Power front-view demo usability before starting M8 --
-`discoveryone-library-grid`.
+Complete the queued Web Edit mode polish step, then start M9 --
+`discoveryone-pipeline-2d`.
 
 ## Open questions parked
 
