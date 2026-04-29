@@ -1,6 +1,6 @@
 number = 2
 slug = "power-front-view-green"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: power-front-view-green
 
@@ -8,5 +8,6 @@ Implement the Power front facet renderer need..."""
 role = "production"
 context_files = []
 created_at = "2026-04-29T09:38:34"
+completed_at = "2026-04-29T10:06:59"
 task_type = "implementation"
-commits = []
+commits = ["4cba844575bc1986301c68f5e0657d49cb93e0e5"]

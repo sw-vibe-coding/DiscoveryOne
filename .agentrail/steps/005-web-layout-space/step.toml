@@ -1,0 +1,12 @@
+number = 5
+slug = "web-layout-space"
+status = "pending"
+description = """
+# Step: web-layout-space
+
+Improve the Web UI layout so the demo uses availabl..."""
+role = "production"
+context_files = []
+created_at = "2026-04-29T10:12:09"
+task_type = "implementation"
+commits = []

@@ -1,0 +1,1 @@
+Implemented the Power Front web renderer so it emits the requested structured mathematical notation while leaving other faces and minted-module paths on the existing source projection path.

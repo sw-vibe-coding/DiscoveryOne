@@ -1,0 +1,11 @@
+{
+  "task_type": "implementation",
+  "state": {
+    "number": 2,
+    "step": "power-front-view-green"
+  },
+  "action": "Added a Power/front special case in ui/web/src/lib.rs; verified reg-rs run -p d1_web_facet_front_html_snapshot, cargo test --manifest-path ui/web/Cargo.toml, d1_web_run_power_2_8, d1_poc_dowhile_web_run, and d1_poc_unless_web_run. Rebuilt/restarted the local server on port 1078.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-04-29T10:06:59"
+}

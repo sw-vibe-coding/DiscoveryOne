@@ -1,0 +1,12 @@
+number = 8
+slug = "web-browse-edit-validation"
+status = "pending"
+description = """
+# Step: web-browse-edit-validation
+
+Add browse vs edit mode and invalid-sourc..."""
+role = "production"
+context_files = []
+created_at = "2026-04-29T10:12:33"
+task_type = "implementation"
+commits = []

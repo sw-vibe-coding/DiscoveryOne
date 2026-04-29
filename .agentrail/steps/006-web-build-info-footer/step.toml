@@ -1,0 +1,12 @@
+number = 6
+slug = "web-build-info-footer"
+status = "pending"
+description = """
+# Step: web-build-info-footer
+
+Wire real build metadata into the Web footer a..."""
+role = "production"
+context_files = []
+created_at = "2026-04-29T10:12:09"
+task_type = "implementation"
+commits = []
