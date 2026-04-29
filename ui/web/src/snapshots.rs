@@ -29,6 +29,11 @@ pub fn power_front_facet_html_snapshot() -> String {
     format!("{FRONT_BEFORE_ROWS}{rows}{FRONT_AFTER_ROWS}")
 }
 
+pub fn library_grid_html_snapshot() -> String {
+    "<section class=\"library-grid\" aria-label=\"Library definitions\">not implemented</section>\n"
+        .to_owned()
+}
+
 pub fn power_run_2_8_html_snapshot() -> String {
     let output = run_output(DEFINITIONS[0]);
     format!(

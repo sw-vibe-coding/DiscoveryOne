@@ -133,5 +133,6 @@ pub(crate) fn facet_rows(definition: Definition, face: Face) -> Vec<String> {
 }
 
 pub use snapshots::{
-    minted_run_html_snapshot, power_front_facet_html_snapshot, power_run_2_8_html_snapshot,
+    library_grid_html_snapshot, minted_run_html_snapshot, power_front_facet_html_snapshot,
+    power_run_2_8_html_snapshot,
 };
