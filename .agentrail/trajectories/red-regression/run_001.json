@@ -1,0 +1,11 @@
+{
+  "task_type": "red-regression",
+  "state": {
+    "number": 1,
+    "step": "front-edit-run-red"
+  },
+  "action": "Initialized discoveryone-front-edit-execution with five steps; added snapshot-web-power-front-edit-run script, web example, and reg-rs baseline; confirmed the new case fails because power_front_edit_run_html_snapshot is not implemented yet while existing Power front acceptance remains green.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-04-29T16:10:22"
+}

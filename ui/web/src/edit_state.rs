@@ -2,6 +2,11 @@ use yew::prelude::*;
 
 use crate::{Definition, Face, facet_rows};
 
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub(crate) struct PowerFrontEdit {
+    pub(crate) zero_case: i64,
+}
+
 pub(crate) struct EditState {
     pub(crate) is_editing: UseStateHandle<bool>,
     pub(crate) facet_text: UseStateHandle<String>,
@@ -72,14 +77,44 @@ pub(crate) fn validate_facet_edit(definition: Definition, face: Face, text: &str
     }
 
     if definition.name == "Power" && face.query == "front" {
-        for required in ["Power", "loop e times", "n (×)"] {
-            if !text.contains(required) {
-                return format!("Error: Power Front edit is missing `{required}`.");
-            }
-        }
+        return match parse_power_front_edit(text) {
+            Ok(_) => "Valid Power Front edit. Reverse projection to full source is not implemented yet; Run support is planned next.".to_owned(),
+            Err(err) => format!("Error: {err}"),
+        };
     }
 
     "Valid 2D facet text. Reverse projection to full source is not implemented yet; edits are preview-only.".to_owned()
+}
+
+pub(crate) fn parse_power_front_edit(text: &str) -> Result<PowerFrontEdit, String> {
+    for required in ["Power", "loop e times", "n (×)"] {
+        if !text.contains(required) {
+            return Err(format!("Power Front edit is missing `{required}`."));
+        }
+    }
+
+    let top_branch = text
+        .lines()
+        .find(|line| line.contains('⎧'))
+        .ok_or_else(|| "Power Front edit is missing the top branch.".to_owned())?;
+    let after_branch = top_branch
+        .split_once('⎧')
+        .map(|(_, rest)| rest)
+        .ok_or_else(|| "Power Front edit is missing the top branch.".to_owned())?;
+    let literal = after_branch
+        .split_once('→')
+        .map(|(value, _)| value.trim())
+        .ok_or_else(|| "Power Front top branch is missing `→`.".to_owned())?;
+
+    if literal.is_empty() {
+        return Err("Power Front top branch is missing its zero-case integer.".to_owned());
+    }
+
+    let zero_case = literal.parse::<i64>().map_err(|_| {
+        format!("Power Front top branch zero-case `{literal}` is not an integer.")
+    })?;
+
+    Ok(PowerFrontEdit { zero_case })
 }
 
 #[cfg(test)]
@@ -103,11 +138,51 @@ mod tests {
 
         assert_eq!(
             validate_facet_edit(DEFINITIONS[0], FRONT, &text),
-            "Valid 2D facet text. Reverse projection to full source is not implemented yet; edits are preview-only."
+            "Valid Power Front edit. Reverse projection to full source is not implemented yet; Run support is planned next."
         );
         assert!(validate_facet_edit(DEFINITIONS[0], FRONT, "").starts_with("Error:"));
         assert!(
             validate_facet_edit(DEFINITIONS[0], FRONT, "Power\nloop e times").starts_with("Error:")
+        );
+    }
+
+    #[test]
+    fn parses_power_front_zero_case_one() {
+        let text = editable_facet_text(DEFINITIONS[0], FRONT);
+
+        assert_eq!(
+            parse_power_front_edit(&text),
+            Ok(PowerFrontEdit { zero_case: 1 })
+        );
+    }
+
+    #[test]
+    fn parses_power_front_zero_case_two() {
+        let text = editable_facet_text(DEFINITIONS[0], FRONT).replacen("1 →", "2 →", 1);
+
+        assert_eq!(
+            parse_power_front_edit(&text),
+            Ok(PowerFrontEdit { zero_case: 2 })
+        );
+    }
+
+    #[test]
+    fn rejects_malformed_power_front_edits() {
+        let missing_branch = "Power\nloop e times\nn (×)";
+        let missing_arrow = editable_facet_text(DEFINITIONS[0], FRONT).replacen("1 →", "1", 1);
+        let non_integer = editable_facet_text(DEFINITIONS[0], FRONT).replacen("1 →", "one →", 1);
+
+        assert_eq!(
+            parse_power_front_edit(missing_branch),
+            Err("Power Front edit is missing the top branch.".to_owned())
+        );
+        assert_eq!(
+            parse_power_front_edit(&missing_arrow),
+            Err("Power Front top branch is missing `→`.".to_owned())
+        );
+        assert_eq!(
+            parse_power_front_edit(&non_integer),
+            Err("Power Front top branch zero-case `one` is not an integer.".to_owned())
         );
     }
 }

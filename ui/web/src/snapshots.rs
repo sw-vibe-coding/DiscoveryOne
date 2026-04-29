@@ -1,4 +1,4 @@
-use crate::runtime::run_output;
+use crate::runtime::{run_output, run_output_with_inputs};
 use crate::{DEFINITIONS, FRONT, INTERNAL, LIBRARY_ROWS, LibraryRow, LibrarySort, facet_rows, sorted_library_rows};
 
 const FRONT_BEFORE_ROWS: &str = r#"<main class="app">
@@ -72,6 +72,22 @@ pub fn power_run_2_8_html_snapshot() -> String {
   <div class="run-inputs" aria-label="Power inputs">
     <label><span>n</span><input value="2" readonly></label>
     <label><span>e</span><input value="8" readonly></label>
+    <button type="button">Run</button>
+  </div>
+  <output class="run-output" aria-label="Power output">{output}</output>
+</aside>
+"#
+    )
+}
+
+pub fn power_front_edit_run_html_snapshot() -> String {
+    let output = run_output_with_inputs(DEFINITIONS[0], "5", "0");
+    format!(
+        r#"<aside class="run-panel" data-definition="Power" data-edited-face="front">
+  <header class="run-header"><span>RunPanel</span><strong>Power</strong></header>
+  <div class="run-inputs" aria-label="Power inputs">
+    <label><span>n</span><input value="5" readonly></label>
+    <label><span>e</span><input value="0" readonly></label>
     <button type="button">Run</button>
   </div>
   <output class="run-output" aria-label="Power output">{output}</output>

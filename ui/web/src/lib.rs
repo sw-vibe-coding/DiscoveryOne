@@ -206,5 +206,6 @@ fn library_grid_cmp(left: &LibraryRow, right: &LibraryRow, sort: LibrarySort) ->
 
 pub use snapshots::{
     library_grid_html_snapshot, library_grid_html_snapshot_sorted, minted_run_html_snapshot,
-    power_front_facet_html_snapshot, power_run_2_8_html_snapshot,
+    power_front_edit_run_html_snapshot, power_front_facet_html_snapshot,
+    power_run_2_8_html_snapshot,
 };
