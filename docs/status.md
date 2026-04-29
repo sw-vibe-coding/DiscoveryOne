@@ -96,10 +96,10 @@ with the Yew shell rendering `DefinitionPicker`, `FaceSelector`,
 
 ## In flight
 
-**M7 -- `discoveryone-minted-module`.** Planned in agentrail.
-The active saga covers the dowhile minted syntax CLI baseline,
-browser run baseline, unless/do substitution proof, and final MVP
-acceptance/demo documentation from `docs/plan.md` section 9.
+**M7 -- `discoveryone-minted-module`.** In progress.
+`d1_poc_dowhile_minted_syntax` is the RED CLI baseline for
+`examples/dowhile.d1`, which defines `*syntax do _ while _ end
+expand` and currently fails at the WASM runtime scaffold.
 
 The next session that picks up feature work should:
 
@@ -110,7 +110,8 @@ The next session that picks up feature work should:
 
 ## Up next
 
-Start `dowhile-minted-syntax-red`, the first M7 RED baseline.
+Implement the minimum parser/runtime support for
+`d1_poc_dowhile_minted_syntax`.
 
 ## Open questions parked
 
