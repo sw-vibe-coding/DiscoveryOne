@@ -1,0 +1,1 @@
+Made the Web demo controls interactive: the definition dropdown now changes the active definition, n/e inputs are editable, and Run recomputes output from the current definition and input values.

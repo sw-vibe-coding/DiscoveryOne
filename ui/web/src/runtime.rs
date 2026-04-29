@@ -19,6 +19,21 @@ pub(crate) fn definition_by_name(name: &str) -> Option<Definition> {
         .find(|definition| definition.name == name)
 }
 
+pub(crate) fn validate_source(source: &str) -> String {
+    if source.contains("*Power") {
+        return match d1_check::check_and_dump(source) {
+            Ok(_) => "Valid: parsed and checked.".to_owned(),
+            Err(err) => format!("Error: check failed: {err}"),
+        };
+    }
+
+    if let Err(err) = d1_parse::parse(source) {
+        return format!("Error: parse failed: {err}");
+    }
+
+    "Valid: parsed. Checker scaffold is not available for this definition yet.".to_owned()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -40,5 +55,15 @@ mod tests {
     #[test]
     fn minted_output_still_runs() {
         assert_eq!(run_output_with_inputs(DEFINITIONS[1], "2", "8"), "1 2 3\n3");
+    }
+
+    #[test]
+    fn validates_power_source() {
+        assert_eq!(validate_source(DEFINITIONS[0].source), "Valid: parsed and checked.");
+    }
+
+    #[test]
+    fn reports_parse_error_for_invalid_source() {
+        assert!(validate_source("not d1").starts_with("Error: parse failed:"));
     }
 }

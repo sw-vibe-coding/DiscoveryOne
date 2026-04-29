@@ -1,4 +1,4 @@
-use web_sys::{HtmlInputElement, HtmlSelectElement};
+use web_sys::{HtmlInputElement, HtmlSelectElement, HtmlTextAreaElement};
 use yew::prelude::*;
 use yew::TargetCast;
 
@@ -101,6 +101,11 @@ pub(crate) fn face_selector(props: &FaceSelectorProps) -> Html {
 pub(crate) struct FacetViewProps {
     pub(crate) definition: Definition,
     pub(crate) face: Face,
+    pub(crate) is_editing: bool,
+    pub(crate) source_text: String,
+    pub(crate) validation: String,
+    pub(crate) on_toggle_edit: Callback<()>,
+    pub(crate) on_source_input: Callback<String>,
 }
 
 #[function_component(FacetView)]
@@ -111,11 +116,40 @@ pub(crate) fn facet_view(props: &FacetViewProps) -> Html {
         <article class="facet-view" data-definition={props.definition.name} data-face={props.face.query}>
             <header class="facet-header">
                 <span>{ props.definition.name }</span>
-                <strong>{ props.face.label }</strong>
+                <div class="facet-tools">
+                    <strong>{ props.face.label }</strong>
+                    <button type="button" class="mode-toggle" onclick={
+                        let on_toggle_edit = props.on_toggle_edit.clone();
+                        Callback::from(move |_| on_toggle_edit.emit(()))
+                    }>
+                        { if props.is_editing { "Browse" } else { "Edit" } }
+                    </button>
+                </div>
             </header>
-            <pre class="facet-grid" aria-label={format!("{} {} facet", props.definition.name, props.face.label)}>
-                { rows.join("\n") }
-            </pre>
+            if props.is_editing {
+                <textarea
+                    class={classes!("source-editor", props.validation.starts_with("Error:").then_some("invalid"))}
+                    aria-label={format!("{} source editor", props.definition.name)}
+                    value={props.source_text.clone()}
+                    oninput={
+                        let on_source_input = props.on_source_input.clone();
+                        Callback::from(move |event: InputEvent| {
+                            let textarea = event.target_unchecked_into::<HtmlTextAreaElement>();
+                            on_source_input.emit(textarea.value());
+                        })
+                    }
+                />
+                <output
+                    class={classes!("validation-output", props.validation.starts_with("Error:").then_some("invalid"))}
+                    aria-label="Source validation"
+                >
+                    { &props.validation }
+                </output>
+            } else {
+                <pre class="facet-grid" aria-label={format!("{} {} facet", props.definition.name, props.face.label)}>
+                    { rows.join("\n") }
+                </pre>
+            }
         </article>
     }
 }

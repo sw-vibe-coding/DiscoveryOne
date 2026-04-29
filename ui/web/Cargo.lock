@@ -52,8 +52,23 @@ dependencies = [
 ]
 
 [[package]]
+name = "d1-check"
+version = "0.1.0"
+
+[[package]]
 name = "d1-interp"
 version = "0.1.0"
+
+[[package]]
+name = "d1-lex"
+version = "0.1.0"
+
+[[package]]
+name = "d1-parse"
+version = "0.1.0"
+dependencies = [
+ "d1-lex",
+]
 
 [[package]]
 name = "d1-source"
@@ -64,7 +79,9 @@ name = "d1-web"
 version = "0.1.0"
 dependencies = [
  "console_error_panic_hook",
+ "d1-check",
  "d1-interp",
+ "d1-parse",
  "d1-source",
  "wasm-bindgen",
  "web-sys",

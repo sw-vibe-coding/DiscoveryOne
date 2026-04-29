@@ -1,0 +1,11 @@
+{
+  "task_type": "implementation",
+  "state": {
+    "number": 7,
+    "step": "web-runnable-controls"
+  },
+  "action": "Reworked Yew state/callbacks, added typed web-sys DOM targets and runtime helper tests; verified cargo test --manifest-path ui/web/Cargo.toml, targeted web reg-rs cases, ./scripts/build-all.sh, sw-install --project ., and sw-checklist with only the existing non-failing d1-web module-count warning.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-04-29T11:18:37"
+}
