@@ -35,6 +35,26 @@ pub(crate) const DEFINITIONS: [Definition; 3] = [
         selected_face: INTERNAL,
     },
 ];
+pub(crate) const LIBRARY_ROWS: [LibraryRow; 3] = [
+    LibraryRow {
+        name: "Power",
+        arity: "2 -> 1",
+        category: "numeric",
+        aspects: "front left right top bottom rear",
+    },
+    LibraryRow {
+        name: "DowhileCounter",
+        arity: "0 -> 1",
+        category: "syntax-template",
+        aspects: "front internal",
+    },
+    LibraryRow {
+        name: "UnlessCounter",
+        arity: "0 -> 1",
+        category: "syntax-template",
+        aspects: "front internal",
+    },
+];
 pub(crate) const FACES: [Face; 6] = [
     Face {
         label: "Front",
@@ -78,6 +98,14 @@ pub(crate) struct Definition {
 pub(crate) struct Face {
     pub(crate) label: &'static str,
     pub(crate) query: &'static str,
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub(crate) struct LibraryRow {
+    pub(crate) name: &'static str,
+    pub(crate) arity: &'static str,
+    pub(crate) category: &'static str,
+    pub(crate) aspects: &'static str,
 }
 
 #[function_component(App)]

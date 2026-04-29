@@ -1,0 +1,1 @@
+Added the M8 library-grid RED snapshot baseline with a future HTML table expectation and a placeholder snapshot helper, leaving d1_web_library_grid_snapshot failing as intended.

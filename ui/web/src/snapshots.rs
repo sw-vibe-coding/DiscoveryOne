@@ -1,5 +1,5 @@
 use crate::runtime::run_output;
-use crate::{DEFINITIONS, FRONT, INTERNAL, facet_rows};
+use crate::{DEFINITIONS, FRONT, INTERNAL, LIBRARY_ROWS, LibraryRow, facet_rows};
 
 const FRONT_BEFORE_ROWS: &str = r#"<main class="app">
   <header class="topbar">
@@ -30,8 +30,32 @@ pub fn power_front_facet_html_snapshot() -> String {
 }
 
 pub fn library_grid_html_snapshot() -> String {
-    "<section class=\"library-grid\" aria-label=\"Library definitions\">not implemented</section>\n"
-        .to_owned()
+    let rows = LIBRARY_ROWS
+        .iter()
+        .map(library_grid_row)
+        .collect::<Vec<_>>()
+        .join("\n");
+    format!(
+        r#"<section class="library-grid" aria-label="Library definitions">
+  <table>
+    <thead><tr><th>Name</th><th>Arity</th><th>Type</th><th>Aspects</th></tr></thead>
+    <tbody>
+{rows}
+    </tbody>
+  </table>
+</section>
+"#
+    )
+}
+
+fn library_grid_row(row: &LibraryRow) -> String {
+    format!(
+        r#"      <tr data-definition="{name}"><td>{name}</td><td>{arity}</td><td>{category}</td><td>{aspects}</td></tr>"#,
+        name = row.name,
+        arity = row.arity,
+        category = row.category,
+        aspects = row.aspects
+    )
 }
 
 pub fn power_run_2_8_html_snapshot() -> String {
