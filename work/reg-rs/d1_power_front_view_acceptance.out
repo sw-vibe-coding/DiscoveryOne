@@ -1,0 +1,6 @@
+Power front-view acceptance
+power-front-line-1: <pre class="facet-grid" aria-label="Power Front facet">                                      ⎧ 1 →
+power-front-line-2: • Power (n : ℤ  e : ℤ) → (p : ℤ) ← ⎨ loop e times    iff e is positive
+power-front-line-3: ⎩ n (×) →</pre>
+m7-status: status: green
+status: green

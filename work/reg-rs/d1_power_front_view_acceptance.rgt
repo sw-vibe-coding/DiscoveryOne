@@ -1,0 +1,4 @@
+command = "scripts/power-front-view-acceptance.sh"
+timeout = 60
+exit_code = 0
+desc = "d1 web: Power front-view notation acceptance"
