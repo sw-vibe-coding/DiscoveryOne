@@ -1,6 +1,6 @@
 number = 5
 slug = "unless-minted-syntax-red"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: unless-minted-syntax-red
 
@@ -8,4 +8,5 @@ Create the M7 RED substitution baseline pro..."""
 role = "production"
 context_files = []
 created_at = "2026-04-28T16:59:06"
-commits = []
+completed_at = "2026-04-29T08:50:25"
+commits = ["029419ab4c5bf8723b700053d108c0dd87724eb2"]

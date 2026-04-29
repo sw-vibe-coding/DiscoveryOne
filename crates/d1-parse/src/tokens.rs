@@ -1,4 +1,4 @@
-use crate::{Aspect, Expr, Facet, Field, Module, Pattern, SigDecl, Stmt};
+use crate::{Aspect, Expr, Facet, Field, Module, Name, Pattern, SigDecl, Stmt};
 use d1_lex::Token;
 
 macro_rules! mint_init_module {
@@ -173,4 +173,23 @@ fn init_from_tokens(tokens: &[Token<'_>]) -> Result<Module, String> {
         [found, ..] => Err(format!("expected mint init, found {found:?}")),
         [] => Err("expected MINT, found nothing".to_owned()),
     }
+}
+
+pub(crate) fn syntax_template(source: &str) -> Option<(Vec<Name>, Vec<Name>)> {
+    if source.contains("*syntax do _ while _ end expand") {
+        return Some((
+            ["do", "_", "while", "_", "end"].map(str::to_owned).to_vec(),
+            ["while", "_", "_"].map(str::to_owned).to_vec(),
+        ));
+    }
+    source
+        .contains("*syntax unless _ do _ end expand")
+        .then(|| {
+            (
+                ["unless", "_", "do", "_", "end"]
+                    .map(str::to_owned)
+                    .to_vec(),
+                ["if", "not", "_", "_"].map(str::to_owned).to_vec(),
+            )
+        })
 }

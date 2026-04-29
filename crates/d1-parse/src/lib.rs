@@ -14,14 +14,11 @@ pub fn version() -> &'static str {
 }
 
 pub fn parse(source: &str) -> Result<Module, String> {
-    if source.contains("*syntax do _ while _ end expand") {
+    if let Some((pattern, expansion)) = tokens::syntax_template(source) {
         return Ok(Module {
             facets: vec![Facet {
                 aspect: Aspect::Internal,
-                stmts: vec![Stmt::Syntax(SyntaxDecl {
-                    pattern: ["do", "_", "while", "_", "end"].map(str::to_owned).to_vec(),
-                    expansion: ["while", "_", "_"].map(str::to_owned).to_vec(),
-                })],
+                stmts: vec![Stmt::Syntax(SyntaxDecl { pattern, expansion })],
             }],
         });
     }

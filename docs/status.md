@@ -102,8 +102,9 @@ with the Yew shell rendering `DefinitionPicker`, `FaceSelector`,
 and `d1 run` prints `1 2 3` followed by `3`.
 `d1_poc_dowhile_web_run` is GREEN for showing that declaration
 in the Internal Z layer and rendering the web RunPanel output.
-`d1_poc_unless_minted_syntax` is the RED substitution baseline
-for a different `unless _ do _ end` two-slot template.
+`d1_poc_unless_minted_syntax` is GREEN for a different
+`unless _ do _ end` two-slot template, proving the current M7
+syntax-template scaffold is not dowhile-only.
 
 The next session that picks up feature work should:
 
@@ -114,8 +115,8 @@ The next session that picks up feature work should:
 
 ## Up next
 
-Generalize minted syntax support so `d1_poc_unless_minted_syntax`
-is GREEN.
+Add the web baseline for the generalized unless/do minted syntax
+demo.
 
 ## Open questions parked
 

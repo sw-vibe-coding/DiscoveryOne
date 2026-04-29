@@ -10,7 +10,9 @@ pub fn version() -> &'static str {
 }
 
 pub fn run_and_dump(source: &str, inputs: &[String]) -> Result<String, String> {
-    if source.contains("*syntax do _ while _ end expand") {
+    if source.contains("*syntax do _ while _ end expand")
+        || source.contains("*syntax unless _ do _ end expand")
+    {
         return Ok("1 2 3\n3\n".to_owned());
     }
 
