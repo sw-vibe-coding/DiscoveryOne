@@ -1,0 +1,1 @@
+Expanded the Web demo layout so the app shell uses more desktop width, the facet panel gets a larger primary column and taller display area, and tablet/mobile widths collapse cleanly.

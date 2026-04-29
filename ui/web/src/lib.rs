@@ -100,12 +100,13 @@ pub fn app() -> Html {
 fn build_footer() -> Html {
     html! {
         <footer class="footer">
+            <span>{ concat!("Version: ", env!("CARGO_PKG_VERSION")) }</span>
             <span>{ "Copyright: Copyright (c) 2026 Michael A Wright" }</span>
             <span>{ "License: MIT" }</span>
-            <span>{ "Repository: https://github.com/sw-vibe-coding/DiscoveryOne" }</span>
-            <span>{ "Build Host: unknown" }</span>
-            <span>{ "Build Commit: unknown" }</span>
-            <span>{ "Build Time: 1970-01-01 00:00:00 UTC" }</span>
+            <span>{ concat!("Repository: ", env!("CARGO_PKG_REPOSITORY")) }</span>
+            <span>{ concat!("Build Host: ", env!("BUILD_HOST")) }</span>
+            <span>{ concat!("Build Commit: ", env!("BUILD_COMMIT")) }</span>
+            <span>{ concat!("Build Time: ", env!("BUILD_TIME")) }</span>
         </footer>
     }
 }
