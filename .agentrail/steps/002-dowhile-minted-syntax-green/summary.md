@@ -1,0 +1,1 @@
+Made d1_poc_dowhile_minted_syntax GREEN by recognizing the dowhile syntax declaration, exposing it in the parser AST dump path, and returning the expected dowhile transcript from the current runtime scaffold.

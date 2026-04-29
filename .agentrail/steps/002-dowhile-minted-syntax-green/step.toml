@@ -1,6 +1,6 @@
 number = 2
 slug = "dowhile-minted-syntax-green"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: dowhile-minted-syntax-green
 
@@ -8,4 +8,5 @@ Implement the minimum parser/runtime sup..."""
 role = "production"
 context_files = []
 created_at = "2026-04-28T16:58:46"
-commits = []
+completed_at = "2026-04-28T19:09:37"
+commits = ["59d1e77c4cdd61e2435f40c93c685a42cd6cc036"]

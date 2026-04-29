@@ -1,0 +1,4 @@
+command = "scripts/snapshot-web-dowhile-run.sh"
+timeout = 60
+exit_code = 1
+desc = "d1 web RED: dowhile minted syntax run is not implemented yet"

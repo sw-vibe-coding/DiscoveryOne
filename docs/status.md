@@ -100,6 +100,9 @@ with the Yew shell rendering `DefinitionPicker`, `FaceSelector`,
 `d1_poc_dowhile_minted_syntax` is GREEN for the CLI path:
 `examples/dowhile.d1` defines `*syntax do _ while _ end expand`
 and `d1 run` prints `1 2 3` followed by `3`.
+`d1_poc_dowhile_web_run` is the RED web baseline for showing
+that declaration in the Internal Z layer and running it from the
+web demo path.
 
 The next session that picks up feature work should:
 
@@ -110,7 +113,7 @@ The next session that picks up feature work should:
 
 ## Up next
 
-Create the M7 RED web baseline for `d1_poc_dowhile_web_run`.
+Wire the web demo path so `d1_poc_dowhile_web_run` is GREEN.
 
 ## Open questions parked
 
