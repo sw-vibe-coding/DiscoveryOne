@@ -1,9 +1,12 @@
 use yew::prelude::*;
 
 mod components;
+mod run_state;
+mod runtime;
 mod snapshots;
 
 use components::{FacetView, RunPanel, TopBar};
+use run_state::use_run_state;
 
 pub(crate) const POWER_SOURCE: &str = include_str!("../../../examples/power.d1");
 pub(crate) const DOWHILE_SOURCE: &str = include_str!("../../../examples/dowhile.d1");
@@ -80,16 +83,18 @@ pub(crate) struct Face {
 pub fn app() -> Html {
     let current_definition = use_state(|| DEFINITIONS[0]);
     let current_face = use_state(|| DEFINITIONS[0].selected_face);
-    let on_definition_select = Callback::from({ let current_definition = current_definition.clone(); let current_face = current_face.clone(); move |definition: Definition| {
-        current_face.set(definition.selected_face); current_definition.set(definition);
-    }});
-    let on_face_select = Callback::from({ let current_face = current_face.clone(); move |face| current_face.set(face) });
+    let run_state = use_run_state(current_definition.clone(), current_face.clone());
+    let on_face_select = Callback::from({
+        let current_face = current_face.clone();
+        move |face| current_face.set(face)
+    });
+
     html! {
         <main class="app">
-            <TopBar current_definition={*current_definition} current_face={*current_face} {on_definition_select} {on_face_select} />
+            <TopBar current_definition={*current_definition} current_face={*current_face} on_definition_select={run_state.on_definition_select} {on_face_select} />
             <section class="workspace">
                 <FacetView definition={*current_definition} face={*current_face} />
-                <RunPanel definition={*current_definition} />
+                <RunPanel definition={*current_definition} n_value={(*run_state.n_input).clone()} e_value={(*run_state.e_input).clone()} output={(*run_state.output).clone()} on_n_input={run_state.on_n_input} on_e_input={run_state.on_e_input} on_run={run_state.on_run} />
             </section>
             <BuildFooter />
         </main>
@@ -122,13 +127,6 @@ pub(crate) fn facet_rows(definition: Definition, face: Face) -> Vec<String> {
         .lines()
         .map(str::to_owned)
         .collect()
-}
-
-pub(crate) fn run_output(definition: Definition) -> String {
-    d1_interp::run_and_dump(definition.source, &["n=2".to_owned(), "e=8".to_owned()])
-        .expect("bundled fixture should run")
-        .trim_end()
-        .to_owned()
 }
 
 pub use snapshots::{

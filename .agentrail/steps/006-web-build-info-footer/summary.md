@@ -1,0 +1,1 @@
+Added Web build metadata generation and replaced footer placeholders with version, repository, build host, build commit, and build time values aligned with CLI -V output.

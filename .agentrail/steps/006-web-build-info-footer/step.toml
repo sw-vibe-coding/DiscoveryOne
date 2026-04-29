@@ -1,6 +1,6 @@
 number = 6
 slug = "web-build-info-footer"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: web-build-info-footer
 
@@ -8,5 +8,6 @@ Wire real build metadata into the Web footer a..."""
 role = "production"
 context_files = []
 created_at = "2026-04-29T10:12:09"
+completed_at = "2026-04-29T10:43:04"
 task_type = "implementation"
-commits = []
+commits = ["bb81d4927c705cf1dca4618a4180fcd6c80d091a"]

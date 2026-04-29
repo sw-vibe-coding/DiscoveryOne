@@ -1,4 +1,5 @@
-use crate::{DEFINITIONS, FRONT, INTERNAL, facet_rows, run_output};
+use crate::runtime::run_output;
+use crate::{DEFINITIONS, FRONT, INTERNAL, facet_rows};
 
 const FRONT_BEFORE_ROWS: &str = r#"<main class="app">
   <header class="topbar">

@@ -1,6 +1,9 @@
+use web_sys::{HtmlInputElement, HtmlSelectElement};
 use yew::prelude::*;
+use yew::TargetCast;
 
-use crate::{DEFINITIONS, Definition, FACES, Face, facet_rows, run_output};
+use crate::runtime::definition_by_name;
+use crate::{DEFINITIONS, Definition, FACES, Face, facet_rows};
 
 #[derive(Properties, PartialEq)]
 pub(crate) struct TopBarProps {
@@ -39,16 +42,23 @@ pub(crate) fn definition_picker(props: &DefinitionPickerProps) -> Html {
     html! {
         <label class="definition-picker">
             <span>{ "Definition" }</span>
-            <select aria-label="Definition" value={props.current.name}>
+            <select
+                aria-label="Definition"
+                value={props.current.name}
+                onchange={
+                    let on_select = props.on_select.clone();
+                    Callback::from(move |event: Event| {
+                        let select = event.target_unchecked_into::<HtmlSelectElement>();
+                        if let Some(definition) = definition_by_name(&select.value()) {
+                            on_select.emit(definition);
+                        }
+                    })
+                }
+            >
                 { for DEFINITIONS.iter().map(|definition| html! {
                     <option
                         value={definition.name}
                         selected={*definition == props.current}
-                        onclick={
-                            let on_select = props.on_select.clone();
-                            let definition = *definition;
-                            Callback::from(move |_| on_select.emit(definition))
-                        }
                     >
                         { definition.name }
                     </option>
@@ -113,12 +123,16 @@ pub(crate) fn facet_view(props: &FacetViewProps) -> Html {
 #[derive(Properties, PartialEq)]
 pub(crate) struct RunPanelProps {
     pub(crate) definition: Definition,
+    pub(crate) n_value: String,
+    pub(crate) e_value: String,
+    pub(crate) output: String,
+    pub(crate) on_n_input: Callback<String>,
+    pub(crate) on_e_input: Callback<String>,
+    pub(crate) on_run: Callback<()>,
 }
 
 #[function_component(RunPanel)]
 pub(crate) fn run_panel(props: &RunPanelProps) -> Html {
-    let output = run_output(props.definition);
-
     html! {
         <aside class="run-panel" data-definition={props.definition.name}>
             <header class="run-header">
@@ -126,11 +140,43 @@ pub(crate) fn run_panel(props: &RunPanelProps) -> Html {
                 <strong>{ props.definition.name }</strong>
             </header>
             <div class="run-inputs" aria-label="Power inputs">
-                <label><span>{ "n" }</span><input value="2" readonly=true /></label>
-                <label><span>{ "e" }</span><input value="8" readonly=true /></label>
-                <button type="button">{ "Run" }</button>
+                <label>
+                    <span>{ "n" }</span>
+                    <input
+                        value={props.n_value.clone()}
+                        oninput={
+                            let on_n_input = props.on_n_input.clone();
+                            Callback::from(move |event: InputEvent| {
+                                let input = event.target_unchecked_into::<HtmlInputElement>();
+                                on_n_input.emit(input.value());
+                            })
+                        }
+                    />
+                </label>
+                <label>
+                    <span>{ "e" }</span>
+                    <input
+                        value={props.e_value.clone()}
+                        oninput={
+                            let on_e_input = props.on_e_input.clone();
+                            Callback::from(move |event: InputEvent| {
+                                let input = event.target_unchecked_into::<HtmlInputElement>();
+                                on_e_input.emit(input.value());
+                            })
+                        }
+                    />
+                </label>
+                <button
+                    type="button"
+                    onclick={
+                        let on_run = props.on_run.clone();
+                        Callback::from(move |_| on_run.emit(()))
+                    }
+                >
+                    { "Run" }
+                </button>
             </div>
-            <output class="run-output" aria-label="Power output">{ output }</output>
+            <output class="run-output" aria-label="Power output">{ &props.output }</output>
         </aside>
     }
 }

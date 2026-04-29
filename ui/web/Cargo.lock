@@ -67,6 +67,7 @@ dependencies = [
  "d1-interp",
  "d1-source",
  "wasm-bindgen",
+ "web-sys",
  "yew",
 ]
 
