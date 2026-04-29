@@ -64,9 +64,18 @@ Open `http://localhost:1078/`.
 
 Use the definition picker to select:
 
-- `Power` for the M6 power facet and RunPanel path.
+- `Power` for the Power front-view notation and RunPanel path.
 - `DowhileCounter` for the `do _ while _ end` minted syntax demo.
 - `UnlessCounter` for the alternate `unless _ do _ end` template.
+
+For `Power`, select the Front facet. The facet renders the
+structured notation:
+
+```text
+                                      ⎧ 1 →
+   • Power (n : ℤ  e : ℤ) → (p : ℤ) ← ⎨ loop e times    iff e is positive
+                                      ⎩ n (×) →
+```
 
 For the minted syntax demos, the selected definition opens on the
 Internal facet. The facet shows the syntax template declaration, and
@@ -83,6 +92,12 @@ The full M7 acceptance case is:
 
 ```bash
 reg-rs run -p d1_minted_module_acceptance
+```
+
+The Power front-view demo acceptance case is:
+
+```bash
+reg-rs run -p d1_power_front_view_acceptance
 ```
 
 The complete suite should report all cases green.

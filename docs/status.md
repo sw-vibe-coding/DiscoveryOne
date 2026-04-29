@@ -2,9 +2,9 @@
 
 Snapshot of where the project is. Updated as milestones close.
 
-## Today (2026-04-28)
+## Today (2026-04-29)
 
-- **Phase:** M6 web shell planned.
+- **Phase:** Power front-view demo in progress.
 - **Code:** Cargo workspace, placeholder library crates, Yew web
   shell, build/run scripts, and first reg-rs smoke baseline are
   in place. `d1 lex` handles the arity-suffix, mint-operator,
@@ -31,10 +31,11 @@ Snapshot of where the project is. Updated as milestones close.
   current Power interpreter and WASM outputs match.
   all six `d1_facet_snapshot_power_*` baselines are GREEN
   through the existing source projection path.
-  `d1_web_facet_front_html_snapshot` captures the current RED
-  web snapshot scaffold failure before the Yew facet viewer lands.
+  `d1_web_facet_front_html_snapshot` and
+  `d1_power_front_view_acceptance` are GREEN for the structured
+  Power Front notation shown in the web demo.
   Software Wrighter checklist metadata is clean.
-- **Last meaningful commit:** Power front facet HTML RED baseline.
+- **Last meaningful commit:** Power front-view demo acceptance.
 
 ## Done
 
@@ -112,18 +113,32 @@ walks through the localhost:1078 demo scenario.
 
 ## In flight
 
-No active feature milestone is in progress after M7 completion.
+**Power front-view demo usability.** The Web UI now renders the
+requested structured Power Front notation:
+
+```text
+                                      ⎧ 1 →
+   • Power (n : ℤ  e : ℤ) → (p : ℤ) ← ⎨ loop e times    iff e is positive
+                                      ⎩ n (×) →
+```
+
+`d1_web_facet_front_html_snapshot` and
+`d1_power_front_view_acceptance` are GREEN. Follow-up saga steps
+are planned for workspace layout, real build metadata in the Web
+footer, interactive run controls, browse/edit mode, and validation
+feedback.
 
 The next session that picks up feature work should:
 
 1. Read this file.
-2. Read `docs/plan.md` section 9 (M7 work list).
+2. Read `docs/poc-demo.md` for the current localhost:1078 demo.
 3. Run `agentrail next` (per `CLAUDE.md`).
-4. Start the next planned milestone or add the next saga.
+4. Continue the next planned Power front-view usability step.
 
 ## Up next
 
-Plan M8 -- `discoveryone-library-grid`.
+Continue Power front-view demo usability before starting M8 --
+`discoveryone-library-grid`.
 
 ## Open questions parked
 

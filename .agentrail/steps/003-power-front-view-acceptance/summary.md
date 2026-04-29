@@ -1,0 +1,1 @@
+Added a Power front-view acceptance reg-rs case that verifies the structured Web snapshot notation and confirms the existing M7 minted-module acceptance remains green.
