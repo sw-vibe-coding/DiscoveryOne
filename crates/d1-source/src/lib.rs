@@ -90,6 +90,7 @@ pub fn emit_layered(source: &str, face: Option<&str>) -> Result<String, String> 
         Some("top") | Some("Top") => Ok(render_face!(source_set, "top")),
         Some("bottom") | Some("Bottom") => Ok(render_face!(source_set, "bottom")),
         Some("rear") | Some("Rear") => Ok(render_face!(source_set, "rear")),
+        Some("internal") | Some("Internal") => Ok(render_face!(source_set, "internal")),
         Some(face) => Err(format!("unsupported face: {face}")),
         None => Ok(source.strip_suffix('\n').unwrap_or(source).to_string() + "\n"),
     }

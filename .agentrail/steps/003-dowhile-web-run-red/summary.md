@@ -1,0 +1,1 @@
+Added the d1_poc_dowhile_web_run RED reg-rs baseline with a deterministic web snapshot script failure for the missing dowhile web demo path.

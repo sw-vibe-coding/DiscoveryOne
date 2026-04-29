@@ -3,10 +3,22 @@ use yew::prelude::*;
 mod components;
 mod snapshots;
 
-use components::{DefinitionPicker, FaceSelector, FacetView, RunPanel};
+use components::{FacetView, RunPanel, TopBar};
 
 pub(crate) const POWER_SOURCE: &str = include_str!("../../../examples/power.d1");
-pub(crate) const DEFINITIONS: &[&str] = &["Power"];
+pub(crate) const DOWHILE_SOURCE: &str = include_str!("../../../examples/dowhile.d1");
+pub(crate) const DEFINITIONS: [Definition; 2] = [
+    Definition {
+        name: "Power",
+        source: POWER_SOURCE,
+        selected_face: FRONT,
+    },
+    Definition {
+        name: "DowhileCounter",
+        source: DOWHILE_SOURCE,
+        selected_face: INTERNAL,
+    },
+];
 pub(crate) const FACES: [Face; 6] = [
     Face {
         label: "Front",
@@ -34,6 +46,17 @@ pub(crate) const FACES: [Face; 6] = [
     },
 ];
 pub(crate) const FRONT: Face = FACES[0];
+pub(crate) const INTERNAL: Face = Face {
+    label: "Internal",
+    query: "internal",
+};
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub(crate) struct Definition {
+    pub(crate) name: &'static str,
+    pub(crate) source: &'static str,
+    pub(crate) selected_face: Face,
+}
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub(crate) struct Face {
@@ -42,26 +65,20 @@ pub(crate) struct Face {
 }
 
 #[function_component(App)]
+#[rustfmt::skip]
 pub fn app() -> Html {
-    let current_face = use_state(|| FRONT);
-
+    let current_definition = use_state(|| DEFINITIONS[0]);
+    let current_face = use_state(|| DEFINITIONS[0].selected_face);
+    let on_definition_select = Callback::from({ let current_definition = current_definition.clone(); let current_face = current_face.clone(); move |definition: Definition| {
+        current_face.set(definition.selected_face); current_definition.set(definition);
+    }});
+    let on_face_select = Callback::from({ let current_face = current_face.clone(); move |face| current_face.set(face) });
     html! {
         <main class="app">
-            <header class="topbar">
-                <img class="badge" src="discovery-one-badge.png" alt="DiscoveryOne badge" />
-                <div class="titleblock">
-                    <h1>{ "DiscoveryOne" }</h1>
-                    <span>{ "M6 web shell" }</span>
-                </div>
-                <DefinitionPicker />
-                <FaceSelector current={*current_face} on_select={
-                    let current_face = current_face.clone();
-                    Callback::from(move |face| current_face.set(face))
-                } />
-            </header>
+            <TopBar current_definition={*current_definition} current_face={*current_face} {on_definition_select} {on_face_select} />
             <section class="workspace">
-                <FacetView face={*current_face} />
-                <RunPanel />
+                <FacetView definition={*current_definition} face={*current_face} />
+                <RunPanel definition={*current_definition} />
             </section>
             <BuildFooter />
         </main>
@@ -82,20 +99,22 @@ fn build_footer() -> Html {
     }
 }
 
-pub(crate) fn facet_rows(face: Face) -> Vec<String> {
-    d1_source::emit_layered(POWER_SOURCE, Some(face.query))
-        .expect("bundled Power fixture should project")
+pub(crate) fn facet_rows(definition: Definition, face: Face) -> Vec<String> {
+    d1_source::emit_layered(definition.source, Some(face.query))
+        .expect("bundled fixture should project")
         .trim_end()
         .lines()
         .map(str::to_owned)
         .collect()
 }
 
-pub(crate) fn power_run_2_8_output() -> String {
-    d1_interp::run_and_dump(POWER_SOURCE, &["n=2".to_owned(), "e=8".to_owned()])
-        .expect("bundled Power fixture should run")
+pub(crate) fn run_output(definition: Definition) -> String {
+    d1_interp::run_and_dump(definition.source, &["n=2".to_owned(), "e=8".to_owned()])
+        .expect("bundled fixture should run")
         .trim_end()
         .to_owned()
 }
 
-pub use snapshots::{power_front_facet_html_snapshot, power_run_2_8_html_snapshot};
+pub use snapshots::{
+    dowhile_run_html_snapshot, power_front_facet_html_snapshot, power_run_2_8_html_snapshot,
+};
