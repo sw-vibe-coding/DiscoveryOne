@@ -44,17 +44,23 @@ pub fn power_run_2_8_html_snapshot() -> String {
     )
 }
 
-pub fn dowhile_run_html_snapshot() -> String {
-    let rows = facet_rows(DEFINITIONS[1], INTERNAL).join("\n");
-    let output = run_output(DEFINITIONS[1]);
+pub fn minted_run_html_snapshot(definition_index: usize) -> String {
+    let definition = DEFINITIONS[definition_index];
+    let rows = facet_rows(definition, INTERNAL).join("\n");
+    let output = run_output(definition);
+    let name = definition.name;
+    minted_run_html(name, &rows, &output)
+}
+
+fn minted_run_html(name: &str, rows: &str, output: &str) -> String {
     format!(
         r#"<section class="workspace">
-  <article class="facet-view" data-definition="DowhileCounter" data-face="internal">
-    <header class="facet-header"><span>DowhileCounter</span><strong>Internal</strong></header>
-    <pre class="facet-grid" aria-label="DowhileCounter Internal facet">{rows}</pre>
+  <article class="facet-view" data-definition="{name}" data-face="internal">
+    <header class="facet-header"><span>{name}</span><strong>Internal</strong></header>
+    <pre class="facet-grid" aria-label="{name} Internal facet">{rows}</pre>
   </article>
-  <aside class="run-panel" data-definition="DowhileCounter">
-    <header class="run-header"><span>RunPanel</span><strong>DowhileCounter</strong></header>
+  <aside class="run-panel" data-definition="{name}">
+    <header class="run-header"><span>RunPanel</span><strong>{name}</strong></header>
     <div class="run-inputs" aria-label="Power inputs">
       <label><span>n</span><input value="2" readonly></label>
       <label><span>e</span><input value="8" readonly></label>

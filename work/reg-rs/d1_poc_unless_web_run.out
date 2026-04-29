@@ -1,0 +1,18 @@
+<section class="workspace">
+  <article class="facet-view" data-definition="UnlessCounter" data-face="internal">
+    <header class="facet-header"><span>UnlessCounter</span><strong>Internal</strong></header>
+    <pre class="facet-grid" aria-label="UnlessCounter Internal facet">template unless _ do _ end
+expansion if not _:
+_</pre>
+  </article>
+  <aside class="run-panel" data-definition="UnlessCounter">
+    <header class="run-header"><span>RunPanel</span><strong>UnlessCounter</strong></header>
+    <div class="run-inputs" aria-label="Power inputs">
+      <label><span>n</span><input value="2" readonly></label>
+      <label><span>e</span><input value="8" readonly></label>
+      <button type="button">Run</button>
+    </div>
+    <output class="run-output" aria-label="Power output">1 2 3
+3</output>
+  </aside>
+</section>

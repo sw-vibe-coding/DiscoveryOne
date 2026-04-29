@@ -7,7 +7,8 @@ use components::{FacetView, RunPanel, TopBar};
 
 pub(crate) const POWER_SOURCE: &str = include_str!("../../../examples/power.d1");
 pub(crate) const DOWHILE_SOURCE: &str = include_str!("../../../examples/dowhile.d1");
-pub(crate) const DEFINITIONS: [Definition; 2] = [
+pub(crate) const UNLESS_SOURCE: &str = include_str!("../../../examples/unless.d1");
+pub(crate) const DEFINITIONS: [Definition; 3] = [
     Definition {
         name: "Power",
         source: POWER_SOURCE,
@@ -16,6 +17,11 @@ pub(crate) const DEFINITIONS: [Definition; 2] = [
     Definition {
         name: "DowhileCounter",
         source: DOWHILE_SOURCE,
+        selected_face: INTERNAL,
+    },
+    Definition {
+        name: "UnlessCounter",
+        source: UNLESS_SOURCE,
         selected_face: INTERNAL,
     },
 ];
@@ -116,5 +122,5 @@ pub(crate) fn run_output(definition: Definition) -> String {
 }
 
 pub use snapshots::{
-    dowhile_run_html_snapshot, power_front_facet_html_snapshot, power_run_2_8_html_snapshot,
+    minted_run_html_snapshot, power_front_facet_html_snapshot, power_run_2_8_html_snapshot,
 };

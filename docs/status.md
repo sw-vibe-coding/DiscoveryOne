@@ -105,6 +105,8 @@ in the Internal Z layer and rendering the web RunPanel output.
 `d1_poc_unless_minted_syntax` is GREEN for a different
 `unless _ do _ end` two-slot template, proving the current M7
 syntax-template scaffold is not dowhile-only.
+`d1_poc_unless_web_run` is GREEN through the same web demo path
+used by the dowhile fixture.
 
 The next session that picks up feature work should:
 
@@ -115,8 +117,8 @@ The next session that picks up feature work should:
 
 ## Up next
 
-Add the web baseline for the generalized unless/do minted syntax
-demo.
+Close M7 with the full minted-module acceptance baseline and
+demo documentation.
 
 ## Open questions parked
 
