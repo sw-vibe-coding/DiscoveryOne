@@ -1,0 +1,11 @@
+number = 5
+slug = "unless-minted-syntax-red"
+status = "pending"
+description = """
+# Step: unless-minted-syntax-red
+
+Create the M7 RED substitution baseline pro..."""
+role = "production"
+context_files = []
+created_at = "2026-04-28T16:59:06"
+commits = []

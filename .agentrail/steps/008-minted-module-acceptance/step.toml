@@ -1,0 +1,11 @@
+number = 8
+slug = "minted-module-acceptance"
+status = "pending"
+description = """
+# Step: minted-module-acceptance
+
+Close M7 with the full MVP acceptance basel..."""
+role = "production"
+context_files = []
+created_at = "2026-04-28T16:59:31"
+commits = []

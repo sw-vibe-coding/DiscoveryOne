@@ -1,15 +1,18 @@
-# DiscoveryOne M6 -- Web Shell
+# DiscoveryOne M7 -- Minted Module
 
-Goal: Yew SPA loads a .d1 file, displays Power facets, switches between facets, and runs the loaded .d1 through the web-side runtime.
+Goal: A user authors a *Power definition and a *syntax do _ while _ end expand declaration in the web app; the minted syntax runs in the browser and is baselined by reg-rs.
 
 Reg-rs cases:
-- d1_facet_snapshot_power_front
-- d1_facet_snapshot_power_left
-- d1_facet_snapshot_power_right
-- d1_facet_snapshot_power_top
-- d1_facet_snapshot_power_bottom
-- d1_facet_snapshot_power_rear
-- d1_web_facet_front_html_snapshot
-- d1_web_run_power_2_8
+- d1_poc_dowhile_minted_syntax
+- d1_poc_dowhile_web_run
+- d1_poc_unless_minted_syntax
+- d1_poc_unless_web_run
+- d1_minted_module_acceptance
 
-Every step must rebuild and reinstall d1 before fixture/reg-rs checks when d1 changes, keep sw-checklist clean with zero failures and zero warnings, commit .agentrail/ changes, and push.
+Exit:
+- All M0-M7 reg-rs cases green.
+- The discoveryone web app demo at localhost:1078 round-trips Power and dowhile interactively.
+- docs/status.md updated.
+- docs/poc-demo.md walks through the scenario.
+
+Every step must keep sw-checklist clean with zero failures and zero warnings, commit .agentrail/ changes, and push.

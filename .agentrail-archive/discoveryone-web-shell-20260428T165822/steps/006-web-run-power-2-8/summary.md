@@ -1,0 +1,1 @@
+Added the M6 RunPanel path for the bundled Power definition with fixed n=2,e=8 inputs and output 256, plus the d1_web_run_power_2_8 reg-rs baseline.

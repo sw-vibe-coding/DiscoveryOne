@@ -85,7 +85,7 @@ Snapshot of where the project is. Updated as milestones close.
   `d1_wasm_power_2_8_eq_256`, `d1_wasm_power_5_0_eq_1`, and
   `d1_wasm_interp_parity_corpus` are GREEN.
 
-## In flight
+## Completed
 
 **M6 -- `discoveryone-web-shell`.** Complete. All six Power
 `facet-snapshot` baselines are GREEN and render the same stable
@@ -94,16 +94,23 @@ projections as `d1 face`. `d1_web_facet_front_html_snapshot` and
 with the Yew shell rendering `DefinitionPicker`, `FaceSelector`,
 `FacetView`, and `RunPanel`.
 
+## In flight
+
+**M7 -- `discoveryone-minted-module`.** Planned in agentrail.
+The active saga covers the dowhile minted syntax CLI baseline,
+browser run baseline, unless/do substitution proof, and final MVP
+acceptance/demo documentation from `docs/plan.md` section 9.
+
 The next session that picks up feature work should:
 
 1. Read this file.
-2. Read `docs/plan.md` section 8 (M6 work list).
+2. Read `docs/plan.md` section 9 (M7 work list).
 3. Run `agentrail next` (per `CLAUDE.md`).
-4. Start the next planned milestone or add the next saga.
+4. Continue the M7 minted-module saga.
 
 ## Up next
 
-Plan the next saga after M6 web shell completion.
+Start `dowhile-minted-syntax-red`, the first M7 RED baseline.
 
 ## Open questions parked
 
