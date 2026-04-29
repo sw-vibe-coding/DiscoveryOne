@@ -1,0 +1,11 @@
+M7 minted module acceptance
+power-cli: 256
+dowhile-cli:
+1 2 3
+3
+unless-cli:
+1 2 3
+3
+dowhile-web: <article class="facet-view" data-definition="DowhileCounter" data-face="internal">
+unless-web: <article class="facet-view" data-definition="UnlessCounter" data-face="internal">
+status: green

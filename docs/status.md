@@ -94,9 +94,9 @@ projections as `d1 face`. `d1_web_facet_front_html_snapshot` and
 with the Yew shell rendering `DefinitionPicker`, `FaceSelector`,
 `FacetView`, and `RunPanel`.
 
-## In flight
+## Completed
 
-**M7 -- `discoveryone-minted-module`.** In progress.
+**M7 -- `discoveryone-minted-module`.** Complete.
 `d1_poc_dowhile_minted_syntax` is GREEN for the CLI path:
 `examples/dowhile.d1` defines `*syntax do _ while _ end expand`
 and `d1 run` prints `1 2 3` followed by `3`.
@@ -107,18 +107,23 @@ in the Internal Z layer and rendering the web RunPanel output.
 syntax-template scaffold is not dowhile-only.
 `d1_poc_unless_web_run` is GREEN through the same web demo path
 used by the dowhile fixture.
+`d1_minted_module_acceptance` is GREEN and `docs/poc-demo.md`
+walks through the localhost:1078 demo scenario.
+
+## In flight
+
+No active feature milestone is in progress after M7 completion.
 
 The next session that picks up feature work should:
 
 1. Read this file.
 2. Read `docs/plan.md` section 9 (M7 work list).
 3. Run `agentrail next` (per `CLAUDE.md`).
-4. Continue the M7 minted-module saga.
+4. Start the next planned milestone or add the next saga.
 
 ## Up next
 
-Close M7 with the full minted-module acceptance baseline and
-demo documentation.
+Plan M8 -- `discoveryone-library-grid`.
 
 ## Open questions parked
 
