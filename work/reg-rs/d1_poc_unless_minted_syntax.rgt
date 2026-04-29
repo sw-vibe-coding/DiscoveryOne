@@ -1,0 +1,4 @@
+command = "scripts/run-fixture.sh run examples/unless.d1"
+timeout = 60
+exit_code = 1
+desc = "d1 M7 RED: unless/do minted syntax run is not generalized yet"
