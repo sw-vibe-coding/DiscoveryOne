@@ -14,9 +14,9 @@
   <section class="workspace">
     <article class="facet-view" data-definition="Power" data-face="front">
       <header class="facet-header"><span>Power</span><strong>Front</strong></header>
-      <pre class="facet-grid" aria-label="Power Front facet">n e -> p
-p <- 1
-loop e times: p <- p * n</pre>
+      <pre class="facet-grid" aria-label="Power Front facet">                                      ⎧ 1 →
+   • Power (n : ℤ  e : ℤ) → (p : ℤ) ← ⎨ loop e times    iff e is positive
+                                      ⎩ n (×) →</pre>
     </article>
   </section>
 </main>
