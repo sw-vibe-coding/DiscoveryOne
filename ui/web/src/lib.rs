@@ -35,7 +35,19 @@ pub(crate) const DEFINITIONS: [Definition; 3] = [
         selected_face: INTERNAL,
     },
 ];
-pub(crate) const LIBRARY_ROWS: [LibraryRow; 3] = [
+pub(crate) const LIBRARY_ROWS: [LibraryRow; 6] = [
+    LibraryRow {
+        name: "Add",
+        arity: "2 -> 1",
+        category: "numeric",
+        aspects: "front rear",
+    },
+    LibraryRow {
+        name: "Clamp",
+        arity: "3 -> 1",
+        category: "numeric",
+        aspects: "front top bottom",
+    },
     LibraryRow {
         name: "Power",
         arity: "2 -> 1",
@@ -53,6 +65,12 @@ pub(crate) const LIBRARY_ROWS: [LibraryRow; 3] = [
         arity: "0 -> 1",
         category: "syntax-template",
         aspects: "front internal",
+    },
+    LibraryRow {
+        name: "TraceValue",
+        arity: "1 -> 1",
+        category: "instrumentation",
+        aspects: "front rear internal",
     },
 ];
 pub(crate) const FACES: [Face; 6] = [
