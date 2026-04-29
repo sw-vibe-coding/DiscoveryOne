@@ -1,0 +1,1 @@
+Added visible library-grid sort controls and stable sort snapshots for name, arity, type/category, and aspects, using definition name as the tie-breaker.

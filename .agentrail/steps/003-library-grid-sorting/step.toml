@@ -1,6 +1,6 @@
 number = 3
 slug = "library-grid-sorting"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: library-grid-sorting
 
@@ -10,5 +10,6 @@ Scope:..."""
 role = "production"
 context_files = []
 created_at = "2026-04-29T11:46:44"
+completed_at = "2026-04-29T12:36:38"
 task_type = "implementation"
-commits = []
+commits = ["15fc068bc01b3719e39906d4bc0993cd2d9ff536"]

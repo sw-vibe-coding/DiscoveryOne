@@ -1,0 +1,11 @@
+{
+  "task_type": "implementation",
+  "state": {
+    "number": 3,
+    "step": "library-grid-sorting"
+  },
+  "action": "Added LibrarySort and shared stable sorting; wired LibraryGrid buttons into the Web UI; added sort-specific snapshot examples, scripts, and reg-rs baselines; verified library grid sort cases, existing web regressions, web tests, build-all, sw-install, sw-checklist, and localhost:1078 serving.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-04-29T12:36:38"
+}
