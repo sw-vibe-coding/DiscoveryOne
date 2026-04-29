@@ -1,0 +1,1 @@
+Documented the Power front-view notation demo in docs/poc-demo.md, updated status to reflect the green Power front-view acceptance, and confirmed localhost:1078 was serving.
