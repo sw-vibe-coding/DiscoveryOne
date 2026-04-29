@@ -1,0 +1,1 @@
+Added Browse/Edit mode to the facet panel, with a controlled source editor, validation feedback, and invalid-state highlighting based on the current parser/checker scaffolds.

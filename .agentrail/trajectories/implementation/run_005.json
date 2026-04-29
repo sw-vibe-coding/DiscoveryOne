@@ -1,0 +1,11 @@
+{
+  "task_type": "implementation",
+  "state": {
+    "number": 8,
+    "step": "web-browse-edit-validation"
+  },
+  "action": "Added edit state hook and source validation helpers; wired FacetView to toggle between browse and edit surfaces; added validation tests; verified cargo test --manifest-path ui/web/Cargo.toml, targeted web reg-rs cases, ./scripts/build-all.sh, sw-install --project ., sw-checklist, and the running localhost:1078 Trunk rebuild.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-04-29T11:27:16"
+}
