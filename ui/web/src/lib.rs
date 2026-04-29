@@ -141,7 +141,7 @@ pub fn app() -> Html {
     let current_face = use_state(|| DEFINITIONS[0].selected_face);
     let library_sort = use_state(|| LibrarySort::Name);
     let run_state = use_run_state(current_definition.clone(), current_face.clone());
-    let edit_state = use_edit_state(current_definition.clone());
+    let edit_state = use_edit_state(current_definition.clone(), current_face.clone());
     let on_face_select = Callback::from({
         let current_face = current_face.clone();
         move |face| current_face.set(face)
@@ -151,7 +151,7 @@ pub fn app() -> Html {
         <main class="app">
             <TopBar current_definition={*current_definition} current_face={*current_face} on_definition_select={run_state.on_definition_select} {on_face_select} />
             <section class="workspace">
-                <FacetView definition={*current_definition} face={*current_face} is_editing={*edit_state.is_editing} source_text={(*edit_state.source_text).clone()} validation={(*edit_state.validation).clone()} on_toggle_edit={edit_state.on_toggle_edit} on_source_input={edit_state.on_source_input} />
+                <FacetView definition={*current_definition} face={*current_face} is_editing={*edit_state.is_editing} facet_text={(*edit_state.facet_text).clone()} validation={(*edit_state.validation).clone()} on_toggle_edit={edit_state.on_toggle_edit} on_facet_input={edit_state.on_facet_input} />
                 <RunPanel definition={*current_definition} n_value={(*run_state.n_input).clone()} e_value={(*run_state.e_input).clone()} output={(*run_state.output).clone()} on_n_input={run_state.on_n_input} on_e_input={run_state.on_e_input} on_run={run_state.on_run} />
             </section>
             <LibraryGrid rows={sorted_library_rows(*library_sort)} current_sort={*library_sort} on_sort={Callback::from(move |sort| library_sort.set(sort))} />

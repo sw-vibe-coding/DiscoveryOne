@@ -1,0 +1,11 @@
+{
+  "task_type": "docs",
+  "state": {
+    "number": 5,
+    "step": "library-grid-acceptance-docs"
+  },
+  "action": "Added scripts/library-grid-acceptance.sh and d1_library_grid_acceptance; updated docs/poc-demo.md and docs/status.md; verified targeted acceptance, full reg-rs, sw-checklist, and diff checks.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-04-29T13:56:30"
+}

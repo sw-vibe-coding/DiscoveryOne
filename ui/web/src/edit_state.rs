@@ -1,56 +1,113 @@
 use yew::prelude::*;
 
-use crate::runtime::validate_source;
-use crate::Definition;
+use crate::{Definition, Face, facet_rows};
 
 pub(crate) struct EditState {
     pub(crate) is_editing: UseStateHandle<bool>,
-    pub(crate) source_text: UseStateHandle<String>,
+    pub(crate) facet_text: UseStateHandle<String>,
     pub(crate) validation: UseStateHandle<String>,
     pub(crate) on_toggle_edit: Callback<()>,
-    pub(crate) on_source_input: Callback<String>,
+    pub(crate) on_facet_input: Callback<String>,
 }
 
 #[hook]
-pub(crate) fn use_edit_state(current_definition: UseStateHandle<Definition>) -> EditState {
+pub(crate) fn use_edit_state(
+    current_definition: UseStateHandle<Definition>,
+    current_face: UseStateHandle<Face>,
+) -> EditState {
     let is_editing = use_state(|| false);
-    let source_text = use_state(|| current_definition.source.to_owned());
-    let validation = use_state(|| validate_source(current_definition.source));
+    let facet_text = use_state(|| editable_facet_text(*current_definition, *current_face));
+    let validation = use_state(|| validate_facet_edit(*current_definition, *current_face, &facet_text));
     {
-        let source_text = source_text.clone();
+        let facet_text = facet_text.clone();
         let validation = validation.clone();
-        use_effect_with(*current_definition, move |definition| {
-            source_text.set(definition.source.to_owned());
-            validation.set(validate_source(definition.source));
+        use_effect_with((*current_definition, *current_face), move |(definition, face)| {
+            let text = editable_facet_text(*definition, *face);
+            validation.set(validate_facet_edit(*definition, *face, &text));
+            facet_text.set(text);
         });
     }
     let on_toggle_edit = Callback::from({
         let is_editing = is_editing.clone();
-        let source_text = source_text.clone();
+        let facet_text = facet_text.clone();
         let validation = validation.clone();
         let current_definition = current_definition.clone();
+        let current_face = current_face.clone();
         move |_| {
             if !*is_editing {
-                source_text.set(current_definition.source.to_owned());
-                validation.set(validate_source(current_definition.source));
+                let text = editable_facet_text(*current_definition, *current_face);
+                validation.set(validate_facet_edit(*current_definition, *current_face, &text));
+                facet_text.set(text);
             }
             is_editing.set(!*is_editing);
         }
     });
-    let on_source_input = Callback::from({
-        let source_text = source_text.clone();
+    let on_facet_input = Callback::from({
+        let facet_text = facet_text.clone();
         let validation = validation.clone();
-        move |source: String| {
-            validation.set(validate_source(&source));
-            source_text.set(source);
+        let current_definition = current_definition.clone();
+        let current_face = current_face.clone();
+        move |text: String| {
+            validation.set(validate_facet_edit(*current_definition, *current_face, &text));
+            facet_text.set(text);
         }
     });
 
     EditState {
         is_editing,
-        source_text,
+        facet_text,
         validation,
         on_toggle_edit,
-        on_source_input,
+        on_facet_input,
+    }
+}
+
+pub(crate) fn editable_facet_text(definition: Definition, face: Face) -> String {
+    facet_rows(definition, face).join("\n")
+}
+
+pub(crate) fn validate_facet_edit(definition: Definition, face: Face, text: &str) -> String {
+    if text.trim().is_empty() {
+        return "Error: facet text is empty.".to_owned();
+    }
+
+    if definition.name == "Power" && face.query == "front" {
+        for required in ["Power", "loop e times", "n (×)"] {
+            if !text.contains(required) {
+                return format!("Error: Power Front edit is missing `{required}`.");
+            }
+        }
+    }
+
+    "Valid 2D facet text. Reverse projection to full source is not implemented yet; edits are preview-only.".to_owned()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::{DEFINITIONS, FRONT};
+
+    #[test]
+    fn editable_power_front_uses_visible_2d_not_source() {
+        let text = editable_facet_text(DEFINITIONS[0], FRONT);
+
+        assert!(text.contains("• Power"));
+        assert!(text.contains("loop e times"));
+        assert!(text.contains("n (×)"));
+        assert!(!text.contains("*Power"));
+    }
+
+    #[test]
+    fn validates_preview_only_power_front_edits() {
+        let text = editable_facet_text(DEFINITIONS[0], FRONT);
+
+        assert_eq!(
+            validate_facet_edit(DEFINITIONS[0], FRONT, &text),
+            "Valid 2D facet text. Reverse projection to full source is not implemented yet; edits are preview-only."
+        );
+        assert!(validate_facet_edit(DEFINITIONS[0], FRONT, "").starts_with("Error:"));
+        assert!(
+            validate_facet_edit(DEFINITIONS[0], FRONT, "Power\nloop e times").starts_with("Error:")
+        );
     }
 }

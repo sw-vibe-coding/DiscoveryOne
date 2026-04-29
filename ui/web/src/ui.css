@@ -157,7 +157,7 @@ h1 {
   white-space: pre;
 }
 
-.source-editor {
+.facet-editor {
   display: block;
   width: 100%;
   min-height: 16rem;
@@ -172,7 +172,7 @@ h1 {
   line-height: 1.55;
 }
 
-.source-editor.invalid {
+.facet-editor.invalid {
   border-color: #d88a8a;
   background: #1d1416;
 }

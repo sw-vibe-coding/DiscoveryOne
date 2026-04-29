@@ -102,10 +102,10 @@ pub(crate) struct FacetViewProps {
     pub(crate) definition: Definition,
     pub(crate) face: Face,
     pub(crate) is_editing: bool,
-    pub(crate) source_text: String,
+    pub(crate) facet_text: String,
     pub(crate) validation: String,
     pub(crate) on_toggle_edit: Callback<()>,
-    pub(crate) on_source_input: Callback<String>,
+    pub(crate) on_facet_input: Callback<String>,
 }
 
 #[function_component(FacetView)]
@@ -128,20 +128,20 @@ pub(crate) fn facet_view(props: &FacetViewProps) -> Html {
             </header>
             if props.is_editing {
                 <textarea
-                    class={classes!("source-editor", props.validation.starts_with("Error:").then_some("invalid"))}
-                    aria-label={format!("{} source editor", props.definition.name)}
-                    value={props.source_text.clone()}
+                    class={classes!("facet-editor", props.validation.starts_with("Error:").then_some("invalid"))}
+                    aria-label={format!("{} {} facet editor", props.definition.name, props.face.label)}
+                    value={props.facet_text.clone()}
                     oninput={
-                        let on_source_input = props.on_source_input.clone();
+                        let on_facet_input = props.on_facet_input.clone();
                         Callback::from(move |event: InputEvent| {
                             let textarea = event.target_unchecked_into::<HtmlTextAreaElement>();
-                            on_source_input.emit(textarea.value());
+                            on_facet_input.emit(textarea.value());
                         })
                     }
                 />
                 <output
                     class={classes!("validation-output", props.validation.starts_with("Error:").then_some("invalid"))}
-                    aria-label="Source validation"
+                    aria-label="Facet validation"
                 >
                     { &props.validation }
                 </output>
