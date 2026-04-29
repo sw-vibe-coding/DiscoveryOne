@@ -1,6 +1,6 @@
 number = 6
 slug = "facet-edit-surface"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: facet-edit-surface
 
@@ -8,5 +8,6 @@ Fix Web Edit mode so it edits the visible 2D face..."""
 role = "production"
 context_files = []
 created_at = "2026-04-29T13:05:32"
+completed_at = "2026-04-29T14:06:05"
 task_type = "implementation"
-commits = []
+commits = ["be3c60607bb62948c51a4bb61d75c74f9fed342d"]

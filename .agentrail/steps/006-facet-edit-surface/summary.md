@@ -1,0 +1,1 @@
+Changed Web Edit mode to edit the selected visible 2D facet text, with preview-only validation that clearly states reverse projection to full source is not implemented yet.
