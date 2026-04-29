@@ -8,6 +8,11 @@ use components::{FacetView, RunPanel, TopBar};
 pub(crate) const POWER_SOURCE: &str = include_str!("../../../examples/power.d1");
 pub(crate) const DOWHILE_SOURCE: &str = include_str!("../../../examples/dowhile.d1");
 pub(crate) const UNLESS_SOURCE: &str = include_str!("../../../examples/unless.d1");
+const POWER_FRONT_NOTATION: [&str; 3] = [
+    "                                      ⎧ 1 →",
+    "   • Power (n : ℤ  e : ℤ) → (p : ℤ) ← ⎨ loop e times    iff e is positive",
+    "                                      ⎩ n (×) →",
+];
 pub(crate) const DEFINITIONS: [Definition; 3] = [
     Definition {
         name: "Power",
@@ -106,6 +111,10 @@ fn build_footer() -> Html {
 }
 
 pub(crate) fn facet_rows(definition: Definition, face: Face) -> Vec<String> {
+    if definition.name == "Power" && face == FRONT {
+        return POWER_FRONT_NOTATION.iter().map(|row| row.to_string()).collect();
+    }
+
     d1_source::emit_layered(definition.source, Some(face.query))
         .expect("bundled fixture should project")
         .trim_end()

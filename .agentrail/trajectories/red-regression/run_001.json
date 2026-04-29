@@ -1,0 +1,11 @@
+{
+  "task_type": "red-regression",
+  "state": {
+    "number": 1,
+    "step": "power-front-view-red"
+  },
+  "action": "Inspected the Web snapshot path, changed only work/reg-rs/d1_web_facet_front_html_snapshot.out, and ran reg-rs run -p d1_web_facet_front_html_snapshot to confirm the RED mismatch.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-04-29T09:58:42"
+}

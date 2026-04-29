@@ -1,0 +1,1 @@
+Updated the existing Power front HTML snapshot baseline to the requested structured mathematical notation, leaving the current renderer unchanged. The targeted reg-rs case now fails as expected: 0 passed, 1 failed for d1_web_facet_front_html_snapshot.

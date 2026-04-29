@@ -1,6 +1,6 @@
 number = 1
 slug = "power-front-view-red"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: power-front-view-red
 
@@ -8,5 +8,6 @@ Create the RED regression baseline for the Powe..."""
 role = "production"
 context_files = []
 created_at = "2026-04-29T09:38:34"
+completed_at = "2026-04-29T09:58:42"
 task_type = "red-regression"
-commits = []
+commits = ["cb531e86812c7110f0999211a3262a04cc14c2b1"]
