@@ -1,0 +1,19 @@
+<section class="pipeline-canvas" aria-label="Pipeline">
+  <header class="pipeline-header"><span>Pipeline</span><strong>Power to Output</strong></header>
+  <div class="pipeline-nodes">
+    <article class="pipeline-node" data-node="power" style="--x: 0; --y: 0">
+      <header><span>Power</span><strong>numeric</strong></header>
+      <div class="ports inputs"><span data-port="n">n : Z</span><span data-port="e">e : Z</span></div>
+      <div class="ports outputs"><span data-port="p">p : Z</span></div>
+    </article>
+    <article class="pipeline-node" data-node="output" style="--x: 1; --y: 0">
+      <header><span>Output</span><strong>sink</strong></header>
+      <div class="ports inputs"><span data-port="value">value : Z</span></div>
+    </article>
+  </div>
+  <div class="pipeline-edges" aria-label="Pipeline edges">
+    <span data-edge="power.p->output.value">Power.p -> Output.value</span>
+  </div>
+  <output class="pipeline-validation" aria-label="Pipeline validation">Valid: Power.p feeds Output.value.</output>
+  <output class="pipeline-run-output" aria-label="Pipeline output">256</output>
+</section>

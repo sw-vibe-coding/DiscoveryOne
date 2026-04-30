@@ -1,6 +1,6 @@
 number = 1
 slug = "pipeline-red"
-status = "pending"
+status = "in-progress"
 description = """
 # Step: pipeline-red
 
