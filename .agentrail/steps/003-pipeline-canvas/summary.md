@@ -1,0 +1,1 @@
+Rendered the deterministic Power-to-Output pipeline canvas in the Web UI and snapshot path with nodes, typed ports, and the connecting edge; validation and execution remain pending for later M9 steps.

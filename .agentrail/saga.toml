@@ -1,6 +1,6 @@
 name = "discoveryone-pipeline-2d"
 status = "active"
-current_step = 3
+current_step = 4
 created_at = "2026-04-30T13:42:08"
 plan_file = ".agentrail/plan.md"
 retroactive = false

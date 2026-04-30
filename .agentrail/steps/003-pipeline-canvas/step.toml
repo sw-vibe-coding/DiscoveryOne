@@ -1,6 +1,6 @@
 number = 3
 slug = "pipeline-canvas"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: pipeline-canvas
 
@@ -8,5 +8,6 @@ Render the deterministic 2D pipeline canvas in the W..."""
 role = "production"
 context_files = []
 created_at = "2026-04-30T13:42:32"
+completed_at = "2026-04-30T15:48:31"
 task_type = "implementation"
-commits = []
+commits = ["c7908d8042735031d844ec257ae32b5564462109"]

@@ -135,52 +135,19 @@ pub enum LibrarySort {
 }
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
-pub(crate) struct Pipeline {
-    pub(crate) name: &'static str,
-    pub(crate) inputs: PipelineInputs,
-    pub(crate) nodes: &'static [PipelineNode],
-    pub(crate) edges: &'static [PipelineEdge],
-}
-
+pub(crate) struct Pipeline { pub(crate) name: &'static str, pub(crate) inputs: PipelineInputs, pub(crate) nodes: &'static [PipelineNode], pub(crate) edges: &'static [PipelineEdge] }
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
-pub(crate) struct PipelineInputs {
-    pub(crate) n: &'static str,
-    pub(crate) e: &'static str,
-}
-
+pub(crate) struct PipelineInputs { pub(crate) n: &'static str, pub(crate) e: &'static str }
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
-pub(crate) struct PipelineNode {
-    pub(crate) id: &'static str,
-    pub(crate) label: &'static str,
-    pub(crate) kind: &'static str,
-    pub(crate) position: PipelinePosition,
-    pub(crate) inputs: &'static [PipelinePort],
-    pub(crate) outputs: &'static [PipelinePort],
-}
-
+pub(crate) struct PipelineNode { pub(crate) id: &'static str, pub(crate) label: &'static str, pub(crate) kind: &'static str, pub(crate) position: PipelinePosition, pub(crate) inputs: &'static [PipelinePort], pub(crate) outputs: &'static [PipelinePort] }
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
-pub(crate) struct PipelinePosition {
-    pub(crate) x: u8,
-    pub(crate) y: u8,
-}
-
+pub(crate) struct PipelinePosition { pub(crate) x: u8, pub(crate) y: u8 }
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
-pub(crate) struct PipelinePort {
-    pub(crate) id: &'static str,
-    pub(crate) label: &'static str,
-    pub(crate) value_type: &'static str,
-}
-
+pub(crate) struct PipelinePort { pub(crate) id: &'static str, pub(crate) label: &'static str, pub(crate) value_type: &'static str }
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
-pub(crate) struct PipelineEdge {
-    pub(crate) from_node: &'static str,
-    pub(crate) from_port: &'static str,
-    pub(crate) to_node: &'static str,
-    pub(crate) to_port: &'static str,
-}
+pub(crate) struct PipelineEdge { pub(crate) from_node: &'static str, pub(crate) from_port: &'static str, pub(crate) to_node: &'static str, pub(crate) to_port: &'static str }
 
-pub(crate) const PENDING_VALIDATION_TEXT: &str =
-    "Pending: pipeline validation is not implemented yet.";
+pub(crate) const VALID_PIPELINE_TEXT: &str = "Valid: Power.p feeds Output.value.";
 pub(crate) const PENDING_OUTPUT_TEXT: &str = "Pending: pipeline execution is not implemented yet.";
 const POWER_INPUTS: [PipelinePort; 2] = [
     PipelinePort { id: "n", label: "n", value_type: "Z" },
@@ -220,6 +187,25 @@ pub(crate) const POWER_OUTPUT_PIPELINE: Pipeline = Pipeline {
     nodes: &POWER_OUTPUT_NODES,
     edges: &POWER_OUTPUT_EDGES,
 };
+
+pub(crate) fn validate_pipeline(pipeline: Pipeline) -> String {
+    if pipeline.edges.len() != 1 {
+        return "Error: pipeline requires one Power-to-Output edge.".to_owned();
+    }
+    let edge = pipeline.edges[0];
+    let from = pipeline.nodes.iter().find(|node| node.id == edge.from_node);
+    let to = pipeline.nodes.iter().find(|node| node.id == edge.to_node);
+    let Some(from) = from else { return format!("Error: missing source node `{}`.", edge.from_node); };
+    let Some(to) = to else { return format!("Error: missing target node `{}`.", edge.to_node); };
+    let from_port = from.outputs.iter().find(|port| port.id == edge.from_port);
+    let to_port = to.inputs.iter().find(|port| port.id == edge.to_port);
+    let Some(from_port) = from_port else { return format!("Error: missing output port `{}.{}`.", from.id, edge.from_port); };
+    let Some(to_port) = to_port else { return format!("Error: missing input port `{}.{}`.", to.id, edge.to_port); };
+    if from_port.value_type != to_port.value_type {
+        return format!("Error: incompatible edge types {} -> {}.", from_port.value_type, to_port.value_type);
+    }
+    VALID_PIPELINE_TEXT.to_owned()
+}
 
 #[function_component(App)]
 #[rustfmt::skip]
@@ -330,7 +316,7 @@ pub fn pipeline_power_output_html_snapshot() -> String {
         edge.to_port,
         edge.from_port,
         edge.to_port,
-        PENDING_VALIDATION_TEXT,
+        validate_pipeline(POWER_OUTPUT_PIPELINE),
         PENDING_OUTPUT_TEXT
     )
 }
@@ -340,3 +326,22 @@ pub use snapshots::{
     power_front_edit_run_html_snapshot, power_front_facet_html_snapshot,
     power_run_2_8_html_snapshot,
 };
+
+#[cfg(test)]
+#[rustfmt::skip]
+mod tests {
+    use super::*;
+
+    const NO_EDGES: [PipelineEdge; 0] = [];
+    const BAD_EDGE: [PipelineEdge; 1] = [PipelineEdge { from_node: "power", from_port: "p", to_node: "output", to_port: "missing" }];
+    const TEXT_INPUTS: [PipelinePort; 1] = [PipelinePort { id: "value", label: "value", value_type: "Text" }];
+    const TEXT_NODES: [PipelineNode; 2] = [POWER_OUTPUT_NODES[0], PipelineNode { inputs: &TEXT_INPUTS, ..POWER_OUTPUT_NODES[1] }];
+
+    #[test]
+    fn validates_demo_pipeline_edges() {
+        assert_eq!(validate_pipeline(POWER_OUTPUT_PIPELINE), VALID_PIPELINE_TEXT);
+        assert_eq!(validate_pipeline(Pipeline { edges: &NO_EDGES, ..POWER_OUTPUT_PIPELINE }), "Error: pipeline requires one Power-to-Output edge.");
+        assert_eq!(validate_pipeline(Pipeline { edges: &BAD_EDGE, ..POWER_OUTPUT_PIPELINE }), "Error: missing input port `output.missing`.");
+        assert_eq!(validate_pipeline(Pipeline { nodes: &TEXT_NODES, ..POWER_OUTPUT_PIPELINE }), "Error: incompatible edge types Z -> Text.");
+    }
+}
