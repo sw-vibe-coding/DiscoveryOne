@@ -1,0 +1,12 @@
+number = 3
+slug = "pipeline-canvas"
+status = "pending"
+description = """
+# Step: pipeline-canvas
+
+Render the deterministic 2D pipeline canvas in the W..."""
+role = "production"
+context_files = []
+created_at = "2026-04-30T13:42:32"
+task_type = "implementation"
+commits = []

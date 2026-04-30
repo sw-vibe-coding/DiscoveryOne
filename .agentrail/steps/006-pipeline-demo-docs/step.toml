@@ -1,0 +1,15 @@
+number = 6
+slug = "pipeline-demo-docs"
+status = "pending"
+description = """
+# Step: pipeline-demo-docs
+
+Close M9 with demo docs/status updates.
+
+Scope:
+-..."""
+role = "production"
+context_files = []
+created_at = "2026-04-30T13:43:03"
+task_type = "docs"
+commits = []

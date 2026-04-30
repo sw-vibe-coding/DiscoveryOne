@@ -1,0 +1,15 @@
+number = 2
+slug = "pipeline-model"
+status = "pending"
+description = """
+# Step: pipeline-model
+
+Add the narrow M9 pipeline data model.
+
+Scope:
+- Defi..."""
+role = "production"
+context_files = []
+created_at = "2026-04-30T13:42:25"
+task_type = "implementation"
+commits = []

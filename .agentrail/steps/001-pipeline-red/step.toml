@@ -1,0 +1,12 @@
+number = 1
+slug = "pipeline-red"
+status = "pending"
+description = """
+# Step: pipeline-red
+
+Create the M9 RED acceptance baseline for a small 2D pi..."""
+role = "production"
+context_files = []
+created_at = "2026-04-30T13:42:15"
+task_type = "red-regression"
+commits = []
