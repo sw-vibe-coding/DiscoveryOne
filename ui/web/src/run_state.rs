@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::runtime::run_output_with_inputs;
+use crate::runtime::{run_output_with_facet_edit, run_output_with_inputs};
 use crate::{DEFINITIONS, Definition, Face};
 
 pub(crate) struct RunState {
@@ -17,6 +17,7 @@ pub(crate) struct RunState {
 pub(crate) fn use_run_state(
     current_definition: UseStateHandle<Definition>,
     current_face: UseStateHandle<Face>,
+    facet_text: UseStateHandle<String>,
 ) -> RunState {
     let n_input = use_state(|| "2".to_owned());
     let e_input = use_state(|| "8".to_owned());
@@ -43,10 +44,20 @@ pub(crate) fn use_run_state(
     });
     let on_run = Callback::from({
         let current_definition = current_definition.clone();
+        let current_face = current_face.clone();
+        let facet_text = facet_text.clone();
         let n_input = n_input.clone();
         let e_input = e_input.clone();
         let output = output.clone();
-        move |_| output.set(run_output_with_inputs(*current_definition, &n_input, &e_input))
+        move |_| {
+            output.set(run_output_with_facet_edit(
+                *current_definition,
+                *current_face,
+                &facet_text,
+                &n_input,
+                &e_input,
+            ))
+        }
     });
 
     RunState {

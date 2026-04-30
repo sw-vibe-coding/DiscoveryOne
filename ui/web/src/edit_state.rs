@@ -78,7 +78,7 @@ pub(crate) fn validate_facet_edit(definition: Definition, face: Face, text: &str
 
     if definition.name == "Power" && face.query == "front" {
         return match parse_power_front_edit(text) {
-            Ok(_) => "Valid Power Front edit. Reverse projection to full source is not implemented yet; Run support is planned next.".to_owned(),
+            Ok(_) => "Valid Power Front edit. Run uses this zero-case value for e=0; reverse projection to full source is not implemented yet.".to_owned(),
             Err(err) => format!("Error: {err}"),
         };
     }
@@ -138,7 +138,7 @@ mod tests {
 
         assert_eq!(
             validate_facet_edit(DEFINITIONS[0], FRONT, &text),
-            "Valid Power Front edit. Reverse projection to full source is not implemented yet; Run support is planned next."
+            "Valid Power Front edit. Run uses this zero-case value for e=0; reverse projection to full source is not implemented yet."
         );
         assert!(validate_facet_edit(DEFINITIONS[0], FRONT, "").starts_with("Error:"));
         assert!(

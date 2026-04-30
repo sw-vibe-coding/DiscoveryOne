@@ -140,8 +140,8 @@ pub fn app() -> Html {
     let current_definition = use_state(|| DEFINITIONS[0]);
     let current_face = use_state(|| DEFINITIONS[0].selected_face);
     let library_sort = use_state(|| LibrarySort::Name);
-    let run_state = use_run_state(current_definition.clone(), current_face.clone());
     let edit_state = use_edit_state(current_definition.clone(), current_face.clone());
+    let run_state = use_run_state(current_definition.clone(), current_face.clone(), edit_state.facet_text.clone());
     let on_face_select = Callback::from({
         let current_face = current_face.clone();
         move |face| current_face.set(face)

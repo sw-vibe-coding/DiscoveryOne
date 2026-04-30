@@ -1,4 +1,5 @@
-use crate::runtime::{run_output, run_output_with_inputs};
+use crate::edit_state::editable_facet_text;
+use crate::runtime::{run_output, run_output_with_facet_edit};
 use crate::{DEFINITIONS, FRONT, INTERNAL, LIBRARY_ROWS, LibraryRow, LibrarySort, facet_rows, sorted_library_rows};
 
 const FRONT_BEFORE_ROWS: &str = r#"<main class="app">
@@ -81,7 +82,8 @@ pub fn power_run_2_8_html_snapshot() -> String {
 }
 
 pub fn power_front_edit_run_html_snapshot() -> String {
-    let output = run_output_with_inputs(DEFINITIONS[0], "5", "0");
+    let edited_front = editable_facet_text(DEFINITIONS[0], FRONT).replacen("1 →", "2 →", 1);
+    let output = run_output_with_facet_edit(DEFINITIONS[0], FRONT, &edited_front, "5", "0");
     format!(
         r#"<aside class="run-panel" data-definition="Power" data-edited-face="front">
   <header class="run-header"><span>RunPanel</span><strong>Power</strong></header>
@@ -101,10 +103,6 @@ pub fn minted_run_html_snapshot(definition_index: usize) -> String {
     let rows = facet_rows(definition, INTERNAL).join("\n");
     let output = run_output(definition);
     let name = definition.name;
-    minted_run_html(name, &rows, &output)
-}
-
-fn minted_run_html(name: &str, rows: &str, output: &str) -> String {
     format!(
         r#"<section class="workspace">
   <article class="facet-view" data-definition="{name}" data-face="internal">

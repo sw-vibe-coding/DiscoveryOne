@@ -1,0 +1,1 @@
+Added a narrow Power Front edit parser that extracts the top-branch zero-case integer and reports focused validation errors for malformed visible 2D syntax.
