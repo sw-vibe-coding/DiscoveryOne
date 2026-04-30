@@ -1,6 +1,6 @@
 number = 3
 slug = "pipeline-canvas"
-status = "pending"
+status = "in-progress"
 description = """
 # Step: pipeline-canvas
 

@@ -1,0 +1,1 @@
+Added the narrow M9 Power-to-Output pipeline model fixture with deterministic nodes, ports, edge, inputs, and focused shape tests.

@@ -243,6 +243,90 @@ h1 {
   background: #151a20;
 }
 
+.pipeline-canvas {
+  margin-top: 1rem;
+  border: 1px solid #38404a;
+  border-radius: 6px;
+  background: #151a20;
+  overflow-x: auto;
+}
+
+.pipeline-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid #38404a;
+  color: #a9b4c0;
+}
+
+.pipeline-header strong {
+  color: #edf1f5;
+}
+
+.pipeline-nodes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(12rem, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.pipeline-node {
+  border: 1px solid #596574;
+  border-radius: 6px;
+  background: #101419;
+}
+
+.pipeline-node header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid #38404a;
+  color: #a9b4c0;
+}
+
+.pipeline-node header strong {
+  color: #edf1f5;
+}
+
+.ports {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  padding: 0.7rem 0.75rem;
+}
+
+.ports span,
+.pipeline-edges span {
+  border: 1px solid #38404a;
+  border-radius: 4px;
+  padding: 0.25rem 0.4rem;
+  background: #181d23;
+  color: #edf1f5;
+}
+
+.pipeline-edges,
+.pipeline-validation,
+.pipeline-run-output {
+  display: block;
+  margin: 0 1rem 1rem;
+}
+
+.pipeline-edges {
+  color: #a9b4c0;
+}
+
+.pipeline-validation,
+.pipeline-run-output {
+  border: 1px solid #38404a;
+  border-radius: 4px;
+  padding: 0.7rem 0.75rem;
+  background: #101419;
+  color: #f6fbff;
+}
+
 .library-header {
   display: flex;
   align-items: center;

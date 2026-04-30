@@ -3,7 +3,10 @@ use yew::prelude::*;
 use yew::TargetCast;
 
 use crate::runtime::definition_by_name;
-use crate::{DEFINITIONS, Definition, FACES, Face, LibraryRow, LibrarySort, facet_rows};
+use crate::{
+    DEFINITIONS, Definition, FACES, Face, LibraryRow, LibrarySort, PENDING_OUTPUT_TEXT,
+    PENDING_VALIDATION_TEXT, Pipeline, facet_rows,
+};
 
 #[derive(Properties, PartialEq)]
 pub(crate) struct TopBarProps {
@@ -264,5 +267,58 @@ pub(crate) fn library_grid(props: &LibraryGridProps) -> Html {
                 </tbody>
             </table>
         </section>
+    }
+}
+
+#[derive(Properties, PartialEq)]
+pub(crate) struct PipelineCanvasProps {
+    pub(crate) pipeline: Pipeline,
+}
+
+#[function_component(PipelineCanvas)]
+pub(crate) fn pipeline_canvas(props: &PipelineCanvasProps) -> Html {
+    html! {
+        <section class="pipeline-canvas" aria-label="Pipeline">
+            <header class="pipeline-header">
+                <span>{ "Pipeline" }</span>
+                <strong>{ props.pipeline.name }</strong>
+            </header>
+            <div class="pipeline-nodes">
+                { for props.pipeline.nodes.iter().map(|node| html! {
+                    <article class="pipeline-node" data-node={node.id} style={format!("--x: {}; --y: {}", node.position.x, node.position.y)}>
+                        <header><span>{ node.label }</span><strong>{ node.kind }</strong></header>
+                        <div class="ports inputs">
+                            { for node.inputs.iter().map(|port| html! {
+                                <span data-port={port.id}>{ format!("{} : {}", port.label, port.value_type) }</span>
+                            }) }
+                        </div>
+                        if !node.outputs.is_empty() {
+                            <div class="ports outputs">
+                                { for node.outputs.iter().map(|port| html! {
+                                    <span data-port={port.id}>{ format!("{} : {}", port.label, port.value_type) }</span>
+                                }) }
+                            </div>
+                        }
+                    </article>
+                }) }
+            </div>
+            <div class="pipeline-edges" aria-label="Pipeline edges">
+                { for props.pipeline.edges.iter().map(|edge| html! {
+                    <span data-edge={format!("{}.{}->{}.{}", edge.from_node, edge.from_port, edge.to_node, edge.to_port)}>
+                        { format!("{}.{} -> {}.{}", title_case(edge.from_node), edge.from_port, title_case(edge.to_node), edge.to_port) }
+                    </span>
+                }) }
+            </div>
+            <output class="pipeline-validation" aria-label="Pipeline validation">{ PENDING_VALIDATION_TEXT }</output>
+            <output class="pipeline-run-output" aria-label="Pipeline output">{ PENDING_OUTPUT_TEXT }</output>
+        </section>
+    }
+}
+
+fn title_case(value: &str) -> String {
+    let mut chars = value.chars();
+    match chars.next() {
+        Some(first) => first.to_uppercase().chain(chars).collect(),
+        None => String::new(),
     }
 }

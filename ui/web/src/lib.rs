@@ -2,12 +2,11 @@ use yew::prelude::*;
 
 mod components;
 mod edit_state;
-mod pipeline;
 mod run_state;
 mod runtime;
 mod snapshots;
 
-use components::{FacetView, LibraryGrid, RunPanel, TopBar};
+use components::{FacetView, LibraryGrid, PipelineCanvas, RunPanel, TopBar};
 use edit_state::use_edit_state;
 use run_state::use_run_state;
 
@@ -135,6 +134,93 @@ pub enum LibrarySort {
     Aspects,
 }
 
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub(crate) struct Pipeline {
+    pub(crate) name: &'static str,
+    pub(crate) inputs: PipelineInputs,
+    pub(crate) nodes: &'static [PipelineNode],
+    pub(crate) edges: &'static [PipelineEdge],
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub(crate) struct PipelineInputs {
+    pub(crate) n: &'static str,
+    pub(crate) e: &'static str,
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub(crate) struct PipelineNode {
+    pub(crate) id: &'static str,
+    pub(crate) label: &'static str,
+    pub(crate) kind: &'static str,
+    pub(crate) position: PipelinePosition,
+    pub(crate) inputs: &'static [PipelinePort],
+    pub(crate) outputs: &'static [PipelinePort],
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub(crate) struct PipelinePosition {
+    pub(crate) x: u8,
+    pub(crate) y: u8,
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub(crate) struct PipelinePort {
+    pub(crate) id: &'static str,
+    pub(crate) label: &'static str,
+    pub(crate) value_type: &'static str,
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub(crate) struct PipelineEdge {
+    pub(crate) from_node: &'static str,
+    pub(crate) from_port: &'static str,
+    pub(crate) to_node: &'static str,
+    pub(crate) to_port: &'static str,
+}
+
+pub(crate) const PENDING_VALIDATION_TEXT: &str =
+    "Pending: pipeline validation is not implemented yet.";
+pub(crate) const PENDING_OUTPUT_TEXT: &str = "Pending: pipeline execution is not implemented yet.";
+const POWER_INPUTS: [PipelinePort; 2] = [
+    PipelinePort { id: "n", label: "n", value_type: "Z" },
+    PipelinePort { id: "e", label: "e", value_type: "Z" },
+];
+const POWER_OUTPUTS: [PipelinePort; 1] = [PipelinePort { id: "p", label: "p", value_type: "Z" }];
+const OUTPUT_INPUTS: [PipelinePort; 1] =
+    [PipelinePort { id: "value", label: "value", value_type: "Z" }];
+const OUTPUT_OUTPUTS: [PipelinePort; 0] = [];
+const POWER_OUTPUT_NODES: [PipelineNode; 2] = [
+    PipelineNode {
+        id: "power",
+        label: "Power",
+        kind: "numeric",
+        position: PipelinePosition { x: 0, y: 0 },
+        inputs: &POWER_INPUTS,
+        outputs: &POWER_OUTPUTS,
+    },
+    PipelineNode {
+        id: "output",
+        label: "Output",
+        kind: "sink",
+        position: PipelinePosition { x: 1, y: 0 },
+        inputs: &OUTPUT_INPUTS,
+        outputs: &OUTPUT_OUTPUTS,
+    },
+];
+const POWER_OUTPUT_EDGES: [PipelineEdge; 1] = [PipelineEdge {
+    from_node: "power",
+    from_port: "p",
+    to_node: "output",
+    to_port: "value",
+}];
+pub(crate) const POWER_OUTPUT_PIPELINE: Pipeline = Pipeline {
+    name: "Power to Output",
+    inputs: PipelineInputs { n: "2", e: "8" },
+    nodes: &POWER_OUTPUT_NODES,
+    edges: &POWER_OUTPUT_EDGES,
+};
+
 #[function_component(App)]
 #[rustfmt::skip]
 pub fn app() -> Html {
@@ -156,6 +242,7 @@ pub fn app() -> Html {
                 <RunPanel definition={*current_definition} n_value={(*run_state.n_input).clone()} e_value={(*run_state.e_input).clone()} output={(*run_state.output).clone()} on_n_input={run_state.on_n_input} on_e_input={run_state.on_e_input} on_run={run_state.on_run} />
             </section>
             <LibraryGrid rows={sorted_library_rows(*library_sort)} current_sort={*library_sort} on_sort={Callback::from(move |sort| library_sort.set(sort))} />
+            <PipelineCanvas pipeline={POWER_OUTPUT_PIPELINE} />
             <BuildFooter />
         </main>
     }
@@ -205,7 +292,49 @@ fn library_grid_cmp(left: &LibraryRow, right: &LibraryRow, sort: LibrarySort) ->
     primary.then_with(|| left.name.cmp(right.name))
 }
 
-pub use pipeline::pipeline_power_output_html_snapshot;
+pub fn pipeline_power_output_html_snapshot() -> String {
+    let nodes = POWER_OUTPUT_PIPELINE.nodes.iter().map(|node| {
+        let inputs = node.inputs.iter().map(|port| format!(r#"<span data-port="{}">{} : {}</span>"#, port.id, port.label, port.value_type)).collect::<Vec<_>>().join("");
+        let outputs = node.outputs.iter().map(|port| format!(r#"<span data-port="{}">{} : {}</span>"#, port.id, port.label, port.value_type)).collect::<Vec<_>>().join("");
+        if outputs.is_empty() {
+            return format!(r#"    <article class="pipeline-node" data-node="{}" style="--x: {}; --y: {}">
+      <header><span>{}</span><strong>{}</strong></header>
+      <div class="ports inputs">{}</div>
+    </article>"#, node.id, node.position.x, node.position.y, node.label, node.kind, inputs);
+        }
+        format!(r#"    <article class="pipeline-node" data-node="{}" style="--x: {}; --y: {}">
+      <header><span>{}</span><strong>{}</strong></header>
+      <div class="ports inputs">{}</div>
+      <div class="ports outputs">{}</div>
+    </article>"#, node.id, node.position.x, node.position.y, node.label, node.kind, inputs, outputs)
+    }).collect::<Vec<_>>().join("\n");
+    let edge = POWER_OUTPUT_PIPELINE.edges[0];
+    format!(
+        r#"<section class="pipeline-canvas" aria-label="Pipeline">
+  <header class="pipeline-header"><span>Pipeline</span><strong>{}</strong></header>
+  <div class="pipeline-nodes">
+{}
+  </div>
+  <div class="pipeline-edges" aria-label="Pipeline edges">
+    <span data-edge="{}.{}->{}.{}">Power.{} -> Output.{}</span>
+  </div>
+  <output class="pipeline-validation" aria-label="Pipeline validation">{}</output>
+  <output class="pipeline-run-output" aria-label="Pipeline output">{}</output>
+</section>
+"#,
+        POWER_OUTPUT_PIPELINE.name,
+        nodes,
+        edge.from_node,
+        edge.from_port,
+        edge.to_node,
+        edge.to_port,
+        edge.from_port,
+        edge.to_port,
+        PENDING_VALIDATION_TEXT,
+        PENDING_OUTPUT_TEXT
+    )
+}
+
 pub use snapshots::{
     library_grid_html_snapshot, library_grid_html_snapshot_sorted, minted_run_html_snapshot,
     power_front_edit_run_html_snapshot, power_front_facet_html_snapshot,
