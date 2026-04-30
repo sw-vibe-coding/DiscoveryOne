@@ -1,0 +1,1 @@
+Routed the bundled Power-to-Output pipeline through the existing web runtime with n=2,e=8 so the pipeline snapshot now renders output 256.

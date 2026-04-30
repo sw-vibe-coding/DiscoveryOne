@@ -2,8 +2,9 @@
 
 This is the current Web demo slice. It demonstrates that
 DiscoveryOne can run the existing `Power` fixture and two user-minted
-syntax fixtures, present a sortable library grid, and execute a narrow
-Power Front 2D edit.
+syntax fixtures, present a sortable library grid, execute a narrow
+Power Front 2D edit, and run a bundled 2D `Power -> Output`
+pipeline.
 
 ## Build
 
@@ -118,6 +119,34 @@ bundled definitions. The M8 snapshot contains six rows:
 The grid can be sorted by `Name`, `Arity`, `Type`, and `Aspects`.
 Each sort path is stable, with definition name as the tie-breaker.
 
+## 2D Pipeline Demo
+
+Below the library grid, the Web UI renders the bundled M9 pipeline:
+
+```text
+Power.p -> Output.value
+```
+
+The pipeline panel shows two positioned nodes, the `Power` output
+port `p : Z`, the `Output` input port `value : Z`, and the inline
+validation message:
+
+```text
+Valid: Power.p feeds Output.value.
+```
+
+The bundled fixture runs through the existing Web runtime with
+inputs `n=2,e=8`, so the pipeline output is:
+
+```text
+256
+```
+
+This is intentionally a narrow demo fixture. The canvas is
+deterministic and type-checked for the bundled edge, but it does not
+yet support drag/drop authoring, persistent pipeline files, editable
+connections, or general multi-node execution.
+
 ## Regression Baseline
 
 The full M7 acceptance case is:
@@ -144,4 +173,10 @@ The M8 library-grid acceptance case is:
 
 ```bash
 reg-rs run -p d1_library_grid_acceptance
+```
+
+The M9 pipeline acceptance case is:
+
+```bash
+reg-rs run -p d1_web_pipeline_power_output
 ```

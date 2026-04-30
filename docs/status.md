@@ -4,8 +4,7 @@ Snapshot of where the project is. Updated as milestones close.
 
 ## Today (2026-04-30)
 
-- **Phase:** Power Front executable edit demo complete; choosing
-  the next saga.
+- **Phase:** M9 2D pipeline demo complete; choosing the next saga.
 - **Code:** Cargo workspace, placeholder library crates, Yew web
   shell, build/run scripts, and first reg-rs smoke baseline are
   in place. `d1 lex` handles the arity-suffix, mint-operator,
@@ -40,8 +39,12 @@ Snapshot of where the project is. Updated as milestones close.
   is GREEN for the narrow executable edit demo: edit the Power
   Front zero-case value from `1` to `2`, run `n=5,e=0`, and
   observe output `2`.
+  `d1_web_pipeline_power_output` is GREEN for the M9 pipeline
+  demo: the Web UI renders `Power -> Output`, validates
+  `Power.p` feeding `Output.value`, and runs the bundled fixture
+  to output `256`.
   Software Wrighter checklist metadata is clean.
-- **Last meaningful commit:** Power Front executable edit demo.
+- **Last meaningful commit:** M9 2D pipeline demo.
 
 ## Done
 
@@ -159,6 +162,21 @@ a Library grid with six bundled metadata rows: `Add`, `Clamp`,
 `d1_web_library_grid_sort_aspects` are GREEN for stable sort paths.
 `d1_library_grid_acceptance` aggregates the M8 demo acceptance path.
 
+## Completed
+
+**M9 -- `discoveryone-pipeline-2d`.** Complete. The Web UI renders
+a deterministic 2D `Power -> Output` pipeline with two positioned
+nodes, typed ports, the `Power.p -> Output.value` edge, inline
+validation, and runtime output. `d1_web_pipeline_power_output` is
+GREEN and shows `Valid: Power.p feeds Output.value.` followed by
+pipeline output `256` for bundled inputs `n=2,e=8`.
+
+The implementation is intentionally narrow. The canvas is a bundled
+fixture, not a drag/drop authoring surface. It validates the required
+edge shape and compatible `Z -> Z` ports, but it does not yet provide
+editable connections, pipeline persistence, arbitrary node graphs,
+or general multi-node scheduling beyond the `Power -> Output` demo.
+
 The next session that picks up feature work should:
 
 1. Read this file.
@@ -168,8 +186,12 @@ The next session that picks up feature work should:
 
 ## Up next
 
-Choose the next saga. The roadmap's next milestone is M9 --
-`discoveryone-pipeline-2d`.
+Choose the next saga. The default roadmap choice is M10 --
+`discoveryone-3d-viewer`, a three.js inspection scene reading the
+same positioned symbol set as the Yew facet view. Other reasonable
+follow-ups are to deepen M9 with editable pipeline wiring or to
+expand Power Front editing beyond the current zero-case slice, but
+M10 is the next planned milestone.
 
 ## Open questions parked
 
@@ -182,7 +204,7 @@ These are tracked in `docs/design.md` section 14. Briefly:
 - Whether the Rear facet displays WAT or a stack-IR view by
   default.
 - Pipeline serialization (extends `.d1.json` with a connections
-  table; design when M9 starts).
+  table; still open after the narrow M9 fixture).
 
 ## Constraints reminders
 
