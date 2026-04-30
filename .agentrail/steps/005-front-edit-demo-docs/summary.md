@@ -1,0 +1,1 @@
+Documented the executable Power Front edit demo path and updated status to reflect narrow Power Front edit support plus the remaining reverse-projection non-goal.

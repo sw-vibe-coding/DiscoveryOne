@@ -1,0 +1,11 @@
+{
+  "task_type": "docs",
+  "state": {
+    "number": 5,
+    "step": "front-edit-demo-docs"
+  },
+  "action": "Updated docs/poc-demo.md with the manual edit 1-to-2, n=5,e=0 demo; updated docs/status.md for the completed front-edit saga; verified front-edit acceptance, relevant Power and minted web regressions, web crate tests, sw-checklist, and diff checks.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-04-30T13:18:06"
+}
