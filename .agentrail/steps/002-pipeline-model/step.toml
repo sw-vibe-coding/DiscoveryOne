@@ -1,6 +1,6 @@
 number = 2
 slug = "pipeline-model"
-status = "pending"
+status = "in-progress"
 description = """
 # Step: pipeline-model
 

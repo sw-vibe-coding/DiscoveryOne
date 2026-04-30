@@ -1,6 +1,6 @@
 number = 1
 slug = "pipeline-red"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: pipeline-red
 
@@ -8,5 +8,6 @@ Create the M9 RED acceptance baseline for a small 2D pi..."""
 role = "production"
 context_files = []
 created_at = "2026-04-30T13:42:15"
+completed_at = "2026-04-30T14:01:42"
 task_type = "red-regression"
-commits = []
+commits = ["d6375810f1d82ccec476118a8c9ecd2eb8f66dc9"]

@@ -2,6 +2,7 @@ use yew::prelude::*;
 
 mod components;
 mod edit_state;
+mod pipeline;
 mod run_state;
 mod runtime;
 mod snapshots;
@@ -204,6 +205,7 @@ fn library_grid_cmp(left: &LibraryRow, right: &LibraryRow, sort: LibrarySort) ->
     primary.then_with(|| left.name.cmp(right.name))
 }
 
+pub use pipeline::pipeline_power_output_html_snapshot;
 pub use snapshots::{
     library_grid_html_snapshot, library_grid_html_snapshot_sorted, minted_run_html_snapshot,
     power_front_edit_run_html_snapshot, power_front_facet_html_snapshot,

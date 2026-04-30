@@ -1,0 +1,11 @@
+{
+  "task_type": "red-regression",
+  "state": {
+    "number": 1,
+    "step": "pipeline-red"
+  },
+  "action": "Added snapshot-web-pipeline-power-output script, snapshot_pipeline_power_output example, and d1_web_pipeline_power_output reg-rs baseline; confirmed the new case fails because pipeline_power_output_html_snapshot is not implemented yet, while d1_web_power_front_edit_run remains green.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-04-30T14:01:42"
+}
