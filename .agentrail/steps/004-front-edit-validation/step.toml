@@ -1,6 +1,6 @@
 number = 4
 slug = "front-edit-validation"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: front-edit-validation
 
@@ -8,5 +8,6 @@ Harden visible feedback for invalid Power Fron..."""
 role = "production"
 context_files = []
 created_at = "2026-04-29T16:08:20"
+completed_at = "2026-04-30T10:51:45"
 task_type = "implementation"
-commits = []
+commits = ["347b88bafdb887d8ad46d4cd3f95f0117a8785ef"]

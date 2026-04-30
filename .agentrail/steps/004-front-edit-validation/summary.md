@@ -1,0 +1,1 @@
+Changed invalid Power Front executable edits to fail Run explicitly instead of silently falling back to the bundled source.

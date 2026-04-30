@@ -1,9 +1,9 @@
-# M8 PoC Demo
+# Front Edit Execution Demo
 
-This is the M8 library-grid vertical slice. It demonstrates that
+This is the current Web demo slice. It demonstrates that
 DiscoveryOne can run the existing `Power` fixture and two user-minted
-syntax fixtures, and that the Yew web demo presents a sortable library
-grid for the bundled definitions.
+syntax fixtures, present a sortable library grid, and execute a narrow
+Power Front 2D edit.
 
 ## Build
 
@@ -77,6 +77,25 @@ structured notation:
                                       ⎩ n (×) →
 ```
 
+To demo executable Front editing:
+
+1. Click `Edit` in the Power Front facet.
+2. Change the top branch zero-case value from `1` to `2`.
+3. Set RunPanel inputs to `n=5` and `e=0`.
+4. Click `Run`.
+
+Expected output:
+
+```text
+2
+```
+
+This edit support is intentionally narrow. The Web runtime reads the
+edited Power Front zero-case integer for `e=0`; it does not yet
+reverse-project arbitrary 2D facet edits back into full `.d1` source.
+Malformed Power Front edits produce an explicit RunPanel error instead
+of silently falling back to the bundled source.
+
 For the minted syntax demos, the selected definition opens on the
 Internal facet. The facet shows the syntax template declaration, and
 the RunPanel renders:
@@ -111,6 +130,12 @@ The Power front-view demo acceptance case is:
 
 ```bash
 reg-rs run -p d1_power_front_view_acceptance
+```
+
+The executable Power Front edit acceptance case is:
+
+```bash
+reg-rs run -p d1_web_power_front_edit_run
 ```
 
 The complete suite should report all cases green.

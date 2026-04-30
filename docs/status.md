@@ -2,10 +2,10 @@
 
 Snapshot of where the project is. Updated as milestones close.
 
-## Today (2026-04-29)
+## Today (2026-04-30)
 
-- **Phase:** M8 library-grid milestone and Web Edit surface polish
-  complete; choosing the next saga.
+- **Phase:** Power Front executable edit demo complete; choosing
+  the next saga.
 - **Code:** Cargo workspace, placeholder library crates, Yew web
   shell, build/run scripts, and first reg-rs smoke baseline are
   in place. `d1 lex` handles the arity-suffix, mint-operator,
@@ -36,9 +36,12 @@ Snapshot of where the project is. Updated as milestones close.
   `d1_power_front_view_acceptance` are GREEN for the structured
   Power Front notation shown in the web demo. The M8 library grid
   is GREEN with six bundled rows and stable sort snapshots for
-  name, arity, type, and aspects.
+  name, arity, type, and aspects. `d1_web_power_front_edit_run`
+  is GREEN for the narrow executable edit demo: edit the Power
+  Front zero-case value from `1` to `2`, run `n=5,e=0`, and
+  observe output `2`.
   Software Wrighter checklist metadata is clean.
-- **Last meaningful commit:** M8 library grid acceptance/docs.
+- **Last meaningful commit:** Power Front executable edit demo.
 
 ## Done
 
@@ -130,7 +133,19 @@ requested structured Power Front notation:
 metadata, run controls, browse/edit mode, validation feedback,
 and visible 2D facet editing are implemented. Edit mode now
 edits the selected facet text rather than raw/internal source
-text; reverse projection to full source remains preview-only.
+text. For Power Front, changing the top-branch zero-case integer
+is executable for `e=0`; malformed Power Front executable edits
+fail the RunPanel explicitly. General reverse projection from 2D
+facet edits back into full `.d1` source remains out of scope.
+
+## Completed
+
+**Power Front executable edit demo.** Complete.
+`d1_web_power_front_edit_run` is GREEN for the demo path: edit
+the Power Front zero-case value from `1` to `2`, run with
+`n=5,e=0`, and observe output `2`. The support is intentionally
+narrow and Power Front-specific; positive-exponent Power runs and
+minted syntax demos remain unchanged.
 
 ## Completed
 

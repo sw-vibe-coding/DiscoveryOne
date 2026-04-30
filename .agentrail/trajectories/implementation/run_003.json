@@ -1,0 +1,11 @@
+{
+  "task_type": "implementation",
+  "state": {
+    "number": 4,
+    "step": "front-edit-validation"
+  },
+  "action": "Updated run_output_with_facet_edit to return a RunPanel error for invalid Power Front parse results; added a focused runtime test; verified web crate tests, edit-run acceptance, existing Power and minted web regressions, build-all, sw-install, sw-checklist, and diff checks.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-04-30T10:51:45"
+}
