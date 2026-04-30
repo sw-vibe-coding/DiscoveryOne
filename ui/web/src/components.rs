@@ -3,9 +3,10 @@ use yew::prelude::*;
 use yew::TargetCast;
 
 use crate::runtime::definition_by_name;
+use crate::runtime::run_output_with_inputs;
 use crate::{
-    DEFINITIONS, Definition, FACES, Face, LibraryRow, LibrarySort, PENDING_OUTPUT_TEXT, Pipeline,
-    facet_rows, validate_pipeline,
+    DEFINITIONS, Definition, FACES, Face, LibraryRow, LibrarySort, Pipeline, facet_rows,
+    validate_pipeline,
 };
 
 #[derive(Properties, PartialEq)]
@@ -310,7 +311,9 @@ pub(crate) fn pipeline_canvas(props: &PipelineCanvasProps) -> Html {
                 }) }
             </div>
             <output class="pipeline-validation" aria-label="Pipeline validation">{ validate_pipeline(props.pipeline) }</output>
-            <output class="pipeline-run-output" aria-label="Pipeline output">{ PENDING_OUTPUT_TEXT }</output>
+            <output class="pipeline-run-output" aria-label="Pipeline output">
+                { run_output_with_inputs(DEFINITIONS[0], props.pipeline.inputs.n, props.pipeline.inputs.e) }
+            </output>
         </section>
     }
 }

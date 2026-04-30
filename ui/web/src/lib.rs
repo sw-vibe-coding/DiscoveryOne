@@ -8,6 +8,7 @@ mod snapshots;
 
 use components::{FacetView, LibraryGrid, PipelineCanvas, RunPanel, TopBar};
 use edit_state::use_edit_state;
+use runtime::run_output_with_inputs;
 use run_state::use_run_state;
 
 pub(crate) const POWER_SOURCE: &str = include_str!("../../../examples/power.d1");
@@ -148,7 +149,6 @@ pub(crate) struct PipelinePort { pub(crate) id: &'static str, pub(crate) label: 
 pub(crate) struct PipelineEdge { pub(crate) from_node: &'static str, pub(crate) from_port: &'static str, pub(crate) to_node: &'static str, pub(crate) to_port: &'static str }
 
 pub(crate) const VALID_PIPELINE_TEXT: &str = "Valid: Power.p feeds Output.value.";
-pub(crate) const PENDING_OUTPUT_TEXT: &str = "Pending: pipeline execution is not implemented yet.";
 const POWER_INPUTS: [PipelinePort; 2] = [
     PipelinePort { id: "n", label: "n", value_type: "Z" },
     PipelinePort { id: "e", label: "e", value_type: "Z" },
@@ -317,7 +317,11 @@ pub fn pipeline_power_output_html_snapshot() -> String {
         edge.from_port,
         edge.to_port,
         validate_pipeline(POWER_OUTPUT_PIPELINE),
-        PENDING_OUTPUT_TEXT
+        run_output_with_inputs(
+            DEFINITIONS[0],
+            POWER_OUTPUT_PIPELINE.inputs.n,
+            POWER_OUTPUT_PIPELINE.inputs.e
+        )
     )
 }
 
@@ -331,7 +335,6 @@ pub use snapshots::{
 #[rustfmt::skip]
 mod tests {
     use super::*;
-
     const NO_EDGES: [PipelineEdge; 0] = [];
     const BAD_EDGE: [PipelineEdge; 1] = [PipelineEdge { from_node: "power", from_port: "p", to_node: "output", to_port: "missing" }];
     const TEXT_INPUTS: [PipelinePort; 1] = [PipelinePort { id: "value", label: "value", value_type: "Text" }];

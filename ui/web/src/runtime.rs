@@ -65,6 +65,7 @@ mod tests {
 
     #[test]
     fn power_output_uses_current_inputs() {
+        assert_eq!(run_output_with_inputs(DEFINITIONS[0], "2", "8"), "256");
         assert_eq!(run_output_with_inputs(DEFINITIONS[0], "3", "3"), "27");
     }
 

@@ -1,0 +1,1 @@
+Validated the bundled Power-to-Output pipeline edge and rendered deterministic validation messages for valid, missing, and incompatible connections.
