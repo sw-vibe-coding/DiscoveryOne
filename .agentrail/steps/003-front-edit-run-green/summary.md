@@ -1,0 +1,1 @@
+Routed valid Power Front facet edits into Run so changing the top-branch zero-case value to 2 makes n=5,e=0 output 2 while preserving unedited positive-exponent Power behavior.

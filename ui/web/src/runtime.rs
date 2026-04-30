@@ -21,9 +21,10 @@ pub(crate) fn run_output_with_facet_edit(
     e: &str,
 ) -> String {
     if definition.name == "Power" && face == FRONT {
-        if let Ok(edit) = parse_power_front_edit(facet_text) {
-            return run_power_front_edit(edit, n, e);
-        }
+        return match parse_power_front_edit(facet_text) {
+            Ok(edit) => run_power_front_edit(edit, n, e),
+            Err(err) => format!("Error: invalid Power Front edit: {err}"),
+        };
     }
 
     run_output_with_inputs(definition, n, e)
@@ -91,6 +92,14 @@ mod tests {
         assert_eq!(
             run_output_with_facet_edit(DEFINITIONS[0], FRONT, &edited_front, "2", "8"),
             "256"
+        );
+    }
+
+    #[test]
+    fn invalid_power_front_edit_fails_run_explicitly() {
+        assert_eq!(
+            run_output_with_facet_edit(DEFINITIONS[0], FRONT, "Power\nloop e times", "5", "0"),
+            "Error: invalid Power Front edit: Power Front edit is missing `n (×)`."
         );
     }
 }
