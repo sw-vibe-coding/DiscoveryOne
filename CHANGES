@@ -1,7 +1,8 @@
 # Changes
 
-Reverse-chronological summary of repository commits through `350a5ec`.
+Reverse-chronological summary of repository commits through `ba58811`.
 
+- `ba58811` agentrail: start 3d viewer saga
 - `350a5ec` docs: document pipeline 2d demo
 - `c31f2c6` web: run pipeline fixture
 - `4525c01` web: validate pipeline edges
