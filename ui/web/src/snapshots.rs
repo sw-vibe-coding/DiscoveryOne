@@ -1,6 +1,37 @@
 use crate::edit_state::editable_facet_text;
 use crate::runtime::{run_output, run_output_with_facet_edit};
-use crate::{DEFINITIONS, FRONT, INTERNAL, LIBRARY_ROWS, LibraryRow, LibrarySort, facet_rows, sorted_library_rows};
+use crate::{DEFINITIONS, FRONT, INTERNAL, LIBRARY_ROWS, LibraryRow, LibrarySort, POWER_SOURCE, facet_rows, sorted_library_rows};
+#[cfg(target_arch = "wasm32")]
+use wasm_bindgen::prelude::wasm_bindgen;
+
+macro_rules! library_grid_html {
+    ($library_rows:expr) => {{
+        let rows = $library_rows
+            .iter()
+            .map(|row: &LibraryRow| {
+                format!(
+                    r#"      <tr data-definition="{name}"><td>{name}</td><td>{arity}</td><td>{category}</td><td>{aspects}</td></tr>"#,
+                    name = row.name,
+                    arity = row.arity,
+                    category = row.category,
+                    aspects = row.aspects
+                )
+            })
+            .collect::<Vec<_>>()
+            .join("\n");
+        format!(
+            r#"<section class="library-grid" aria-label="Library definitions">
+  <table>
+    <thead><tr><th>Name</th><th>Arity</th><th>Type</th><th>Aspects</th></tr></thead>
+    <tbody>
+{rows}
+    </tbody>
+  </table>
+</section>
+"#
+        )
+    }};
+}
 
 const FRONT_BEFORE_ROWS: &str = r#"<main class="app">
   <header class="topbar">
@@ -31,38 +62,11 @@ pub fn power_front_facet_html_snapshot() -> String {
 }
 
 pub fn library_grid_html_snapshot() -> String {
-    library_grid_html(LIBRARY_ROWS.to_vec())
+    library_grid_html!(LIBRARY_ROWS.to_vec())
 }
 
 pub fn library_grid_html_snapshot_sorted(sort: LibrarySort) -> String {
-    library_grid_html(sorted_library_rows(sort))
-}
-
-fn library_grid_html(library_rows: Vec<LibraryRow>) -> String {
-    let rows = library_rows
-        .iter()
-        .map(|row| {
-            format!(
-                r#"      <tr data-definition="{name}"><td>{name}</td><td>{arity}</td><td>{category}</td><td>{aspects}</td></tr>"#,
-                name = row.name,
-                arity = row.arity,
-                category = row.category,
-                aspects = row.aspects
-            )
-        })
-        .collect::<Vec<_>>()
-        .join("\n");
-    format!(
-        r#"<section class="library-grid" aria-label="Library definitions">
-  <table>
-    <thead><tr><th>Name</th><th>Arity</th><th>Type</th><th>Aspects</th></tr></thead>
-    <tbody>
-{rows}
-    </tbody>
-  </table>
-</section>
-"#
-    )
+    library_grid_html!(sorted_library_rows(sort))
 }
 
 pub fn power_run_2_8_html_snapshot() -> String {
@@ -120,5 +124,28 @@ pub fn minted_run_html_snapshot(definition_index: usize) -> String {
   </aside>
 </section>
 "#
+    )
+}
+
+#[cfg_attr(target_arch = "wasm32", wasm_bindgen(js_name = discoveryOne3dSymbols))]
+pub fn power_3d_symbols_json_snapshot() -> String {
+    let source = d1_source::load_layered(POWER_SOURCE).expect("Power fixture should load");
+    let symbols = source.definitions[0].symbols.iter().map(|symbol| {
+        format!(
+            r#"    {{"text":"{}","face":"{}","x":{},"y":{},"z":{}}}"#,
+            symbol.text, symbol.aspect, symbol.x, symbol.y, symbol.z
+        )
+    }).collect::<Vec<_>>().join(",\n");
+    format!(
+        r#"{{
+  "definition": "Power",
+  "symbol_count": {},
+  "symbols": [
+{}
+  ]
+}}
+"#,
+        source.definitions[0].symbols.len(),
+        symbols
     )
 }

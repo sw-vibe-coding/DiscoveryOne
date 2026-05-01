@@ -1,0 +1,1 @@
+Added the M10 RED 3D viewer acceptance baseline for a deterministic Power viewer snapshot, including expected symbol/export and three.js asset hooks.

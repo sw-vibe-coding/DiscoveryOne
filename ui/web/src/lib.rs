@@ -325,11 +325,7 @@ pub fn pipeline_power_output_html_snapshot() -> String {
     )
 }
 
-pub use snapshots::{
-    library_grid_html_snapshot, library_grid_html_snapshot_sorted, minted_run_html_snapshot,
-    power_front_edit_run_html_snapshot, power_front_facet_html_snapshot,
-    power_run_2_8_html_snapshot,
-};
+pub use snapshots::{library_grid_html_snapshot, library_grid_html_snapshot_sorted, minted_run_html_snapshot, power_3d_symbols_json_snapshot, power_front_edit_run_html_snapshot, power_front_facet_html_snapshot, power_run_2_8_html_snapshot};
 
 #[cfg(test)]
 #[rustfmt::skip]
