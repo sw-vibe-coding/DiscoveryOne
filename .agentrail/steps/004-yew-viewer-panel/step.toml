@@ -1,0 +1,15 @@
+number = 4
+slug = "yew-viewer-panel"
+status = "pending"
+description = """
+# Step: yew-viewer-panel
+
+Embed the M10 3D viewer in the Yew Web UI.
+
+Scope:
+..."""
+role = "production"
+context_files = []
+created_at = "2026-05-01T13:38:32"
+task_type = "implementation"
+commits = []

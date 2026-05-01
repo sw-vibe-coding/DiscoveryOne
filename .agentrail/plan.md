@@ -1,11 +1,13 @@
-# Saga: discoveryone-pipeline-2d
+# Saga: discoveryone-3d-viewer
 
-Goal: implement M9: a 2D pipeline editor demo where bundled definitions can be placed on a canvas, connected with type-checked edges, and run through a small browser pipeline baseline.
+Goal: implement M10: a Yew/Rust/WASM web demo that exposes positioned DiscoveryOne symbols to a three.js inspection scene and renders the Power definition as an inspectable 3D view.
 
 Milestones:
-1. Add a RED acceptance baseline for a small pipeline, initially Power -> output, with stable HTML/snapshot output.
-2. Model pipeline nodes and edges as a small serializable data structure, without adding persistence yet.
-3. Render the 2D pipeline canvas in the Web UI with nodes, ports, and deterministic layout.
-4. Add narrow connection validation and inline error output for incompatible or missing edges.
-5. Execute the small pipeline path in the Web runtime and make the M9 acceptance baseline green.
-6. Update docs/status for the M9 demo and close the saga.
+1. Add a RED acceptance baseline for a deterministic 3D viewer fixture and document the expected demo surface.
+2. Export the same positioned symbol set used by the Yew facet view through a narrow wasm-bindgen/JSON boundary.
+3. Add a three.js scene bundle that reads the exported symbol set and renders positioned glyph blocks for Power.
+4. Embed the 3D viewer in the Yew Web UI with a controlled fallback and stable demo controls.
+5. Add verification/smoke coverage for the exported scene data and viewer asset wiring, plus a manual demo script.
+6. Update docs/status for the M10 3D viewer demo and close the saga.
+
+Non-goals for M10: no 3D authoring, no pipeline editing in 3D, no arbitrary camera persistence, and no general replacement for the 2D facet editor.

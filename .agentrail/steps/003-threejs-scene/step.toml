@@ -1,0 +1,12 @@
+number = 3
+slug = "threejs-scene"
+status = "pending"
+description = """
+# Step: threejs-scene
+
+Render the exported Power symbols in a three.js scene ..."""
+role = "production"
+context_files = []
+created_at = "2026-05-01T13:38:26"
+task_type = "implementation"
+commits = []

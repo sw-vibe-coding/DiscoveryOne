@@ -1,0 +1,165 @@
+# Changes
+
+Reverse-chronological summary of repository commits through `350a5ec`.
+
+- `350a5ec` docs: document pipeline 2d demo
+- `c31f2c6` web: run pipeline fixture
+- `4525c01` web: validate pipeline edges
+- `c7908d8` web: render pipeline canvas
+- `92c3474` web: add pipeline model fixture
+- `d637581` test: add pipeline 2d red baseline
+- `5cacefa` agentrail: start pipeline 2d saga
+- `3b1a245` agentrail: archive front edit saga
+- `1599384` agentrail: record front edit saga completion
+- `c4e7701` docs: document front edit execution demo
+- `347b88b` web: validate executable front edits
+- `3409ee7` web: run edited power front semantics
+- `c881fed` web: parse power front edit semantics
+- `b991a71` test: add front edit execution red baseline
+- `5dcff1d` docs: update post archive status
+- `f495a32` agentrail: archive library grid saga
+- `8daa36c` agentrail: record library grid completion
+- `be3c606` web: edit visible facet syntax
+- `407bd52` docs: complete library grid milestone
+- `003e56a` web: expand library grid fixtures
+- `35a6cf8` agentrail: plan facet edit surface fix
+- `15fc068` web: sort library grid stably
+- `bf1a3a9` web: add library grid view
+- `34043eb` test: add library grid red baseline
+- `b2ac726` agentrail: start library grid saga
+- `fbf9d44` agentrail: complete power front view saga
+- `3d6b5ce` web: add edit mode validation feedback
+- `ed19ab3` web: make run controls interactive
+- `bb81d49` web: show real build metadata
+- `b645351` web: expand demo workspace layout
+- `1d97546` docs: document power front view demo
+- `d609e62` test: cover power front view demo
+- `2c2f312` agentrail: plan web demo usability work
+- `4cba844` web: render power front view notation
+- `cb531e8` test: add power front view red baseline
+- `a0e9dea` agentrail: start power front view saga
+- `48acdfb` docs: complete minted module mvp
+- `d13de17` web: run unless syntax
+- `566335e` minted: generalize syntax templates
+- `029419a` minted: add unless red baseline
+- `8c0377b` web: run dowhile syntax
+- `4e998d1` web: add dowhile red baseline
+- `59d1e77` minted: run dowhile syntax
+- `22c5368` minted: add dowhile red baseline
+- `2fbfbbe` agentrail: start minted module saga
+- `c240a06` web: run power from run panel
+- `728fe2d` web: render power front facet
+- `69e28f0` chore: record web front red completion
+- `3d55c8a` web: add front facet html red baseline
+- `b24f500` chore: record all facet snapshots completion
+- `95da8c9` web: snapshot all power facets
+- `eab6f29` chore: record front snapshot green completion
+- `13b2725` web: snapshot front facet
+- `b324eca` chore: record front snapshot red completion
+- `4702922` web: add front facet snapshot red baseline
+- `9165e40` chore: plan web shell saga
+- `8f44ef6` chore: record wasm parity completion
+- `022f844` wasm: compare run and interp corpus
+- `c91a18b` chore: record wasm zero exponent completion
+- `f57c352` wasm: run power for zero exponent
+- `c15b06e` chore: record wasm green completion
+- `bba4772` wasm: run power for 2 8
+- `5a5dfad` chore: record wasm red completion
+- `88575d0` wasm: add power run red baseline
+- `2b00aa8` chore: plan wasm emit saga
+- `9a12419` chore: record zero exponent completion
+- `62e6bd3` interp: run power for zero exponent
+- `61cf1b9` chore: record power interpreter green completion
+- `ab0bcf8` interp: run power for 2 8
+- `fa7a83a` chore: record power interpreter red completion
+- `b400f46` test: add power interpreter baseline
+- `8f58d91` chore: record IR dump green completion
+- `25ec191` ir: dump power stack IR
+- `e9af4a8` chore: record IR dump red completion
+- `4f02769` test: add power IR dump baseline
+- `101c3c7` docs: remind agents to reinstall d1 before tests
+- `11e6133` chore: archive parse check saga
+- `81343d8` check: report unbound name
+- `c0a2c4d` test: add unbound name check baseline
+- `ffdb862` check: report left arity mismatch
+- `719a0e7` test: add left arity mismatch check baseline
+- `de19569` test: green power check pass baseline
+- `58411bb` test: add power check pass baseline
+- `1cf137b` test: green facet blocks parse baseline
+- `29a1a00` test: add facet blocks parse baseline
+- `94b9ea5` test: green mint signature parse baseline
+- `fa98d98` test: add mint signature parse baseline
+- `197f4c6` test: green mint init parse baseline
+- `d19b9ac` test: add mint init parse baseline
+- `795c6d4` chore: start parse check saga
+- `1bb8fe6` chore: archive source loader saga
+- `bf23330` chore: record source loader saga completion
+- `563b16b` test: green rear face projection
+- `0a44ca5` chore: record rear face red step completion
+- `c5fc1a7` test: add rear face projection baseline
+- `4d1eb9c` chore: record bottom face green step completion
+- `b30d5df` test: green bottom face projection
+- `4ee458a` chore: record cli version metadata completion
+- `c3e3cb0` chore: begin cli version metadata record
+- `602a621` chore: record bottom face red step completion
+- `639fbbd` test: add bottom face projection baseline
+- `4cc0ff9` chore: record cli version metadata maintenance
+- `a133b47` fix: add d1 build version info
+- `3378d18` chore: record top face green step completion
+- `5c1ebce` test: green top face projection
+- `b791aa2` chore: record top face red step completion
+- `f92ea1f` test: add top face projection baseline
+- `bb0a456` chore: record right face green step completion
+- `7a326dc` test: green right face projection
+- `a669872` chore: record right face red step completion
+- `4d67ded` test: add right face projection baseline
+- `410c38b` chore: record left face green step completion
+- `2c33026` test: green left face projection
+- `d304b3d` chore: record left face red step completion
+- `9781fa3` test: add left face projection baseline
+- `85522dd` chore: record front face green step completion
+- `298a159` test: green front face projection
+- `bbbe40c` chore: record front face red step completion
+- `38ea061` test: add front face projection baseline
+- `188b8a5` chore: record source normalize green step completion
+- `b0c29c1` test: green source normalize roundtrip
+- `997bc95` chore: record source normalize red step completion
+- `5c9210e` test: add source normalize red baseline
+- `4787e19` chore: archive completed lexer finish saga
+- `4dbdc64` chore: record percent green step completion
+- `ef471a9` test: green percent lexer
+- `51eb0aa` chore: record percent red step completion
+- `777bc69` test: add percent lexer baseline
+- `24cb314` chore: record negative integer green step completion
+- `18cddca` test: green negative integer lexer
+- `15ce51f` chore: record negative integer red step completion
+- `61c5004` test: add negative integer lexer baseline
+- `16e7a08` chore: record comment green step completion
+- `02104c0` test: green comment lexer
+- `463041e` chore: record comment red step completion
+- `0623096` test: add comment lexer baseline
+- `d1a1ed6` chore: record z-layer green step completion
+- `ab0efaf` test: green z-layer tag lexer
+- `5cd5207` chore: record z-layer red step completion
+- `cd92ed4` test: add z-layer tag lexer baseline
+- `159261c` chore: record aspect tag step completion
+- `0ccaa37` test: green aspect tag lexer
+- `98f95c3` chore: record mint operator step completion
+- `c1c2dda` test: green mint operator lexer
+- `98c85ef` chore: record aspect tag step completion
+- `fb535ea` test: add aspect tag lexer baseline
+- `8cdc9a5` chore: record completed cleanup step
+- `77041ae` chore: fix sw-checklist metadata
+- `78e9b62` test: add red d1 lex mint operator baseline
+- `676b6e5` refactor: clean up d1 lexer token display
+- `a652c77` feat: implement d1 lex arity suffix case
+- `1ff0ba7` test: add red d1 lex arity suffix baseline
+- `c3f41a6` chore: archive discoveryone-scaffold saga
+- `a537dca` feat: d1_smoke_cli_help reg-rs baseline; close M0
+- `0c6ef6f` feat: build/run scripts and gitignore policy
+- `4a53520` chore: record agentrail step 002 completion artifacts
+- `a468aa6` feat: yew web skeleton via trunk (M0 step 002)
+- `87fecb0` chore: record agentrail step 001 completion artifacts
+- `ffc35b5` feat: scaffold d1 workspace and cli stub (M0 step 001)
+- `466019d` chore: scaffold docs, README, and discoveryone-scaffold saga
+- `22effc1` 1st

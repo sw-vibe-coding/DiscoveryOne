@@ -1,0 +1,12 @@
+number = 5
+slug = "viewer-verification"
+status = "pending"
+description = """
+# Step: viewer-verification
+
+Make the M10 3D viewer demo verifiable and demoa..."""
+role = "production"
+context_files = []
+created_at = "2026-05-01T13:38:38"
+task_type = "validation"
+commits = []

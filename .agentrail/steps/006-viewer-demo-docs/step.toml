@@ -1,0 +1,13 @@
+number = 6
+slug = "viewer-demo-docs"
+status = "pending"
+description = """
+# Step: viewer-demo-docs
+
+Close M10 with 3D viewer demo docs/status updates.
+..."""
+role = "production"
+context_files = []
+created_at = "2026-05-01T13:38:45"
+task_type = "docs"
+commits = []

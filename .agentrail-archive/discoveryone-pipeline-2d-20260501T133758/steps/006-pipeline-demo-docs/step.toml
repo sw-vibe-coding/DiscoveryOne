@@ -1,6 +1,6 @@
 number = 6
 slug = "pipeline-demo-docs"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: pipeline-demo-docs
 
@@ -11,5 +11,6 @@ Scope:
 role = "production"
 context_files = []
 created_at = "2026-04-30T13:43:03"
+completed_at = "2026-04-30T16:36:41"
 task_type = "docs"
-commits = []
+commits = ["350a5ecc8901aa737181e109f4324f52d26686c3"]
