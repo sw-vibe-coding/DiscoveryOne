@@ -1,0 +1,4 @@
+command = "scripts/3d-viewer-acceptance.sh"
+timeout = 60
+exit_code = 0
+desc = "d1 M10: 3D viewer acceptance"

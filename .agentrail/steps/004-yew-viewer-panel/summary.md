@@ -1,0 +1,1 @@
+Embedded the M10 3D viewer panel in the Yew app with a stable loading fallback, Trunk module hook, and wasm call into the viewer3d scene initializer.

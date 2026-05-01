@@ -1,0 +1,9 @@
+M10 3D viewer acceptance
+symbol-count: "symbol_count": 54,
+front-symbol: {"text":"loop","face":"Front","x":0,"y":2,"z":0},
+viewer-mount: <div class="viewer-3d-mount" data-entry="viewer3d" data-export="window.discoveryOne3dSymbols">
+viewer-status: <output class="viewer-3d-status" aria-label="3D viewer status">Loading: Power symbol export is wired to the viewer3d three.js scene bundle.</output>
+asset-copy: <link data-trunk rel="copy-file" href="src/viewer3d.js" />
+scene-hook: window.discoveryOne3dSymbols = data;
+manual-demo: run ./scripts/run-web.sh 1078, open http://localhost:1078/, verify the 3D Viewer panel replaces the loading text with a non-empty canvas.
+status: green
