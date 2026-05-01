@@ -1,0 +1,11 @@
+{
+  "task_type": "implementation",
+  "state": {
+    "number": 2,
+    "step": "symbol-export"
+  },
+  "action": "Reused d1_source::load_layered for positioned Power symbols, exposed a wasm-bindgen-named export on wasm builds, added snapshot_3d_symbols and reg-rs coverage, verified existing web regressions and web crate tests.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-05-01T14:57:38"
+}

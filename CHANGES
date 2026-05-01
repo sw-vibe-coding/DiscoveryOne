@@ -1,7 +1,8 @@
 # Changes
 
-Reverse-chronological summary of repository commits through `fcac17f`.
+Reverse-chronological summary of repository commits through `f4cc834`.
 
+- `f4cc834` web: export 3d symbol data
 - `fcac17f` test: add 3d viewer red baseline
 - `ba58811` agentrail: start 3d viewer saga
 - `350a5ec` docs: document pipeline 2d demo

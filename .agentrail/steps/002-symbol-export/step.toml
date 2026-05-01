@@ -1,6 +1,6 @@
 number = 2
 slug = "symbol-export"
-status = "in-progress"
+status = "completed"
 description = """
 # Step: symbol-export
 
@@ -8,5 +8,6 @@ Expose positioned DiscoveryOne symbols for the 3D view..."""
 role = "production"
 context_files = []
 created_at = "2026-05-01T13:38:21"
+completed_at = "2026-05-01T14:57:38"
 task_type = "implementation"
-commits = []
+commits = ["f4cc8347b89b02b2a19e113a37998db58bb53a8d"]

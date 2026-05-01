@@ -1,0 +1,1 @@
+Exported deterministic JSON-friendly Power symbol data for the 3D viewer boundary and added a focused passing symbol snapshot while keeping the full viewer acceptance RED.
