@@ -1,0 +1,15 @@
+number = 5
+slug = "on-error-aspect"
+status = "pending"
+description = """
+# Step: on-error-aspect
+
+Implement the narrow on-error aspect demo.
+
+Scope:
+-..."""
+role = "production"
+context_files = []
+created_at = "2026-05-01T16:34:17"
+task_type = "implementation"
+commits = []

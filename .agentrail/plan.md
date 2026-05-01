@@ -1,13 +1,14 @@
-# Saga: discoveryone-3d-viewer
+# Saga: discoveryone-aspects
 
-Goal: implement M10: a Yew/Rust/WASM web demo that exposes positioned DiscoveryOne symbols to a three.js inspection scene and renders the Power definition as an inspectable 3D view.
+Goal: implement M11: a narrow aspect-weaving demo where trace, profile, and on-error aspects can be represented, toggled, checked, and observed in deterministic CLI/Web outputs.
 
 Milestones:
-1. Add a RED acceptance baseline for a deterministic 3D viewer fixture and document the expected demo surface.
-2. Export the same positioned symbol set used by the Yew facet view through a narrow wasm-bindgen/JSON boundary.
-3. Add a three.js scene bundle that reads the exported symbol set and renders positioned glyph blocks for Power.
-4. Embed the 3D viewer in the Yew Web UI with a controlled fallback and stable demo controls.
-5. Add verification/smoke coverage for the exported scene data and viewer asset wiring, plus a manual demo script.
-6. Update docs/status for the M10 3D viewer demo and close the saga.
+1. Add RED acceptance baselines for trace, profile, and on-error aspect behavior on small deterministic fixtures.
+2. Model aspect declarations and toggles narrowly in the parser/source path without designing a full aspect language.
+3. Implement trace output for a known Power-style run and make the trace baseline green.
+4. Implement profile counters for a small loop and make the profile baseline green.
+5. Implement on-error handling for a deliberate fault fixture and make the on-error baseline green.
+6. Expose aspect toggles/status in the Web UI without disrupting M7-M10 demos.
+7. Update docs/status for the M11 aspects demo and close the saga.
 
-Non-goals for M10: no 3D authoring, no pipeline editing in 3D, no arbitrary camera persistence, and no general replacement for the 2D facet editor.
+Non-goals for M11: no generalized macro/aspect compiler, no cross-module weaving, no production profiler, and no broad exception system beyond the demo fixtures.

@@ -1,0 +1,15 @@
+number = 3
+slug = "trace-aspect"
+status = "pending"
+description = """
+# Step: trace-aspect
+
+Implement the narrow trace aspect demo.
+
+Scope:
+- Make ..."""
+role = "production"
+context_files = []
+created_at = "2026-05-01T16:34:05"
+task_type = "implementation"
+commits = []

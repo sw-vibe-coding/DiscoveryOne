@@ -1,0 +1,1 @@
+Documented the M10 3D viewer demo path, expected symbol/canvas behavior, current limitations, and updated status to mark M10 complete with M11 aspects as the default next roadmap choice.

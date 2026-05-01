@@ -1,0 +1,15 @@
+number = 6
+slug = "aspects-web-ui"
+status = "pending"
+description = """
+# Step: aspects-web-ui
+
+Expose the M11 aspect demo in the Web UI.
+
+Scope:
+- A..."""
+role = "production"
+context_files = []
+created_at = "2026-05-01T16:34:26"
+task_type = "implementation"
+commits = []

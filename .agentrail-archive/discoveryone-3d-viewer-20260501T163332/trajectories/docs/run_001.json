@@ -1,0 +1,11 @@
+{
+  "task_type": "docs",
+  "state": {
+    "number": 6,
+    "step": "viewer-demo-docs"
+  },
+  "action": "Updated docs/poc-demo.md, docs/status.md, and CHANGES; verified M10 acceptance, viewer/symbol snapshots, M7-M9 regressions, sw-checklist, and diff checks.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-05-01T16:31:24"
+}

@@ -1,0 +1,14 @@
+number = 7
+slug = "aspects-demo-docs"
+status = "pending"
+description = """
+# Step: aspects-demo-docs
+
+Close M11 with aspects demo docs/status updates.
+
+..."""
+role = "production"
+context_files = []
+created_at = "2026-05-01T16:34:32"
+task_type = "docs"
+commits = []

@@ -1,0 +1,12 @@
+number = 1
+slug = "aspects-red"
+status = "pending"
+description = """
+# Step: aspects-red
+
+Create the M11 RED acceptance baselines for aspect behav..."""
+role = "production"
+context_files = []
+created_at = "2026-05-01T16:33:51"
+task_type = "red-regression"
+commits = []

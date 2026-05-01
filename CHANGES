@@ -1,7 +1,8 @@
 # Changes
 
-Reverse-chronological summary of repository commits through `38004b4`.
+Reverse-chronological summary of repository commits through `7d2496f`.
 
+- `7d2496f` docs: document 3d viewer demo
 - `38004b4` test: verify 3d viewer demo
 - `701d063` web: embed 3d viewer panel
 - `6719507` web: add threejs symbol scene
