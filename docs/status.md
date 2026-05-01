@@ -2,9 +2,9 @@
 
 Snapshot of where the project is. Updated as milestones close.
 
-## Today (2026-04-30)
+## Today (2026-05-01)
 
-- **Phase:** M9 2D pipeline demo complete; choosing the next saga.
+- **Phase:** M10 3D viewer demo complete; choosing the next saga.
 - **Code:** Cargo workspace, placeholder library crates, Yew web
   shell, build/run scripts, and first reg-rs smoke baseline are
   in place. `d1 lex` handles the arity-suffix, mint-operator,
@@ -43,8 +43,12 @@ Snapshot of where the project is. Updated as milestones close.
   demo: the Web UI renders `Power -> Output`, validates
   `Power.p` feeding `Output.value`, and runs the bundled fixture
   to output `256`.
+  `d1_3d_viewer_acceptance` is GREEN for the M10 3D viewer demo:
+  the Web UI exposes 54 positioned Power symbols, copies the
+  `viewer3d.js` three.js scene bundle, renders the `3D Viewer`
+  panel, and documents the localhost manual canvas check.
   Software Wrighter checklist metadata is clean.
-- **Last meaningful commit:** M9 2D pipeline demo.
+- **Last meaningful commit:** M10 3D viewer demo.
 
 ## Done
 
@@ -177,6 +181,28 @@ edge shape and compatible `Z -> Z` ports, but it does not yet provide
 editable connections, pipeline persistence, arbitrary node graphs,
 or general multi-node scheduling beyond the `Power -> Output` demo.
 
+## Completed
+
+**M10 -- `discoveryone-3d-viewer`.** Complete. The Web UI renders
+a `3D Viewer` panel for Power and wires it to a copied
+`viewer3d.js` three.js scene bundle. The panel starts with a stable
+loading fallback and, in the browser, passes the deterministic
+Power symbol export into `window.initDiscoveryOne3dViewer`. The
+scene module publishes `window.discoveryOne3dSymbols`, creates one
+glyph block per exported symbol, and renders the scene into the
+panel mount.
+
+`d1_web_3d_symbols_power` is GREEN for the JSON-friendly Power
+symbol export: 54 symbols with text, face, and x/y/z coordinates.
+`d1_web_3d_viewer_power` is GREEN for the deterministic viewer
+panel snapshot. `d1_3d_viewer_acceptance` is GREEN and covers the
+symbol export, viewer mount, Trunk asset copy hook, JS scene hook,
+and manual localhost demo instruction.
+
+The implementation remains inspection-only. It does not provide
+3D authoring, selection editing, camera persistence, WebGL
+pixel-level automation, or pipeline editing in 3D.
+
 The next session that picks up feature work should:
 
 1. Read this file.
@@ -187,11 +213,11 @@ The next session that picks up feature work should:
 ## Up next
 
 Choose the next saga. The default roadmap choice is M10 --
-`discoveryone-3d-viewer`, a three.js inspection scene reading the
-same positioned symbol set as the Yew facet view. Other reasonable
-follow-ups are to deepen M9 with editable pipeline wiring or to
+`discoveryone-aspects`, covering trace/profile/on-error aspect
+weaving. Other reasonable follow-ups are to deepen M9 with editable
+pipeline wiring, add browser automation for the M10 canvas, or
 expand Power Front editing beyond the current zero-case slice, but
-M10 is the next planned milestone.
+M11 is the next planned milestone.
 
 ## Open questions parked
 

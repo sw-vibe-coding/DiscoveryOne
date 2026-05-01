@@ -4,7 +4,7 @@ This is the current Web demo slice. It demonstrates that
 DiscoveryOne can run the existing `Power` fixture and two user-minted
 syntax fixtures, present a sortable library grid, execute a narrow
 Power Front 2D edit, and run a bundled 2D `Power -> Output`
-pipeline.
+pipeline. It also includes the M10 Power 3D viewer inspection panel.
 
 ## Build
 
@@ -147,6 +147,39 @@ deterministic and type-checked for the bundled edge, but it does not
 yet support drag/drop authoring, persistent pipeline files, editable
 connections, or general multi-node execution.
 
+## 3D Viewer Demo
+
+The Web UI renders a `3D Viewer` panel for `Power` between the
+Library grid and the 2D pipeline canvas. The panel uses the same
+positioned symbol data as the facet view. On load, the Yew app passes
+the Power symbol export into `viewer3d.js`, which initializes a
+three.js scene and renders one glyph block per exported symbol.
+
+The exported data is deterministic and can be inspected without a
+browser GPU:
+
+```bash
+scripts/snapshot-web-3d-symbols.sh
+```
+
+Expected data behavior:
+
+```text
+"definition": "Power"
+"symbol_count": 54
+{"text":"loop","face":"Front","x":0,"y":2,"z":0}
+```
+
+The browser demo path is:
+
+1. Run `./scripts/run-web.sh 1078`.
+2. Open `http://localhost:1078/`.
+3. Find the `3D Viewer` panel.
+4. Confirm the loading fallback is replaced by a non-empty canvas.
+
+This viewer is inspection-only. It does not support 3D authoring,
+selection editing, camera persistence, or pipeline editing in 3D.
+
 ## Regression Baseline
 
 The full M7 acceptance case is:
@@ -179,4 +212,10 @@ The M9 pipeline acceptance case is:
 
 ```bash
 reg-rs run -p d1_web_pipeline_power_output
+```
+
+The M10 3D viewer acceptance case is:
+
+```bash
+reg-rs run -p d1_3d_viewer_acceptance
 ```

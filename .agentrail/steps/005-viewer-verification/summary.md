@@ -1,0 +1,1 @@
+Added the M10 3D viewer acceptance script and reg-rs baseline covering symbol export, viewer snapshot, asset wiring, scene hook, and the precise localhost manual demo check.
