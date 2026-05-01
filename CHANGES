@@ -1,7 +1,8 @@
 # Changes
 
-Reverse-chronological summary of repository commits through `7d2496f`.
+Reverse-chronological summary of repository commits through `92d297d`.
 
+- `92d297d` agentrail: start aspects saga
 - `7d2496f` docs: document 3d viewer demo
 - `38004b4` test: verify 3d viewer demo
 - `701d063` web: embed 3d viewer panel

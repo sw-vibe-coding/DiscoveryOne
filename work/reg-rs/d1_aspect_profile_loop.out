@@ -1,0 +1,4 @@
+profile ProfileLoop n=4
+counter loop.iterations=4
+counter assignments.p=5
+result: p=4

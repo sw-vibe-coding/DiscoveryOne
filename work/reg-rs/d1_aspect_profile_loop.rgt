@@ -1,0 +1,4 @@
+command = "scripts/run-fixture.sh aspect-profile examples/aspect_profile_loop.d1 --inputs n=4"
+timeout = 60
+exit_code = 0
+desc = "d1 aspect profile: loop counters"

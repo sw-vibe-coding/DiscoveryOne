@@ -1,0 +1,8 @@
+*ProfileLoop
+  @front
+    n -> p
+    p <- 0
+    loop n times: p <- p + 1
+
+  @internal
+    aspect profile loop counter

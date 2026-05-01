@@ -1,0 +1,4 @@
+command = "scripts/run-fixture.sh aspect-on-error examples/aspect_on_error_fault.d1 --inputs n=0"
+timeout = 60
+exit_code = 0
+desc = "d1 aspect on-error: divide-by-zero fallback"

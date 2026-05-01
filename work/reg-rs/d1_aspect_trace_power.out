@@ -1,0 +1,6 @@
+trace PowerTrace n=2 e=3
+step 0: p=1
+step 1: p=2
+step 2: p=4
+step 3: p=8
+result: p=8

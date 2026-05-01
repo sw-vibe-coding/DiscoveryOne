@@ -1,0 +1,4 @@
+on-error FaultFallback n=0
+caught: divide-by-zero at FaultFallback/front x=9 y=1 z=0
+fallback: p=0
+result: p=0

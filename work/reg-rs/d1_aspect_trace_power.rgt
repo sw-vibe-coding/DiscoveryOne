@@ -1,0 +1,4 @@
+command = "scripts/run-fixture.sh aspect-trace examples/aspect_trace_power.d1 --inputs n=2,e=3"
+timeout = 60
+exit_code = 0
+desc = "d1 aspect trace: Power trace values"

@@ -1,0 +1,9 @@
+*PowerTrace
+  @front
+    n e -> p
+    p <- 1
+    trace p
+    loop e times: p <- p * n; trace p
+
+  @internal
+    aspect trace values p

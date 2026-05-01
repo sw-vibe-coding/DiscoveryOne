@@ -1,0 +1,7 @@
+*FaultFallback
+  @front
+    n -> p
+    p <- 10 / n
+
+  @internal
+    aspect on-error divide-by-zero fallback 0
