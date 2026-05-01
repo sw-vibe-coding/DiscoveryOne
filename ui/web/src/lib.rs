@@ -6,7 +6,7 @@ mod run_state;
 mod runtime;
 mod snapshots;
 
-use components::{FacetView, LibraryGrid, PipelineCanvas, RunPanel, TopBar};
+use components::{FacetView, LibraryGrid, PipelineCanvas, RunPanel, TopBar, Viewer3dPanel};
 use edit_state::use_edit_state;
 use runtime::run_output_with_inputs;
 use run_state::use_run_state;
@@ -228,6 +228,7 @@ pub fn app() -> Html {
                 <RunPanel definition={*current_definition} n_value={(*run_state.n_input).clone()} e_value={(*run_state.e_input).clone()} output={(*run_state.output).clone()} on_n_input={run_state.on_n_input} on_e_input={run_state.on_e_input} on_run={run_state.on_run} />
             </section>
             <LibraryGrid rows={sorted_library_rows(*library_sort)} current_sort={*library_sort} on_sort={Callback::from(move |sort| library_sort.set(sort))} />
+            <Viewer3dPanel />
             <PipelineCanvas pipeline={POWER_OUTPUT_PIPELINE} />
             <BuildFooter />
         </main>

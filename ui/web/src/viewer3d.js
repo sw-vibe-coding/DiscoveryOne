@@ -12,6 +12,7 @@ const FACE_DEPTH = {
 
 export function initDiscoveryOne3dViewer(mount, symbolsJson) {
   const data = typeof symbolsJson === "string" ? JSON.parse(symbolsJson) : symbolsJson;
+  window.discoveryOne3dSymbols = data;
   const scene = new THREE.Scene();
   scene.name = `DiscoveryOne ${data.definition}`;
   const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);

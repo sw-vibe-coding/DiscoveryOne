@@ -1,0 +1,1 @@
+Added the local viewer3d three.js scene module, Trunk asset copy hook, and deterministic viewer snapshot wiring it to the Power symbol export.

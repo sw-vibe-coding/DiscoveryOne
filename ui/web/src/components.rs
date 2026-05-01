@@ -1,4 +1,6 @@
 use web_sys::{HtmlInputElement, HtmlSelectElement, HtmlTextAreaElement};
+#[cfg(target_arch = "wasm32")]
+use wasm_bindgen::prelude::wasm_bindgen;
 use yew::prelude::*;
 use yew::TargetCast;
 
@@ -8,6 +10,13 @@ use crate::{
     DEFINITIONS, Definition, FACES, Face, LibraryRow, LibrarySort, Pipeline, facet_rows,
     validate_pipeline,
 };
+
+#[cfg(target_arch = "wasm32")]
+#[wasm_bindgen]
+extern "C" {
+    #[wasm_bindgen(js_namespace = window)]
+    fn initDiscoveryOne3dViewer(mount: web_sys::HtmlElement, symbols_json: &str);
+}
 
 #[derive(Properties, PartialEq)]
 pub(crate) struct TopBarProps {
@@ -306,7 +315,7 @@ pub(crate) fn pipeline_canvas(props: &PipelineCanvasProps) -> Html {
             <div class="pipeline-edges" aria-label="Pipeline edges">
                 { for props.pipeline.edges.iter().map(|edge| html! {
                     <span data-edge={format!("{}.{}->{}.{}", edge.from_node, edge.from_port, edge.to_node, edge.to_port)}>
-                        { format!("{}.{} -> {}.{}", title_case(edge.from_node), edge.from_port, title_case(edge.to_node), edge.to_port) }
+                        { format!("{}.{} -> {}.{}", if edge.from_node == "power" { "Power" } else { edge.from_node }, edge.from_port, if edge.to_node == "output" { "Output" } else { edge.to_node }, edge.to_port) }
                     </span>
                 }) }
             </div>
@@ -318,10 +327,23 @@ pub(crate) fn pipeline_canvas(props: &PipelineCanvasProps) -> Html {
     }
 }
 
-fn title_case(value: &str) -> String {
-    let mut chars = value.chars();
-    match chars.next() {
-        Some(first) => first.to_uppercase().chain(chars).collect(),
-        None => String::new(),
+#[function_component(Viewer3dPanel)]
+pub(crate) fn viewer_3d_panel() -> Html {
+    let mount = use_node_ref();
+    #[cfg(target_arch = "wasm32")]
+    {
+        let mount = mount.clone();
+        use_effect_with((), move |_| {
+            if let Some(element) = mount.cast::<web_sys::HtmlElement>() {
+                initDiscoveryOne3dViewer(element, &crate::power_3d_symbols_json_snapshot());
+            }
+            || ()
+        });
     }
+    html! { <section class="viewer-3d" aria-label="3D viewer">
+        <header class="viewer-3d-header"><span>{ "3D Viewer" }</span><strong>{ "Power" }</strong></header>
+        <div class="viewer-3d-mount" ref={mount} data-entry="viewer3d" data-export="window.discoveryOne3dSymbols">
+            <output class="viewer-3d-status" aria-label="3D viewer status">{ "Loading: Power symbol export is wired to the viewer3d three.js scene bundle." }</output>
+        </div>
+    </section> }
 }

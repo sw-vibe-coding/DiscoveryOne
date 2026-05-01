@@ -251,7 +251,8 @@ h1 {
   overflow-x: auto;
 }
 
-.pipeline-header {
+.pipeline-header,
+.viewer-3d-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -261,8 +262,26 @@ h1 {
   color: #a9b4c0;
 }
 
-.pipeline-header strong {
+.pipeline-header strong,
+.viewer-3d-header strong {
   color: #edf1f5;
+}
+
+.viewer-3d {
+  margin-top: 1rem;
+  border: 1px solid #38404a;
+  border-radius: 6px;
+  background: #151a20;
+}
+
+.viewer-3d-mount {
+  min-height: 18rem;
+  padding: 1rem;
+  background: #101419;
+}
+
+.viewer-3d-status {
+  color: #a9b4c0;
 }
 
 .pipeline-nodes {
